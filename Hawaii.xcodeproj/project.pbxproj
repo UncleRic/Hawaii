@@ -12,6 +12,8 @@
 		183708302041FC8A00C6C833 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1837082E2041FC8A00C6C833 /* Main.storyboard */; };
 		183708322041FC8B00C6C833 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 183708312041FC8B00C6C833 /* Assets.xcassets */; };
 		183708352041FC8B00C6C833 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 183708332041FC8B00C6C833 /* LaunchScreen.storyboard */; };
+		1895DF7D2042069700C85493 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1895DF7C2042069700C85493 /* WeatherService.swift */; };
+		1895DF7F204206C100C85493 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1895DF7E204206C100C85493 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		183708312041FC8B00C6C833 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		183708342041FC8B00C6C833 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		183708362041FC8B00C6C833 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1895DF7C2042069700C85493 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		1895DF7E204206C100C85493 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 			children = (
 				1837082A2041FC8A00C6C833 /* AppDelegate.swift */,
 				1837082C2041FC8A00C6C833 /* ViewController.swift */,
+				1895DF7C2042069700C85493 /* WeatherService.swift */,
+				1895DF7E204206C100C85493 /* Extensions.swift */,
 				1837082E2041FC8A00C6C833 /* Main.storyboard */,
 				183708312041FC8B00C6C833 /* Assets.xcassets */,
 				183708332041FC8B00C6C833 /* LaunchScreen.storyboard */,
@@ -136,7 +142,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1837082D2041FC8A00C6C833 /* ViewController.swift in Sources */,
+				1895DF7D2042069700C85493 /* WeatherService.swift in Sources */,
 				1837082B2041FC8A00C6C833 /* AppDelegate.swift in Sources */,
+				1895DF7F204206C100C85493 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
