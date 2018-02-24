@@ -14,6 +14,7 @@
 		183708352041FC8B00C6C833 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 183708332041FC8B00C6C833 /* LaunchScreen.storyboard */; };
 		1895DF7D2042069700C85493 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1895DF7C2042069700C85493 /* WeatherService.swift */; };
 		1895DF7F204206C100C85493 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1895DF7E204206C100C85493 /* Extensions.swift */; };
+		1895DF83204222D600C85493 /* UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1895DF82204222D500C85493 /* UI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		183708362041FC8B00C6C833 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1895DF7C2042069700C85493 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		1895DF7E204206C100C85493 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		1895DF82204222D500C85493 /* UI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				1837082A2041FC8A00C6C833 /* AppDelegate.swift */,
 				1837082C2041FC8A00C6C833 /* MainViewController.swift */,
 				1895DF7C2042069700C85493 /* WeatherService.swift */,
+				1895DF82204222D500C85493 /* UI.swift */,
 				1895DF7E204206C100C85493 /* Extensions.swift */,
 				1837082E2041FC8A00C6C833 /* Main.storyboard */,
 				183708312041FC8B00C6C833 /* Assets.xcassets */,
@@ -144,6 +147,7 @@
 				1837082D2041FC8A00C6C833 /* MainViewController.swift in Sources */,
 				1895DF7D2042069700C85493 /* WeatherService.swift in Sources */,
 				1837082B2041FC8A00C6C833 /* AppDelegate.swift in Sources */,
+				1895DF83204222D600C85493 /* UI.swift in Sources */,
 				1895DF7F204206C100C85493 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
