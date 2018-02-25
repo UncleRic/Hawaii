@@ -57,7 +57,48 @@ class WeatherReport {
         let cod: Int
     }
     
-    func disseminateJSON(data: Data) -> DataListModel? {
+    struct WeatherData {
+        let name:String
+        let description:String
+        let currentTemp:String
+        let minTemp:String
+        let maxTemp:String
+        let humidity:String
+        let windSpeed:String
+        let windDirection:String
+        let barometer:String
+        let visibility:String
+        let sunrise:String
+        let sunset:String
+        
+        init (name:String,
+              description:String,
+              currentTemp:String,
+              minTemp:String,
+              maxTemp:String,
+              humidity:String,
+              windSpeed:String,
+              windDirection:String,
+              barometer:String,
+              visibility:String,
+              sunrise:String,
+              sunset:String) {
+            self.name = name
+            self.description = description
+            self.currentTemp = currentTemp
+            self.minTemp = minTemp
+            self.maxTemp = maxTemp
+            self.humidity = humidity
+            self.windSpeed = windSpeed
+            self.windDirection = windDirection
+            self.barometer = barometer
+            self.visibility = visibility
+            self.sunrise = visibility
+            self.sunset = sunset
+        }
+    }
+    
+    final class func disseminateJSON(data: Data) -> DataListModel? {
         var weatherStuff:DataListModel?
         do {
             weatherStuff = try JSONDecoder().decode(DataListModel.self, from: data)
@@ -78,7 +119,7 @@ class WeatherReport {
     }
     
     
-    final func load(resource: WeatherResource, completion: @escaping (Any?) -> Void) {
+    final class func load(resource: WeatherResource, completion: @escaping (Any?) -> Void) {
         URLSession.shared.dataTask(with: resource.url) { (data, _, error) in
             if let error = error {
                 completion(error.localizedDescription)
@@ -93,9 +134,66 @@ class WeatherReport {
     
     // -----------------------------------------------------------------------------------------------------
     
-    final func getWeatherData(sender: MainViewController)  {
+    final private class func setupDataCallback(source: DataListModel) -> WeatherData? {
+        
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 1
+        
+        func tempFahrenheit(_ fahrenheit: Float, desc: String) -> String {
+            let tempF  = formatter.string(from: NSNumber(value:fahrenheit))
+            return "\(tempF!) deg F. \(desc)"
+        }
+        
+        func windSpeed(speed: Float) -> String {
+            let windSpeed  = formatter.string(from: NSNumber(value:speed))
+            return "\(String(describing: windSpeed)) m.p.h"
+        }
+        
+        func windDirection(deg: Float) -> String {
+            return "\(deg) degrees"
+        }
+        
+        func humidity(hum: Float) -> String {
+            return "\(hum)% Relative Humidity"
+        }
+        
+        func pressure(_ press: Float) -> String {
+            let mmHG = press/1.33322387415
+            return  "\(formatter.string(from: NSNumber(value:mmHG))!) mm HG"
+        }
+        
+        func visibility(meters: Double) -> String {
+            let feet = meters * 3.2808399
+            let feetStr  = formatter.string(from: NSNumber(value:feet))!
+            return "\(feetStr) feet"
+        }
+        
+        func HNLTime(UTC: Double, desc: String) -> String {
+            return "\(UTC) \(desc) Local time <--to do"
+        }
+        
+        
+        return WeatherData (name:source.name,
+                            description:source.weather[0].description,
+                            currentTemp:tempFahrenheit(source.main.temp, desc: "current"),
+                            minTemp:tempFahrenheit(source.main.temp_min, desc: "min"),
+                            maxTemp:tempFahrenheit(source.main.temp_max, desc: "max"),
+                            humidity:humidity(hum: source.main.humidity),
+                            windSpeed:windSpeed(speed: source.wind.speed),
+                            windDirection:windDirection(deg: source.wind.deg),
+                            barometer:pressure(source.main.pressure),
+                            visibility:visibility(meters: source.visibility),
+                            sunrise:HNLTime(UTC: source.sys.sunrise, desc: "Sunrise"),
+                            sunset:HNLTime(UTC: source.sys.sunset, desc: "Sunset"))
+        
+    }
+    
+    
+    final class func getWeatherData(sender: MainViewController, completion:@escaping (WeatherData?)->Void)  {
         // Hawaii ID = '5856194'
-        let weatherURIString = "https://api.openweathermap.org/data/2.5/weather?id=5856194&APPID=44d0f6b3ed7092adb89091cbed5372b4"
+        // Units: Imperial
+        let weatherURIString = "https://api.openweathermap.org/data/2.5/weather?id=5856194&APPID=44d0f6b3ed7092adb89091cbed5372b4&units=imperial"
         let url = URL(string:weatherURIString)
         
         let weatherResource = WeatherResource(url: url!) {(data) -> Data? in
@@ -106,19 +204,8 @@ class WeatherReport {
                 if let errorDescription = result as? String {
                     print(errorDescription)
                 } else if let jsonData = result as? Data {
-                    let weatherData = self.disseminateJSON(data: jsonData)
-                    if let name = weatherData?.name,
-                        let temp = weatherData?.main.temp,
-                        let weatherDesc = weatherData?.weather[0].description {
-                        let kelvinConversion = Float(273.15)
-                        let celsius = NSNumber(value:Float(temp) - kelvinConversion)
-                        let formatter = NumberFormatter()
-                        formatter.numberStyle = .decimal
-                        formatter.maximumFractionDigits = 2
-                        if let celsiusString = formatter.string(from: celsius) {
-                            //    self.cityInfo = (name, celsiusString, weatherDesc)
-                        }
-                    }
+                    completion(setupDataCallback(source: self.disseminateJSON(data: jsonData)!))
+                    
                 }
             })
         }

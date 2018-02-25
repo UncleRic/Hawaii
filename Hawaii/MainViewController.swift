@@ -46,8 +46,10 @@ class MainViewController: UIViewController {
     
     
     @IBAction func weatherAction() {
-        let weatherReport = WeatherReport()
-        weatherReport.getWeatherData(sender: self)
+        WeatherReport.getWeatherData(sender: self) {weatherData in
+            print("Do Something")
+        }
+        
     }
     
 }
