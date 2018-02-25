@@ -21,9 +21,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hawaii_wall" translatesAutoresizingMaskIntoConstraints="NO" id="ayw-Y3-3ej" userLabel="LandscapeBackground Image View">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Honolulu" translatesAutoresizingMaskIntoConstraints="NO" id="KJj-Re-TSJ" userLabel="PortraitBackground Image View">
-                                <rect key="frame" x="67" y="269" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GirlViewingCoast" translatesAutoresizingMaskIntoConstraints="NO" id="KJj-Re-TSJ" userLabel="PortraitBackground Image View">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afs-EQ-lbP">
                                 <rect key="frame" x="91" y="608" width="58" height="30"/>
@@ -45,7 +44,11 @@
                             <constraint firstItem="ayw-Y3-3ej" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Lyr-AS-rM1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ayw-Y3-3ej" secondAttribute="trailing" id="M0c-F3-cYQ"/>
                             <constraint firstItem="ayw-Y3-3ej" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="N9H-gU-Yst"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KJj-Re-TSJ" secondAttribute="trailing" id="POV-FP-zpr"/>
+                            <constraint firstItem="KJj-Re-TSJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ZHY-GV-BeM"/>
                             <constraint firstItem="afs-EQ-lbP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="91" id="anq-Da-asV"/>
+                            <constraint firstItem="KJj-Re-TSJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bB9-yY-lYb"/>
+                            <constraint firstAttribute="bottom" secondItem="KJj-Re-TSJ" secondAttribute="bottom" id="pzD-wj-rG7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ayw-Y3-3ej" secondAttribute="bottom" id="tHG-AT-Scw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -61,7 +64,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Honolulu" width="960" height="720"/>
+        <image name="GirlViewingCoast" width="894" height="960"/>
         <image name="hawaii_wall" width="2500" height="1673"/>
     </resources>
 </document>
