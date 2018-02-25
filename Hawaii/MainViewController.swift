@@ -8,14 +8,50 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+enum Islands:Int {
+    case Kauai
+    case Oahu
+    case Molokai
+    case Maui
+    case Hawaii
+    func description() -> String {
+        switch self {
+        case .Kauai:
+            return "Kauai"
+        case .Oahu:
+            return "Oahu"
+        case .Molokai:
+            return "Molokai"
+        case .Maui:
+            return "Maui"
+        case .Hawaii:
+            return "Hawaii"
+        }
+    }
+    func launch() {
+        switch self {
+        case .Kauai:
+            print("Kauai")
+        case .Oahu:
+            print("Oahu")
+        case .Molokai:
+             print("Molokai")
+        case .Maui:
+             print("Maui")
+        case .Hawaii:
+            print("Hawaii")
+        }
+    }
+}
 
+class MainViewController: UIViewController {
+    
     @IBOutlet weak var portraitBackgroundImageView: UIImageView!
     @IBOutlet weak var backgroundImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
     }
     
     override var prefersStatusBarHidden: Bool {
