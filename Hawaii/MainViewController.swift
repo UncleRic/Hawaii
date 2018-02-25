@@ -26,21 +26,8 @@ class MainViewController: UIViewController {
         super.viewWillTransition(to: size, with: coordinator)
         if UIDevice.current.orientation.isLandscape {
             portraitBackgroundImageView.alpha = 0.0
-            print("Landscape")
         } else {
             portraitBackgroundImageView.alpha = 1.0
-                    portraitBackgroundImageView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
-                                          bottom: nil,
-                                          left: view.safeAreaLayoutGuide.leftAnchor,
-                                          right: view.safeAreaLayoutGuide.rightAnchor,
-                                          centerYAnchor: nil,
-                                          centerXAnchor: nil,
-                                          paddingTop: -40,
-                                          paddingLeft: 0,
-                                          paddingBottom: 10,
-                                          paddingRight: 10, width: 0, height: 200)
-
-            print("Portrait")
         }
     }
     
