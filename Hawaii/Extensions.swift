@@ -50,4 +50,17 @@ extension UIView {
             self.heightAnchor.constraint(equalToConstant: height).isActive = true
         }
     }
+    
+    func overlay(containerView: UIView) {
+        anchor(top: containerView.safeAreaLayoutGuide.topAnchor,
+                               bottom: containerView.safeAreaLayoutGuide.bottomAnchor,
+                               left: containerView.safeAreaLayoutGuide.leftAnchor,
+                               right: containerView.safeAreaLayoutGuide.rightAnchor,
+                               centerYAnchor: nil,
+                               centerXAnchor: nil,
+                               paddingTop: 0,
+                               paddingLeft: 0,
+                               paddingBottom: 0,
+                               paddingRight: 0, width: 0.0, height: 0)
+    }
 }

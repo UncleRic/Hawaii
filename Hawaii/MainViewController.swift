@@ -83,19 +83,10 @@ class MainViewController: UIViewController {
         
         controller.view.backgroundColor = UIColor.green
         self.addChildViewController(controller)
-        controller.view.tag = 300
-        view.insertSubview(controller.view, belowSubview: view.viewWithTag(1)!)
+        controller.view.tag = 100
+        view.insertSubview(controller.view, belowSubview: view.viewWithTag(10)!)
         controller.didMove(toParentViewController: self)
-        controller.view.anchor(top: view.safeAreaLayoutGuide.topAnchor,
-                               bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                               left: view.safeAreaLayoutGuide.leftAnchor,
-                               right: view.safeAreaLayoutGuide.rightAnchor,
-                               centerYAnchor: nil,
-                               centerXAnchor: nil,
-                               paddingTop: 0,
-                               paddingLeft: 0,
-                               paddingBottom: 52,
-                               paddingRight: 10, width: 0.0, height: 0)
+        controller.view.overlay(containerView: view)
     }
     
     // -----------------------------------------------------------------------------------------------------
