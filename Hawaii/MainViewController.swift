@@ -8,51 +8,34 @@
 
 import UIKit
 
-enum Islands:Int {
-    case Kauai
-    case Oahu
-    case Molokai
-    case Maui
-    case Hawaii
-    func description() -> String {
-        switch self {
-        case .Kauai:
-            return "Kauai"
-        case .Oahu:
-            return "Oahu"
-        case .Molokai:
-            return "Molokai"
-        case .Maui:
-            return "Maui"
-        case .Hawaii:
-            return "Hawaii"
-        }
-    }
-    func launch() {
-        switch self {
-        case .Kauai:
-            print("Kauai")
-        case .Oahu:
-            print("Oahu")
-        case .Molokai:
-             print("Molokai")
-        case .Maui:
-             print("Maui")
-        case .Hawaii:
-            print("Hawaii")
-        }
-    }
-}
-
 class MainViewController: UIViewController {
     
     @IBOutlet weak var portraitBackgroundImageView: UIImageView!
     @IBOutlet weak var backgroundImageView: UIImageView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    enum Islands:Int {
+        case Kauai
+        case Oahu
+        case Molokai
+        case Maui
+        case Hawaii
+        func description() -> String {
+            switch self {
+            case .Kauai:
+                return "Kauai"
+            case .Oahu:
+                return "Oahu"
+            case .Molokai:
+                return "Molokai"
+            case .Maui:
+                return "Maui"
+            case .Hawaii:
+                return "Hawaii"
+            }
+        }
     }
+    
+    // MARK: - UIViewController methods
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -67,11 +50,40 @@ class MainViewController: UIViewController {
         }
     }
     
+    // -----------------------------------------------------------------------------------------------------
+    
+    func launchIsland(island: Islands) {
+        let controller:UIViewController
+        
+        switch island {
+        case .Kauai:
+            controller = KauaiViewController()
+        case .Oahu:
+            controller = OahuViewController()
+        case .Molokai:
+            controller = MolokaiViewController()
+        case .Maui:
+            controller = MauiViewController()
+        case .Hawaii:
+            controller = HawaiiViewController()
+        }
+        
+        self.addChildViewController(controller)
+        view.addSubview(controller.view)
+        controller.didMove(toParentViewController: self)
+        
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // MARK: - Actions
     
     @IBAction func weatherAction() {
-        WeatherReport.getWeatherData(sender: self) {weatherData in
-            print("Do Something")
-        }
+        
+        launchIsland(island: .Kauai)
+        
+//        WeatherReport.getWeatherData(sender: self) {weatherData in
+//            print("Do Something")
+//        }
         
     }
     
