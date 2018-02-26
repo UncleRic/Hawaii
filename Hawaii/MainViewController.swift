@@ -84,7 +84,9 @@ class MainViewController: UIViewController {
         controller.view.backgroundColor = UIColor.green
         self.addChildViewController(controller)
         controller.view.tag = 100
-        view.insertSubview(controller.view, belowSubview: view.viewWithTag(10)!)
+        if let targetView = view.viewWithTag(10) {
+            view.insertSubview(controller.view, belowSubview: targetView)
+        }
         controller.didMove(toParentViewController: self)
         controller.view.overlay(containerView: view)
     }
