@@ -13,7 +13,10 @@ class MainViewController: UIViewController {
     @IBOutlet weak var portraitBackgroundImageView: UIImageView!
     @IBOutlet weak var backgroundImageView: UIImageView!
     
+    var currentIsland:Islands = .Main
+    
     enum Islands:Int {
+        case Main
         case Kauai
         case Oahu
         case Molokai
@@ -31,6 +34,8 @@ class MainViewController: UIViewController {
                 return "Maui"
             case .Hawaii:
                 return "Hawaii"
+            default:
+                return "none"
             }
         }
     }
@@ -58,32 +63,52 @@ class MainViewController: UIViewController {
         switch island {
         case .Kauai:
             controller = KauaiViewController()
+            currentIsland = .Kauai
         case .Oahu:
             controller = OahuViewController()
+            currentIsland = .Oahu
         case .Molokai:
             controller = MolokaiViewController()
+            currentIsland = .Molokai
         case .Maui:
             controller = MauiViewController()
+            currentIsland = .Maui
         case .Hawaii:
             controller = HawaiiViewController()
+            currentIsland = .Hawaii
+        default:
+            controller = self
+            currentIsland = .Main
         }
         
+        controller.view.backgroundColor = UIColor.green
         self.addChildViewController(controller)
-        view.addSubview(controller.view)
+        controller.view.tag = 300
+        view.insertSubview(controller.view, belowSubview: view.viewWithTag(1)!)
         controller.didMove(toParentViewController: self)
-        
+        controller.view.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+                               bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                               left: view.safeAreaLayoutGuide.leftAnchor,
+                               right: view.safeAreaLayoutGuide.rightAnchor,
+                               centerYAnchor: nil,
+                               centerXAnchor: nil,
+                               paddingTop: 0,
+                               paddingLeft: 0,
+                               paddingBottom: 52,
+                               paddingRight: 10, width: 0.0, height: 0)
     }
-
+    
     // -----------------------------------------------------------------------------------------------------
     // MARK: - Actions
     
     @IBAction func weatherAction() {
         
-        launchIsland(island: .Kauai)
-        
-//        WeatherReport.getWeatherData(sender: self) {weatherData in
-//            print("Do Something")
-//        }
+        if currentIsland == .Main {
+            launchIsland(island: .Kauai)
+        }
+        //        WeatherReport.getWeatherData(sender: self) {weatherData in
+        //            print("Do Something")
+        //        }
         
     }
     
