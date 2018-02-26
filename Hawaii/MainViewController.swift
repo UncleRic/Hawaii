@@ -14,6 +14,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var backgroundImageView: UIImageView!
     
     var currentIsland:Islands = .Main
+    var childController:UIViewController?
     
     enum Islands:Int {
         case Main
@@ -58,37 +59,47 @@ class MainViewController: UIViewController {
     // -----------------------------------------------------------------------------------------------------
     
     func launchIsland(island: Islands) {
-        let controller:UIViewController
+        
         
         switch island {
         case .Kauai:
-            controller = KauaiViewController()
+            childController = KauaiViewController()
             currentIsland = .Kauai
         case .Oahu:
-            controller = OahuViewController()
+            childController = OahuViewController()
             currentIsland = .Oahu
         case .Molokai:
-            controller = MolokaiViewController()
+            childController = MolokaiViewController()
             currentIsland = .Molokai
         case .Maui:
-            controller = MauiViewController()
+            childController = MauiViewController()
             currentIsland = .Maui
         case .Hawaii:
-            controller = HawaiiViewController()
+            childController = HawaiiViewController()
             currentIsland = .Hawaii
         default:
-            controller = self
+            childController = nil
             currentIsland = .Main
         }
         
-        controller.view.backgroundColor = UIColor.green
-        self.addChildViewController(controller)
-        controller.view.tag = 100
-        if let targetView = view.viewWithTag(10) {
-            view.insertSubview(controller.view, belowSubview: targetView)
+        if let childController = childController {
+            childController.view.backgroundColor = UIColor.green
+            childController.view.alpha = 0.0
+            childController.view.tag = 100
+            
+            if let targetView = view.viewWithTag(10) {
+                self.addChildViewController(childController)
+                view.insertSubview(childController.view, belowSubview: targetView)
+                childController.view.overlay(containerView: view)
+                
+                UIView.animate(withDuration: 0.5, animations: {
+                    childController.view.alpha = 1.0
+                }, completion: { (completed) in
+                    childController.didMove(toParentViewController: self)
+                })
+            }
+    
         }
-        controller.didMove(toParentViewController: self)
-        controller.view.overlay(containerView: view)
     }
     
     // -----------------------------------------------------------------------------------------------------
@@ -98,6 +109,16 @@ class MainViewController: UIViewController {
         
         if currentIsland == .Main {
             launchIsland(island: .Kauai)
+        } else {
+            currentIsland = .Main
+            if let childController = childController {
+                childController.willMove(toParentViewController: nil)
+                UIView.animate(withDuration: 0.5, animations: {
+                    childController.view.alpha = 0.0
+                }, completion: { (completed) in
+                    childController.view.removeFromSuperview()
+                })
+            }
         }
         //        WeatherReport.getWeatherData(sender: self) {weatherData in
         //            print("Do Something")
