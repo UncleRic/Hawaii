@@ -11,24 +11,23 @@ import UIKit
 
 extension MainViewController {
     
+    func setupToolBar() {
+        let infoButton = UIButton(type: .infoLight)
+        infoButton.addTarget(self, action: #selector(infoButtonHandler), for: .touchUpInside)
+        toolBarContainerView.addSubview(infoButton)
+        infoButton.anchor(top: nil,
+                          bottom: nil,
+                          left: nil,
+                          right: toolBarContainerView.safeAreaLayoutGuide.rightAnchor,
+                          centerYAnchor: toolBarContainerView.centerYAnchor,
+                          centerXAnchor: nil,
+                          paddingTop: 0,
+                          paddingLeft: 0,
+                          paddingBottom: 0,
+                          paddingRight: -20, width: 32, height: 32)
+    }
+    
     func setupUI() {
- 
-//        imageBackground.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-//        imageBackground.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-//        imageBackground.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-//         imageBackground.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        
-        
-        
-//        imageBackground.anchor(top: view.safeAreaLayoutGuide.topAnchor,
-//                              bottom: view.safeAreaLayoutGuide.bottomAnchor,
-//                              left: view.safeAreaLayoutGuide.leftAnchor,
-//                              right: view.safeAreaLayoutGuide.rightAnchor,
-//                              centerYAnchor: nil,
-//                              centerXAnchor: nil,
-//                              paddingTop: -40,
-//                              paddingLeft: 0,
-//                              paddingBottom: 10,
-//                              paddingRight: 10, width: 0, height: 0)
+
     }
 }

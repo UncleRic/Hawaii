@@ -25,18 +25,6 @@
                             </imageView>
                             <view tag="10" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y5H-84-tS5" userLabel="ToolContainerView">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <subviews>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o2o-s0-m1g">
-                                        <rect key="frame" x="172" y="7" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Test">
-                                            <color key="titleColor" red="0.94935816989999999" green="0.9974474311" blue="0.019176706139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="weatherAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="px5-Wr-nQR"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="ph7-jL-nyK"/>
@@ -62,6 +50,7 @@
                     <connections>
                         <outlet property="backgroundImageView" destination="ayw-Y3-3ej" id="aJN-zw-NZd"/>
                         <outlet property="portraitBackgroundImageView" destination="KJj-Re-TSJ" id="sAg-eV-5h3"/>
+                        <outlet property="toolBarContainerView" destination="Y5H-84-tS5" id="k3g-Ws-Y3Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

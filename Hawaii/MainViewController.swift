@@ -12,6 +12,7 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var portraitBackgroundImageView: UIImageView!
     @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var toolBarContainerView: UIView!
     
     var currentIsland:Islands = .Main
     var childController:UIViewController?
@@ -42,6 +43,10 @@ class MainViewController: UIViewController {
     }
     
     // MARK: - UIViewController methods
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupToolBar()
+    }
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -50,17 +55,34 @@ class MainViewController: UIViewController {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         if UIDevice.current.orientation.isLandscape {
+            toolBarContainerView.isHidden = true
             portraitBackgroundImageView.alpha = 0.0
         } else {
+            toolBarContainerView.isHidden = false
             portraitBackgroundImageView.alpha = 1.0
         }
     }
     
     // -----------------------------------------------------------------------------------------------------
+    // MARK: -
+    
+    @objc func infoButtonHandler() {
+        if currentIsland == .Main {
+            launchIsland(island: .Kauai)
+        } else {
+            currentIsland = .Main
+            if let childController = childController {
+                childController.willMove(toParentViewController: nil)
+                UIView.animate(withDuration: 0.5, animations: {
+                    childController.view.alpha = 0.0
+                }, completion: { (completed) in
+                    childController.view.removeFromSuperview()
+                })
+            }
+        }
+    }
     
     func launchIsland(island: Islands) {
-        
-        
         switch island {
         case .Kauai:
             childController = KauaiViewController()
@@ -98,7 +120,7 @@ class MainViewController: UIViewController {
                     childController.didMove(toParentViewController: self)
                 })
             }
-    
+            
         }
     }
     

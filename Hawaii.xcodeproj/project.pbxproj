@@ -72,10 +72,10 @@
 			children = (
 				1837082A2041FC8A00C6C833 /* AppDelegate.swift */,
 				1837082C2041FC8A00C6C833 /* MainViewController.swift */,
-				1895DF862043692200C85493 /* Island View Controllers */,
 				1895DF7C2042069700C85493 /* WeatherService.swift */,
 				1895DF82204222D500C85493 /* UI.swift */,
 				1895DF7E204206C100C85493 /* Extensions.swift */,
+				1895DF862043692200C85493 /* Island View Controllers */,
 				1837082E2041FC8A00C6C833 /* Main.storyboard */,
 				183708312041FC8B00C6C833 /* Assets.xcassets */,
 				183708332041FC8B00C6C833 /* LaunchScreen.storyboard */,
