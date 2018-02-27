@@ -76,9 +76,8 @@
 				1895DF82204222D500C85493 /* UI.swift */,
 				1895DF7E204206C100C85493 /* Extensions.swift */,
 				1895DF862043692200C85493 /* Island View Controllers */,
-				1837082E2041FC8A00C6C833 /* Main.storyboard */,
+				18E51BB2204520C900068CEA /* Storyboards */,
 				183708312041FC8B00C6C833 /* Assets.xcassets */,
-				183708332041FC8B00C6C833 /* LaunchScreen.storyboard */,
 				183708362041FC8B00C6C833 /* Info.plist */,
 			);
 			path = Hawaii;
@@ -94,6 +93,15 @@
 				1895DF8E204369B700C85493 /* MolokaiViewController.swift */,
 			);
 			path = "Island View Controllers";
+			sourceTree = "<group>";
+		};
+		18E51BB2204520C900068CEA /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				183708332041FC8B00C6C833 /* LaunchScreen.storyboard */,
+				1837082E2041FC8A00C6C833 /* Main.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

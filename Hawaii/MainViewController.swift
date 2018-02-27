@@ -17,6 +17,8 @@ class MainViewController: UIViewController {
     var currentIsland:Islands = .Main
     var childController:UIViewController?
     
+    let toolbarContainerViewTag = 10
+    let childIslandViewControllerTag = 500
     
     enum Islands:Int {
         case Main
@@ -64,6 +66,7 @@ class MainViewController: UIViewController {
     
     let KauaiButton:UIButton = {
         var button = UIButton()
+        button.tag = 1
         button.addTarget(self, action: #selector(handleKauai), for: .touchUpInside)
         let image = UIImage(named:"Kauai")
         button.setBackgroundImage(image, for: .normal)
@@ -73,6 +76,7 @@ class MainViewController: UIViewController {
     // Oahu:
     let OahuButton:UIButton = {
         var button = UIButton()
+        button.tag = 2
         button.addTarget(self, action: #selector(handleOahu), for: .touchUpInside)
         let image = UIImage(named:"Oahu")
         button.setBackgroundImage(image, for: .normal)
@@ -82,6 +86,7 @@ class MainViewController: UIViewController {
     // Molokai:
     let MolokaiButton:UIButton = {
         var button = UIButton()
+        button.tag = 3
         button.addTarget(self, action: #selector(handleMolokai), for: .touchUpInside)
         let image = UIImage(named:"Molokai")
         button.setImage(image, for: .normal)
@@ -91,6 +96,7 @@ class MainViewController: UIViewController {
     // Maui:
     let MauiButton:UIButton = {
         var button = UIButton()
+        button.tag = 4
         button.addTarget(self, action: #selector(handleMaui), for: .touchUpInside)
         let image = UIImage(named:"Maui")
         button.setImage(image, for: .normal)
@@ -100,6 +106,7 @@ class MainViewController: UIViewController {
     // Hawaii:
     let HawaiiButton:UIButton = {
         var button = UIButton()
+        button.tag = 5
         button.addTarget(self, action: #selector(handleHawaii), for: .touchUpInside)
         let image = UIImage(named:"BigIsland")
         button.setImage(image, for: .normal)
@@ -147,41 +154,41 @@ class MainViewController: UIViewController {
         // Kauia:
         view.addSubview(KauaiButton)
         KauaiButton.anchor(top: nil,
-                        bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                        left: view.safeAreaLayoutGuide.leftAnchor,
-                        right: nil,
-                        centerYAnchor: nil,
-                        centerXAnchor: nil,
-                        paddingTop: 0,
-                        paddingLeft: 10,
-                        paddingBottom: -550,
-                        paddingRight: 0.0, width: 48, height: 48)
-        
-        // Oahu:
-        view.addSubview(OahuButton)
-        OahuButton.anchor(top: nil,
                            bottom: view.safeAreaLayoutGuide.bottomAnchor,
                            left: view.safeAreaLayoutGuide.leftAnchor,
                            right: nil,
                            centerYAnchor: nil,
                            centerXAnchor: nil,
                            paddingTop: 0,
-                           paddingLeft: 100,
-                           paddingBottom: -475,
-                           paddingRight: 0.0, width: 68, height: 48)
+                           paddingLeft: 10,
+                           paddingBottom: -550,
+                           paddingRight: 0.0, width: 48, height: 48)
         
-        // Molokai:
-        view.addSubview(MolokaiButton)
-        MolokaiButton.anchor(top: nil,
+        // Oahu:
+        view.addSubview(OahuButton)
+        OahuButton.anchor(top: nil,
                           bottom: view.safeAreaLayoutGuide.bottomAnchor,
                           left: view.safeAreaLayoutGuide.leftAnchor,
                           right: nil,
                           centerYAnchor: nil,
                           centerXAnchor: nil,
                           paddingTop: 0,
-                          paddingLeft: 195,
-                          paddingBottom: -450,
-                          paddingRight: 0.0, width: 62, height: 23)
+                          paddingLeft: 100,
+                          paddingBottom: -475,
+                          paddingRight: 0.0, width: 68, height: 48)
+        
+        // Molokai:
+        view.addSubview(MolokaiButton)
+        MolokaiButton.anchor(top: nil,
+                             bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                             left: view.safeAreaLayoutGuide.leftAnchor,
+                             right: nil,
+                             centerYAnchor: nil,
+                             centerXAnchor: nil,
+                             paddingTop: 0,
+                             paddingLeft: 195,
+                             paddingBottom: -450,
+                             paddingRight: 0.0, width: 62, height: 23)
         
         // Maui:
         view.addSubview(MauiButton)
@@ -199,16 +206,16 @@ class MainViewController: UIViewController {
         // Big Island:
         view.addSubview(HawaiiButton)
         HawaiiButton.anchor(top: nil,
-                          bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                          left: view.safeAreaLayoutGuide.leftAnchor,
-                          right: nil,
-                          centerYAnchor: nil,
-                          centerXAnchor: nil,
-                          paddingTop: 0,
-                          paddingLeft: 320,
-                          paddingBottom: -300,
-                          paddingRight: 0.0, width: 80, height: 80)
-       
+                            bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                            left: view.safeAreaLayoutGuide.leftAnchor,
+                            right: nil,
+                            centerYAnchor: nil,
+                            centerXAnchor: nil,
+                            paddingTop: 0,
+                            paddingLeft: 320,
+                            paddingBottom: -300,
+                            paddingRight: 0.0, width: 80, height: 80)
+        
         
         
         UIView.animate(withDuration: 0.55, animations: {
@@ -221,28 +228,41 @@ class MainViewController: UIViewController {
     // MARK: - Button Handler
     
     @objc func handleKauai() {
-        
+        currentIsland = .Kauai
+        launchIsland(island: .Kauai)
     }
     
     @objc func handleOahu() {
-        
+        currentIsland = .Oahu
+        launchIsland(island: .Oahu)
     }
     
     @objc func handleMolokai() {
-        
+        currentIsland = .Molokai
+        launchIsland(island: .Molokai)
     }
     
     @objc func handleMaui() {
-        
+        currentIsland = .Maui
+        launchIsland(island: .Maui)
     }
     
     @objc func handleHawaii() {
-        
+        currentIsland = .Hawaii
+        launchIsland(island: .Hawaii)
     }
     
     // -----------------------------------------------------------------------------------------------------
     
     func launchIsland(island: Islands) {
+        guard let _ = view.viewWithTag(1) else {
+            return
+        }
+        
+        for idx in 1..<6 {
+            view.viewWithTag(idx)?.removeFromSuperview()
+        }
+        
         switch island {
         case .Kauai:
             childController = KauaiViewController()
@@ -265,11 +285,13 @@ class MainViewController: UIViewController {
         }
         
         if let childController = childController {
-            childController.view.backgroundColor = UIColor.green
+        
             childController.view.alpha = 0.0
-            childController.view.tag = 100
+            childController.view.tag = childIslandViewControllerTag
             
-            if let targetView = view.viewWithTag(10) {
+            // Adding child Island ViewController into Main Container ViewController (self):
+            
+            if let targetView = view.viewWithTag(toolbarContainerViewTag) {
                 self.addChildViewController(childController)
                 view.insertSubview(childController.view, belowSubview: targetView)
                 childController.view.overlay(containerView: view)
@@ -288,35 +310,11 @@ class MainViewController: UIViewController {
     // MARK: - Actions
     
     @objc func infoButtonHandler() {
-        
-        displayButtons()
-        
-        //        if currentIsland == .Main {
-        //            launchIsland(island: .Kauai)
-        //        } else {
-        //
-        //            displayButtons()
-        //            //            currentIsland = .Main
-        //            //            if let childController = childController {
-        //            //                childController.willMove(toParentViewController: nil)
-        //            //                UIView.animate(withDuration: 0.5, animations: {
-        //            //                    childController.view.alpha = 0.0
-        //            //                }, completion: { (completed) in
-        //            //                    childController.view.removeFromSuperview()
-        //            //                })
-        //            //            }
-        //            //        }
-        //        }
-    }
-    
-    // -----------------------------------------------------------------------------------------------------
-    
-    @IBAction func weatherAction() {
-        
         if currentIsland == .Main {
-            launchIsland(island: .Kauai)
+            displayButtons()
         } else {
             currentIsland = .Main
+            // Remove child Island ViewController from Main Container ViewController (self):
             if let childController = childController {
                 childController.willMove(toParentViewController: nil)
                 UIView.animate(withDuration: 0.5, animations: {
@@ -326,10 +324,14 @@ class MainViewController: UIViewController {
                 })
             }
         }
-        //        WeatherReport.getWeatherData(sender: self) {weatherData in
-        //            print("Do Something")
-        //        }
-        
+    }
+    
+    // -----------------------------------------------------------------------------------------------------
+    
+    @IBAction func weatherAction() {
+        WeatherReport.getWeatherData(sender: self) {weatherData in
+            print("Do Something")
+        }
     }
     
 }

@@ -9,6 +9,9 @@
 import Foundation
 import UIKit
 
+let palatinoFont = "Palatino"
+let papyrusFont = "Papyrus"
+
 extension MainViewController {
     
     func setupToolBar() {

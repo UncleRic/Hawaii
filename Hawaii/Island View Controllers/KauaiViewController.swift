@@ -12,24 +12,29 @@ class KauaiViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        view.backgroundColor = UIColor.white
+        let titleLabel:UILabel = {
+            let label = UILabel()
+            label.text = "Kaua'i"
+            label.textColor = UIColor.purple
+            label.font = UIFont(name: papyrusFont, size: 23.0)
+            label.textAlignment = .center
+            return label
+        }()
+        
+        view.addSubview(titleLabel)
+        titleLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+                          bottom: nil,
+                          left: nil,
+                          right: nil,
+                          centerYAnchor: nil,
+                          centerXAnchor: view.safeAreaLayoutGuide.centerXAnchor,
+                          paddingTop: 80,
+                          paddingLeft: 0,
+                          paddingBottom: 10,
+                          paddingRight: 10, width: 150, height: 32)
+        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+   
 }
