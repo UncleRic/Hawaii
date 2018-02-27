@@ -61,8 +61,10 @@ class MainViewController: UIViewController {
     
     // MARK: - Island Buttons
     // Kauai
+    
     let KauaiButton:UIButton = {
         var button = UIButton()
+        button.addTarget(self, action: #selector(handleKauai), for: .touchUpInside)
         let image = UIImage(named:"Kauai")
         button.setBackgroundImage(image, for: .normal)
         return button
@@ -71,6 +73,7 @@ class MainViewController: UIViewController {
     // Oahu:
     let OahuButton:UIButton = {
         var button = UIButton()
+        button.addTarget(self, action: #selector(handleOahu), for: .touchUpInside)
         let image = UIImage(named:"Oahu")
         button.setBackgroundImage(image, for: .normal)
         return button
@@ -79,6 +82,7 @@ class MainViewController: UIViewController {
     // Molokai:
     let MolokaiButton:UIButton = {
         var button = UIButton()
+        button.addTarget(self, action: #selector(handleMolokai), for: .touchUpInside)
         let image = UIImage(named:"Molokai")
         button.setImage(image, for: .normal)
         return button
@@ -87,6 +91,7 @@ class MainViewController: UIViewController {
     // Maui:
     let MauiButton:UIButton = {
         var button = UIButton()
+        button.addTarget(self, action: #selector(handleMaui), for: .touchUpInside)
         let image = UIImage(named:"Maui")
         button.setImage(image, for: .normal)
         return button
@@ -95,6 +100,7 @@ class MainViewController: UIViewController {
     // Hawaii:
     let HawaiiButton:UIButton = {
         var button = UIButton()
+        button.addTarget(self, action: #selector(handleHawaii), for: .touchUpInside)
         let image = UIImage(named:"BigIsland")
         button.setImage(image, for: .normal)
         return button
@@ -211,16 +217,29 @@ class MainViewController: UIViewController {
         
         
     }
+    // -----------------------------------------------------------------------------------------------------
+    // MARK: - Button Handler
     
-//    func animateIslands() {
-//        KauaiButton.bottomAnchor.isActve = false
-//        UIView.animate(withDuration: 0.5) {
-//            // Kauia:
-//            KauaiButton.bottomAnchor.constant = Islands.Kauai.yPosition()
-//        }
-//
-//    }
-//
+    @objc func handleKauai() {
+        
+    }
+    
+    @objc func handleOahu() {
+        
+    }
+    
+    @objc func handleMolokai() {
+        
+    }
+    
+    @objc func handleMaui() {
+        
+    }
+    
+    @objc func handleHawaii() {
+        
+    }
+    
     // -----------------------------------------------------------------------------------------------------
     
     func launchIsland(island: Islands) {
