@@ -27,7 +27,4 @@ extension MainViewController {
                           paddingRight: -20, width: 32, height: 32)
     }
     
-    func setupUI() {
-
-    }
 }

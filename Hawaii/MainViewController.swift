@@ -17,6 +17,7 @@ class MainViewController: UIViewController {
     var currentIsland:Islands = .Main
     var childController:UIViewController?
     
+    
     enum Islands:Int {
         case Main
         case Kauai
@@ -42,7 +43,56 @@ class MainViewController: UIViewController {
         }
     }
     
+    // Kauai
+    let KauaiButton:UIButton = {
+        var button = UIButton()
+        button.setTitleColor(UIColor.yellow, for: .normal)
+        let image = UIImage(named:"Kauai")
+        button.setBackgroundImage(image, for: .normal)
+        button.setTitle("Kauai", for: .normal)
+        return button
+    }()
+    
+    // Oahu:
+    let OahuButton:UIButton = {
+        var button = UIButton()
+        button.setTitleColor(UIColor.yellow, for: .normal)
+        let image = UIImage(named:"Oahu")
+        button.setBackgroundImage(image, for: .normal)
+        button.setTitle("Oahu", for: .normal)
+        return button
+    }()
+    
+    // Molokai:
+    let MolokaiButton:UIButton = {
+        var button = UIButton()
+        let image = UIImage(named:"Molokai")
+        button.setImage(image, for: .normal)
+        button.setTitle("Molokai", for: .normal)
+        return button
+    }()
+    
+    // Maui:
+    let MauiButton:UIButton = {
+        var button = UIButton()
+        let image = UIImage(named:"Maui")
+        button.setImage(image, for: .normal)
+        button.setTitle("Kauai", for: .normal)
+        return button
+    }()
+    
+    // Hawaii:
+    let HawaiiButton:UIButton = {
+        var button = UIButton()
+        let image = UIImage(named:"BigIsland")
+        button.setImage(image, for: .normal)
+        button.setTitle("Hawaii", for: .normal)
+        return button
+    }()
+    
+    // -----------------------------------------------------------------------------------------------------
     // MARK: - UIViewController methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupToolBar()
@@ -66,21 +116,83 @@ class MainViewController: UIViewController {
     // -----------------------------------------------------------------------------------------------------
     // MARK: -
     
-    @objc func infoButtonHandler() {
-        if currentIsland == .Main {
-            launchIsland(island: .Kauai)
-        } else {
-            currentIsland = .Main
-            if let childController = childController {
-                childController.willMove(toParentViewController: nil)
-                UIView.animate(withDuration: 0.5, animations: {
-                    childController.view.alpha = 0.0
-                }, completion: { (completed) in
-                    childController.view.removeFromSuperview()
-                })
-            }
-        }
+    func displayButtons() {
+        //        let targetView = view.viewWithTag(2)
+        //        view.insertSubview(KauiaButton, aboveSubview: targetView!)
+        
+        
+                let testView = UIView(frame: CGRect.zero)
+                testView.backgroundColor = UIColor.red
+        
+        // Kauia:
+        view.addSubview(KauaiButton)
+        KauaiButton.anchor(top: nil,
+                        bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                        left: view.safeAreaLayoutGuide.leftAnchor,
+                        right: nil,
+                        centerYAnchor: nil,
+                        centerXAnchor: nil,
+                        paddingTop: 0,
+                        paddingLeft: 10,
+                        paddingBottom: -500,
+                        paddingRight: 0.0, width: 48, height: 48)
+        
+        // Oahu:
+        view.addSubview(OahuButton)
+        OahuButton.anchor(top: nil,
+                           bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                           left: view.safeAreaLayoutGuide.leftAnchor,
+                           right: nil,
+                           centerYAnchor: nil,
+                           centerXAnchor: nil,
+                           paddingTop: 0,
+                           paddingLeft: 100,
+                           paddingBottom: -450,
+                           paddingRight: 0.0, width: 68, height: 48)
+        
+        // Molokai:
+        view.addSubview(MolokaiButton)
+        MolokaiButton.anchor(top: nil,
+                          bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                          left: view.safeAreaLayoutGuide.leftAnchor,
+                          right: nil,
+                          centerYAnchor: nil,
+                          centerXAnchor: nil,
+                          paddingTop: 0,
+                          paddingLeft: 175,
+                          paddingBottom: -430,
+                          paddingRight: 0.0, width: 52, height: 23)
+        
+        // Maui:
+        view.addSubview(MauiButton)
+        MauiButton.anchor(top: nil,
+                          bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                          left: view.safeAreaLayoutGuide.leftAnchor,
+                          right: nil,
+                          centerYAnchor: nil,
+                          centerXAnchor: nil,
+                          paddingTop: 0,
+                          paddingLeft: 220,
+                          paddingBottom: -380,
+                          paddingRight: 0.0, width: 68, height: 48)
+        
+        // Big Island:
+        view.addSubview(HawaiiButton)
+        HawaiiButton.anchor(top: nil,
+                          bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                          left: view.safeAreaLayoutGuide.leftAnchor,
+                          right: nil,
+                          centerYAnchor: nil,
+                          centerXAnchor: nil,
+                          paddingTop: 0,
+                          paddingLeft: 300,
+                          paddingBottom: -300,
+                          paddingRight: 0.0, width: 68, height: 68)
+       
+        
     }
+    
+    // -----------------------------------------------------------------------------------------------------
     
     func launchIsland(island: Islands) {
         switch island {
@@ -126,6 +238,30 @@ class MainViewController: UIViewController {
     
     // -----------------------------------------------------------------------------------------------------
     // MARK: - Actions
+    
+    @objc func infoButtonHandler() {
+        
+        displayButtons()
+        
+        //        if currentIsland == .Main {
+        //            launchIsland(island: .Kauai)
+        //        } else {
+        //
+        //            displayButtons()
+        //            //            currentIsland = .Main
+        //            //            if let childController = childController {
+        //            //                childController.willMove(toParentViewController: nil)
+        //            //                UIView.animate(withDuration: 0.5, animations: {
+        //            //                    childController.view.alpha = 0.0
+        //            //                }, completion: { (completed) in
+        //            //                    childController.view.removeFromSuperview()
+        //            //                })
+        //            //            }
+        //            //        }
+        //        }
+    }
+    
+    // -----------------------------------------------------------------------------------------------------
     
     @IBAction func weatherAction() {
         
