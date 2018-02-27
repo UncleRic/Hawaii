@@ -43,6 +43,7 @@ class MainViewController: UIViewController {
         }
     }
     
+    // MARK: - Island Buttons
     // Kauai
     let KauaiButton:UIButton = {
         var button = UIButton()
@@ -98,9 +99,19 @@ class MainViewController: UIViewController {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         if UIDevice.current.orientation.isLandscape {
+            KauaiButton.isHidden = true
+            OahuButton.isHidden = true
+            MolokaiButton.isHidden = true
+            MauiButton.isHidden = true
+            HawaiiButton.isHidden = true
             toolBarContainerView.isHidden = true
             portraitBackgroundImageView.alpha = 0.0
         } else {
+            KauaiButton.isHidden = false
+            OahuButton.isHidden = false
+            MolokaiButton.isHidden = false
+            MauiButton.isHidden = false
+            HawaiiButton.isHidden = false
             toolBarContainerView.isHidden = false
             portraitBackgroundImageView.alpha = 1.0
         }
