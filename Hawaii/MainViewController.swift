@@ -46,20 +46,16 @@ class MainViewController: UIViewController {
     // Kauai
     let KauaiButton:UIButton = {
         var button = UIButton()
-        button.setTitleColor(UIColor.yellow, for: .normal)
         let image = UIImage(named:"Kauai")
         button.setBackgroundImage(image, for: .normal)
-        button.setTitle("Kauai", for: .normal)
         return button
     }()
     
     // Oahu:
     let OahuButton:UIButton = {
         var button = UIButton()
-        button.setTitleColor(UIColor.yellow, for: .normal)
         let image = UIImage(named:"Oahu")
         button.setBackgroundImage(image, for: .normal)
-        button.setTitle("Oahu", for: .normal)
         return button
     }()
     
@@ -68,7 +64,6 @@ class MainViewController: UIViewController {
         var button = UIButton()
         let image = UIImage(named:"Molokai")
         button.setImage(image, for: .normal)
-        button.setTitle("Molokai", for: .normal)
         return button
     }()
     
@@ -77,7 +72,6 @@ class MainViewController: UIViewController {
         var button = UIButton()
         let image = UIImage(named:"Maui")
         button.setImage(image, for: .normal)
-        button.setTitle("Kauai", for: .normal)
         return button
     }()
     
@@ -86,7 +80,6 @@ class MainViewController: UIViewController {
         var button = UIButton()
         let image = UIImage(named:"BigIsland")
         button.setImage(image, for: .normal)
-        button.setTitle("Hawaii", for: .normal)
         return button
     }()
     
@@ -117,12 +110,6 @@ class MainViewController: UIViewController {
     // MARK: -
     
     func displayButtons() {
-        //        let targetView = view.viewWithTag(2)
-        //        view.insertSubview(KauiaButton, aboveSubview: targetView!)
-        
-        
-                let testView = UIView(frame: CGRect.zero)
-                testView.backgroundColor = UIColor.red
         
         // Kauia:
         view.addSubview(KauaiButton)
@@ -134,7 +121,7 @@ class MainViewController: UIViewController {
                         centerXAnchor: nil,
                         paddingTop: 0,
                         paddingLeft: 10,
-                        paddingBottom: -500,
+                        paddingBottom: -550,
                         paddingRight: 0.0, width: 48, height: 48)
         
         // Oahu:
@@ -147,7 +134,7 @@ class MainViewController: UIViewController {
                            centerXAnchor: nil,
                            paddingTop: 0,
                            paddingLeft: 100,
-                           paddingBottom: -450,
+                           paddingBottom: -475,
                            paddingRight: 0.0, width: 68, height: 48)
         
         // Molokai:
@@ -159,9 +146,9 @@ class MainViewController: UIViewController {
                           centerYAnchor: nil,
                           centerXAnchor: nil,
                           paddingTop: 0,
-                          paddingLeft: 175,
-                          paddingBottom: -430,
-                          paddingRight: 0.0, width: 52, height: 23)
+                          paddingLeft: 195,
+                          paddingBottom: -450,
+                          paddingRight: 0.0, width: 62, height: 23)
         
         // Maui:
         view.addSubview(MauiButton)
@@ -172,8 +159,8 @@ class MainViewController: UIViewController {
                           centerYAnchor: nil,
                           centerXAnchor: nil,
                           paddingTop: 0,
-                          paddingLeft: 220,
-                          paddingBottom: -380,
+                          paddingLeft: 260,
+                          paddingBottom: -400,
                           paddingRight: 0.0, width: 68, height: 48)
         
         // Big Island:
@@ -185,9 +172,9 @@ class MainViewController: UIViewController {
                           centerYAnchor: nil,
                           centerXAnchor: nil,
                           paddingTop: 0,
-                          paddingLeft: 300,
+                          paddingLeft: 320,
                           paddingBottom: -300,
-                          paddingRight: 0.0, width: 68, height: 68)
+                          paddingRight: 0.0, width: 80, height: 80)
        
         
     }
