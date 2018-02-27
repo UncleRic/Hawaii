@@ -41,6 +41,22 @@ class MainViewController: UIViewController {
                 return "none"
             }
         }
+        func yPosition() -> CGFloat {
+            switch self {
+            case .Kauai:
+                return -550
+            case .Oahu:
+                return -475
+            case .Molokai:
+                return -450
+            case .Maui:
+                return -400
+            case .Hawaii:
+                return -300
+            default:
+                return 0
+            }
+        }
     }
     
     // MARK: - Island Buttons
@@ -188,8 +204,23 @@ class MainViewController: UIViewController {
                           paddingRight: 0.0, width: 80, height: 80)
        
         
+        
+        UIView.animate(withDuration: 0.55, animations: {
+            self.view.layoutIfNeeded()
+        })
+        
+        
     }
     
+//    func animateIslands() {
+//        KauaiButton.bottomAnchor.isActve = false
+//        UIView.animate(withDuration: 0.5) {
+//            // Kauia:
+//            KauaiButton.bottomAnchor.constant = Islands.Kauai.yPosition()
+//        }
+//
+//    }
+//
     // -----------------------------------------------------------------------------------------------------
     
     func launchIsland(island: Islands) {
