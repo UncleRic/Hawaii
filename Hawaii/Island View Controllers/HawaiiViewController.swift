@@ -9,32 +9,38 @@
 import UIKit
 
 class HawaiiViewController: UIViewController {
-
+    var portraitBackgroundImage:UIImage?
+    var landscapeBackgroundImage: UIImage?
+    var backgroundImageView:UIImageView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = UIColor.white
-        let titleLabel:UILabel = {
-            let label = UILabel()
-            label.text = "Hawai'i"
-            label.textColor = UIColor.purple
-            label.font = UIFont(name: papyrusFont, size: 23.0)
-            label.textAlignment = .center
-            return label
-        }()
         
-        view.addSubview(titleLabel)
-        titleLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor,
-                          bottom: nil,
-                          left: nil,
-                          right: nil,
-                          centerYAnchor: nil,
-                          centerXAnchor: view.safeAreaLayoutGuide.centerXAnchor,
-                          paddingTop: 80,
-                          paddingLeft: 0,
-                          paddingBottom: 10,
-                          paddingRight: 10, width: 150, height: 32)
+        portraitBackgroundImage = UIImage(named:"HawaiiLava2")
+        landscapeBackgroundImage = UIImage(named:"HawaiiLava")
+        backgroundImageView = UIImageView(image:portraitBackgroundImage)
+        backgroundImageView?.contentMode = .scaleAspectFill
         
+        view.addSubview(backgroundImageView!)
+        backgroundImageView?.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+                                    bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                                    left: view.safeAreaLayoutGuide.leftAnchor,
+                                    right: view.safeAreaLayoutGuide.rightAnchor,
+                                    centerYAnchor: nil,
+                                    centerXAnchor: nil,
+                                    paddingTop: 0,
+                                    paddingLeft: 0,
+                                    paddingBottom: 10,
+                                    paddingRight: 0, width: 0, height: 0)
     }
-
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        if UIDevice.current.orientation.isLandscape {
+            backgroundImageView?.image = landscapeBackgroundImage
+        } else {
+            backgroundImageView?.image = portraitBackgroundImage
+        }
+    }
 }

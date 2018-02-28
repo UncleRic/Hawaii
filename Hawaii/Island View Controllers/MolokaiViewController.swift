@@ -13,27 +13,22 @@ class MolokaiViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let image = UIImage(named:"Molokai2")
+        let imageView = UIImageView(image: image)
         view.backgroundColor = UIColor.white
-        let titleLabel:UILabel = {
-            let label = UILabel()
-            label.text = "Moloka'i"
-            label.textColor = UIColor.purple
-            label.font = UIFont(name: papyrusFont, size: 23.0)
-            label.textAlignment = .center
-            return label
-        }()
         
-        view.addSubview(titleLabel)
-        titleLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor,
-                          bottom: nil,
-                          left: nil,
-                          right: nil,
+        
+        view.addSubview(imageView)
+        imageView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+                          bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                          left: view.safeAreaLayoutGuide.leftAnchor,
+                          right: view.safeAreaLayoutGuide.rightAnchor,
                           centerYAnchor: nil,
-                          centerXAnchor: view.safeAreaLayoutGuide.centerXAnchor,
-                          paddingTop: 80,
+                          centerXAnchor: nil,
+                          paddingTop: 0,
                           paddingLeft: 0,
                           paddingBottom: 10,
-                          paddingRight: 10, width: 150, height: 32)
+                          paddingRight: 0, width: 0, height: 0)
         
     }
 }

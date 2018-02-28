@@ -13,27 +13,23 @@ class MauiViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let image = UIImage(named:"Maui1")
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFill
         view.backgroundColor = UIColor.white
-        let titleLabel:UILabel = {
-            let label = UILabel()
-            label.text = "Maui"
-            label.textColor = UIColor.purple
-            label.font = UIFont(name: papyrusFont, size: 23.0)
-            label.textAlignment = .center
-            return label
-        }()
         
-        view.addSubview(titleLabel)
-        titleLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor,
-                          bottom: nil,
-                          left: nil,
-                          right: nil,
-                          centerYAnchor: nil,
-                          centerXAnchor: view.safeAreaLayoutGuide.centerXAnchor,
-                          paddingTop: 80,
-                          paddingLeft: 0,
-                          paddingBottom: 10,
-                          paddingRight: 10, width: 150, height: 32)
+        
+        view.addSubview(imageView)
+        imageView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+                         bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                         left: view.safeAreaLayoutGuide.leftAnchor,
+                         right: view.safeAreaLayoutGuide.rightAnchor,
+                         centerYAnchor: nil,
+                         centerXAnchor: nil,
+                         paddingTop: 0,
+                         paddingLeft: 0,
+                         paddingBottom: 10,
+                         paddingRight: 0, width: 0, height: 0)
         
     }
 }

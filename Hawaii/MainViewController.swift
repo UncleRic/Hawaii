@@ -68,7 +68,7 @@ class MainViewController: UIViewController {
         var button = UIButton()
         button.tag = 1
         button.addTarget(self, action: #selector(handleKauai), for: .touchUpInside)
-        let image = UIImage(named:"Kauai")
+         let image = UIImage(named:"Kauai")
         button.setBackgroundImage(image, for: .normal)
         return button
     }()
