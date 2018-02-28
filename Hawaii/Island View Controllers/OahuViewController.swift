@@ -8,11 +8,16 @@
 
 import UIKit
 
-class OahuViewController: UIViewController {
+class OahuViewController: UIViewController, BackgroundDisplay {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupBackground()
+    }
+    
+    // -----------------------------------------------------------------------------------------------------
+    
+    func setupBackground() {
         let image = UIImage(named:"Honolulu")
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFill
@@ -32,5 +37,4 @@ class OahuViewController: UIViewController {
                          paddingRight: 0, width: 0, height: 0)
         
     }
-    
 }

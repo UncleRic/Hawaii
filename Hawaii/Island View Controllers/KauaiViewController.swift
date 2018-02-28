@@ -8,13 +8,28 @@
 
 import UIKit
 
-class KauaiViewController: UIViewController {
+class KauaiViewController: UIViewController, BackgroundDisplay {
     var portraitBackgroundImage:UIImage?
     var landscapeBackgroundImage: UIImage?
     var backgroundImageView:UIImageView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupBackground()
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        if UIDevice.current.orientation.isLandscape {
+            backgroundImageView?.image = landscapeBackgroundImage
+        } else {
+            backgroundImageView?.image = portraitBackgroundImage
+        }
+    }
+    
+    // -----------------------------------------------------------------------------------------------------
+    
+    func setupBackground() {
         view.backgroundColor = UIColor.white
         
         portraitBackgroundImage = UIImage(named:"KauaiSwim")
@@ -32,14 +47,5 @@ class KauaiViewController: UIViewController {
                                     paddingLeft: 0,
                                     paddingBottom: 10,
                                     paddingRight: 0, width: 0, height: 0)
-    }
-    
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        if UIDevice.current.orientation.isLandscape {
-            backgroundImageView?.image = landscapeBackgroundImage
-        } else {
-            backgroundImageView?.image = portraitBackgroundImage
-        }
     }
 }

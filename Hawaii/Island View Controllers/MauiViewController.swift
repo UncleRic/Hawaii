@@ -8,11 +8,16 @@
 
 import UIKit
 
-class MauiViewController: UIViewController {
+class MauiViewController: UIViewController, BackgroundDisplay {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupBackground()
+    }
+    
+    // -----------------------------------------------------------------------------------------------------
+    
+    func setupBackground() {
         let image = UIImage(named:"Maui1")
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFill

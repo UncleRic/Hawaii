@@ -8,11 +8,16 @@
 
 import UIKit
 
-class MolokaiViewController: UIViewController {
+class MolokaiViewController: UIViewController, BackgroundDisplay {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupBackground()
+    }
+    
+    // -----------------------------------------------------------------------------------------------------
+    
+    func setupBackground() {
         let image = UIImage(named:"Molokai2")
         let imageView = UIImageView(image: image)
         view.backgroundColor = UIColor.white
@@ -20,15 +25,14 @@ class MolokaiViewController: UIViewController {
         
         view.addSubview(imageView)
         imageView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
-                          bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                          left: view.safeAreaLayoutGuide.leftAnchor,
-                          right: view.safeAreaLayoutGuide.rightAnchor,
-                          centerYAnchor: nil,
-                          centerXAnchor: nil,
-                          paddingTop: 0,
-                          paddingLeft: 0,
-                          paddingBottom: 10,
-                          paddingRight: 0, width: 0, height: 0)
-        
+                         bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                         left: view.safeAreaLayoutGuide.leftAnchor,
+                         right: view.safeAreaLayoutGuide.rightAnchor,
+                         centerYAnchor: nil,
+                         centerXAnchor: nil,
+                         paddingTop: 0,
+                         paddingLeft: 0,
+                         paddingBottom: 10,
+                         paddingRight: 0, width: 0, height: 0)
     }
 }

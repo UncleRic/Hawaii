@@ -8,6 +8,14 @@
 
 import UIKit
 
+protocol BackgroundDisplay {
+    func setupBackground()
+}
+
+protocol Overlay {
+    func setupOverlay()
+}
+
 class MainViewController: UIViewController {
     
     @IBOutlet weak var portraitBackgroundImageView: UIImageView!

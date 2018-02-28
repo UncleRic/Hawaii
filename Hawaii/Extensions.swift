@@ -53,14 +53,27 @@ extension UIView {
     
     func overlay(containerView: UIView) {
         anchor(top: containerView.safeAreaLayoutGuide.topAnchor,
-                               bottom: containerView.safeAreaLayoutGuide.bottomAnchor,
-                               left: containerView.safeAreaLayoutGuide.leftAnchor,
-                               right: containerView.safeAreaLayoutGuide.rightAnchor,
-                               centerYAnchor: nil,
-                               centerXAnchor: nil,
-                               paddingTop: 0,
-                               paddingLeft: 0,
-                               paddingBottom: 0,
-                               paddingRight: 0, width: 0.0, height: 0)
+               bottom: containerView.safeAreaLayoutGuide.bottomAnchor,
+               left: containerView.safeAreaLayoutGuide.leftAnchor,
+               right: containerView.safeAreaLayoutGuide.rightAnchor,
+               centerYAnchor: nil,
+               centerXAnchor: nil,
+               paddingTop: 0,
+               paddingLeft: 0,
+               paddingBottom: 0,
+               paddingRight: 0, width: 0.0, height: 0)
+    }
+    
+    func center(containerView: UIView, size: CGSize) {
+        anchor(top: nil,
+               bottom: nil,
+               left: nil,
+               right: nil,
+               centerYAnchor: containerView.safeAreaLayoutGuide.centerYAnchor,
+               centerXAnchor: containerView.safeAreaLayoutGuide.centerXAnchor,
+               paddingTop: 0,
+               paddingLeft: 0,
+               paddingBottom: 0,
+               paddingRight: 0, width: size.width, height: size.height)
     }
 }
