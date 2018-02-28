@@ -21,7 +21,7 @@ class MainViewController: UIViewController {
     let childIslandViewControllerTag = 500
     
     enum Islands:Int {
-        case Main
+        case Main = 0
         case Kauai
         case Oahu
         case Molokai
@@ -66,9 +66,10 @@ class MainViewController: UIViewController {
     
     let KauaiButton:UIButton = {
         var button = UIButton()
-        button.tag = 1
+        button.isOpaque = true
+        button.tag = Islands.Kauai.rawValue
         button.addTarget(self, action: #selector(handleKauai), for: .touchUpInside)
-         let image = UIImage(named:"Kauai")
+        let image = UIImage(named:"Kauai")
         button.setBackgroundImage(image, for: .normal)
         return button
     }()
@@ -76,7 +77,8 @@ class MainViewController: UIViewController {
     // Oahu:
     let OahuButton:UIButton = {
         var button = UIButton()
-        button.tag = 2
+        button.isOpaque = true
+        button.tag = Islands.Oahu.rawValue
         button.addTarget(self, action: #selector(handleOahu), for: .touchUpInside)
         let image = UIImage(named:"Oahu")
         button.setBackgroundImage(image, for: .normal)
@@ -86,7 +88,8 @@ class MainViewController: UIViewController {
     // Molokai:
     let MolokaiButton:UIButton = {
         var button = UIButton()
-        button.tag = 3
+        button.isOpaque = true
+        button.tag = Islands.Molokai.rawValue
         button.addTarget(self, action: #selector(handleMolokai), for: .touchUpInside)
         let image = UIImage(named:"Molokai")
         button.setImage(image, for: .normal)
@@ -96,7 +99,8 @@ class MainViewController: UIViewController {
     // Maui:
     let MauiButton:UIButton = {
         var button = UIButton()
-        button.tag = 4
+        button.isOpaque = true
+        button.tag = Islands.Maui.rawValue
         button.addTarget(self, action: #selector(handleMaui), for: .touchUpInside)
         let image = UIImage(named:"Maui")
         button.setImage(image, for: .normal)
@@ -106,7 +110,8 @@ class MainViewController: UIViewController {
     // Hawaii:
     let HawaiiButton:UIButton = {
         var button = UIButton()
-        button.tag = 5
+        button.isOpaque = true
+        button.tag = Islands.Hawaii.rawValue
         button.addTarget(self, action: #selector(handleHawaii), for: .touchUpInside)
         let image = UIImage(named:"BigIsland")
         button.setImage(image, for: .normal)
@@ -149,7 +154,7 @@ class MainViewController: UIViewController {
     // -----------------------------------------------------------------------------------------------------
     // MARK: -
     
-    func displayButtons() {
+    func displayIslands() {
         
         // Kauia:
         view.addSubview(KauaiButton)
@@ -222,8 +227,16 @@ class MainViewController: UIViewController {
             self.view.layoutIfNeeded()
         })
         
-        
     }
+    
+    // -----------------------------------------------------------------------------------------------------
+    
+    func removeIslands() {
+        for memberView in view.subviews where memberView.tag >= 1 && memberView.tag <= 5 {
+            memberView.removeFromSuperview()
+        }
+    }
+    
     // -----------------------------------------------------------------------------------------------------
     // MARK: - Button Handler
     
@@ -285,7 +298,7 @@ class MainViewController: UIViewController {
         }
         
         if let childController = childController {
-        
+            
             childController.view.alpha = 0.0
             childController.view.tag = childIslandViewControllerTag
             
@@ -310,9 +323,14 @@ class MainViewController: UIViewController {
     // MARK: - Actions
     
     @objc func infoButtonHandler() {
-        if currentIsland == .Main {
-            displayButtons()
+        // This button toggles the display of island buttons.
+        
+        if view.viewWithTag(Islands.Hawaii.rawValue) != nil  {
+            removeIslands()
+        } else if currentIsland == .Main {
+            displayIslands()
         } else {
+            removeIslands()
             currentIsland = .Main
             // Remove child Island ViewController from Main Container ViewController (self):
             if let childController = childController {
