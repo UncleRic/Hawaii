@@ -25,6 +25,7 @@ class WeatherService {
     let weatherDescLabel: UILabel = {
         let label = UILabel(frame: CGRect.zero)
         label.textColor = UIColor.purple
+        label.text = "Weather Description"
         label.backgroundColor = UIColor.yellow
         label.font = UIFont(name: palatinoFont, size: 21.0)
         label.textAlignment = .left
@@ -34,6 +35,8 @@ class WeatherService {
     let currentTempLabel: UILabel = {
         let label = UILabel(frame: CGRect.zero)
         label.textColor = UIColor.purple
+        label.text = "current Temp."
+        label.backgroundColor = UIColor.yellow
         label.font = UIFont(name: palatinoFont, size: 21.0)
         label.textAlignment = .left
         return label
@@ -42,6 +45,8 @@ class WeatherService {
     let minTempLabel: UILabel = {
         let label = UILabel(frame: CGRect.zero)
         label.textColor = UIColor.purple
+        label.text = "Min Temp"
+        label.backgroundColor = UIColor.yellow
         label.font = UIFont(name: palatinoFont, size: 21.0)
         label.textAlignment = .left
         return label
@@ -50,6 +55,8 @@ class WeatherService {
     let maxTempLabel: UILabel = {
         let label = UILabel(frame: CGRect.zero)
         label.textColor = UIColor.purple
+        label.text = "Max Temp"
+        label.backgroundColor = UIColor.yellow
         label.font = UIFont(name: palatinoFont, size: 21.0)
         label.textAlignment = .left
         return label
@@ -58,14 +65,18 @@ class WeatherService {
     let humidityLabel: UILabel = {
         let label = UILabel(frame: CGRect.zero)
         label.textColor = UIColor.purple
+        label.text = "Humidity"
+        label.backgroundColor = UIColor.yellow
         label.font = UIFont(name: palatinoFont, size: 21.0)
         label.textAlignment = .left
         return label
     }()
     
-    let barometrcLabel: UILabel = {
+    let barometricLabel: UILabel = {
         let label = UILabel(frame: CGRect.zero)
         label.textColor = UIColor.purple
+        label.text = "Barometric"
+        label.backgroundColor = UIColor.yellow
         label.font = UIFont(name: palatinoFont, size: 21.0)
         label.textAlignment = .left
         return label
@@ -74,6 +85,8 @@ class WeatherService {
     let windSpeedAndDirectionLabel: UILabel = {
         let label = UILabel(frame: CGRect.zero)
         label.textColor = UIColor.purple
+        label.text = "Wind Speed"
+        label.backgroundColor = UIColor.yellow
         label.font = UIFont(name: palatinoFont, size: 21.0)
         label.textAlignment = .left
         return label
@@ -82,6 +95,8 @@ class WeatherService {
     let sunRiseLabel: UILabel = {
         let label = UILabel(frame: CGRect.zero)
         label.textColor = UIColor.purple
+        label.text = "SunRise"
+        label.backgroundColor = UIColor.yellow
         label.font = UIFont(name: palatinoFont, size: 21.0)
         label.textAlignment = .left
         return label
@@ -90,6 +105,8 @@ class WeatherService {
     let sunSetLabel: UILabel = {
         let label = UILabel(frame: CGRect.zero)
         label.textColor = UIColor.purple
+        label.text = "Sun Set"
+        label.backgroundColor = UIColor.yellow
         label.font = UIFont(name: palatinoFont, size: 21.0)
         label.textAlignment = .left
         return label
@@ -299,7 +316,7 @@ class WeatherService {
             })
         }
     }
-
+    
     
     // ===================================================================================================
     
@@ -324,7 +341,7 @@ class WeatherService {
                              paddingBottom: -350,
                              paddingRight: -20, width: 0, height: 0)
         
-         let x:CGFloat = 10.0; let y:CGFloat = 60.0
+        let x:CGFloat = 10.0; let y:CGFloat = 60.0
         
         containerView.addSubview(titleLabel)
         containerView.addSubview(weatherDescLabel)
@@ -332,9 +349,9 @@ class WeatherService {
         containerView.addSubview(minTempLabel)
         containerView.addSubview(maxTempLabel)
         containerView.addSubview(humidityLabel)
-        containerView.addSubview(barometrcLabel)
+        containerView.addSubview(barometricLabel)
         containerView.addSubview(windSpeedAndDirectionLabel)
-        containerView.addSubview(sunSetLabel)
+        containerView.addSubview(sunRiseLabel)
         containerView.addSubview(sunSetLabel)
         
         // Title:
@@ -351,17 +368,113 @@ class WeatherService {
         
         // Weather:
         weatherDescLabel.anchor(top: containerView.safeAreaLayoutGuide.topAnchor,
-                          bottom: nil,
-                          left: containerView.safeAreaLayoutGuide.leftAnchor,
-                          right: containerView.safeAreaLayoutGuide.rightAnchor,
-                          centerYAnchor: nil,
-                          centerXAnchor: nil,
-                          paddingTop: y,
-                          paddingLeft: 0,
-                          paddingBottom: 0,
-                          paddingRight: 0, width: 0, height: 24)
+                                bottom: nil,
+                                left: containerView.safeAreaLayoutGuide.leftAnchor,
+                                right: containerView.safeAreaLayoutGuide.rightAnchor,
+                                centerYAnchor: nil,
+                                centerXAnchor: nil,
+                                paddingTop: y,
+                                paddingLeft: 0,
+                                paddingBottom: 0,
+                                paddingRight: 0, width: 0, height: 24)
+        
+        // Current Temperature:
+        currentTempLabel.anchor(top: containerView.safeAreaLayoutGuide.topAnchor,
+                                bottom: nil,
+                                left: containerView.safeAreaLayoutGuide.leftAnchor,
+                                right: nil,
+                                centerYAnchor: nil,
+                                centerXAnchor: nil,
+                                paddingTop: y+48,
+                                paddingLeft: 0,
+                                paddingBottom: 0,
+                                paddingRight: 0, width: 150, height: 24)
+        
+        // Minimum Temperature:
+        minTempLabel.anchor(top: containerView.safeAreaLayoutGuide.topAnchor,
+                            bottom: nil,
+                            left: containerView.safeAreaLayoutGuide.leftAnchor,
+                            right: nil,
+                            centerYAnchor: nil,
+                            centerXAnchor: nil,
+                            paddingTop: y+48,
+                            paddingLeft: 165,
+                            paddingBottom: 0,
+                            paddingRight: 0, width: 100, height: 24)
+        
+        // Maximum Temperature:
+        maxTempLabel.anchor(top: containerView.safeAreaLayoutGuide.topAnchor,
+                            bottom: nil,
+                            left: containerView.safeAreaLayoutGuide.leftAnchor,
+                            right: containerView.safeAreaLayoutGuide.rightAnchor,
+                            centerYAnchor: nil,
+                            centerXAnchor: nil,
+                            paddingTop: y+48,
+                            paddingLeft: 270,
+                            paddingBottom: 0,
+                            paddingRight: 0, width: 0, height: 24)
+        
+        // Humidity:
+        humidityLabel.anchor(top: containerView.safeAreaLayoutGuide.topAnchor,
+                             bottom: nil,
+                             left: containerView.safeAreaLayoutGuide.leftAnchor,
+                             right: nil,
+                             centerYAnchor: nil,
+                             centerXAnchor: nil,
+                             paddingTop: y+48*2,
+                             paddingLeft: 0,
+                             paddingBottom: 0,
+                             paddingRight: 0, width: 225, height: 24)
+        
+        // Barometric:
+        barometricLabel.anchor(top: containerView.safeAreaLayoutGuide.topAnchor,
+                               bottom: nil,
+                               left: containerView.safeAreaLayoutGuide.leftAnchor,
+                               right: containerView.safeAreaLayoutGuide.rightAnchor,
+                               centerYAnchor: nil,
+                               centerXAnchor: nil,
+                               paddingTop: y+48*2,
+                               paddingLeft: 230,
+                               paddingBottom: 0,
+                               paddingRight: 0, width: 0, height: 24)
+        
+        // Wind Speed & Direction:
+        windSpeedAndDirectionLabel.anchor(top: containerView.safeAreaLayoutGuide.topAnchor,
+                                          bottom: nil,
+                                          left: containerView.safeAreaLayoutGuide.leftAnchor,
+                                          right: containerView.safeAreaLayoutGuide.rightAnchor,
+                                          centerYAnchor: nil,
+                                          centerXAnchor: nil,
+                                          paddingTop: y+48*3,
+                                          paddingLeft: 0,
+                                          paddingBottom: 0,
+                                          paddingRight: 0, width: 0, height: 24)
         
         
+        // Sun Rise:
+        sunRiseLabel.anchor(top: nil,
+                             bottom: containerView.safeAreaLayoutGuide.bottomAnchor,
+                             left: containerView.safeAreaLayoutGuide.leftAnchor,
+                             right: nil,
+                             centerYAnchor: nil,
+                             centerXAnchor: nil,
+                             paddingTop: 0,
+                             paddingLeft: 0,
+                             paddingBottom: 0,
+                             paddingRight: 0, width: 200, height: 24)
+        
+
+        // Sun Set:
+        sunSetLabel.anchor(top: nil,
+                            bottom: containerView.safeAreaLayoutGuide.bottomAnchor,
+                            left: containerView.safeAreaLayoutGuide.leftAnchor,
+                            right: containerView.safeAreaLayoutGuide.rightAnchor,
+                            centerYAnchor: nil,
+                            centerXAnchor: nil,
+                            paddingTop: y+48*4,
+                            paddingLeft: 205,
+                            paddingBottom: 0,
+                            paddingRight: 0, width: 0, height: 24)
         
     }
     
