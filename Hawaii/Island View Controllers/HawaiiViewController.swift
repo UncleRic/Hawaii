@@ -82,11 +82,13 @@ class HawaiiViewController: UIViewController, BackgroundDisplay {
         return button
     }()
     
+    // ===================================================================================================
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
+        self.view.gestureRecognizers = [tapGesture]
         setupBackground()
-        setupOverlay()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -124,11 +126,16 @@ class HawaiiViewController: UIViewController, BackgroundDisplay {
     
     // -----------------------------------------------------------------------------------------------------
     
-    @objc func handleTapGesture() {
-        if let blurView = view.viewWithTag(IslandAssets.blurView.rawValue),
-           let islandAssetContainerView = view.viewWithTag(IslandAssets.assetsContainerView.rawValue) {
-            blurView.removeFromSuperview()
-            islandAssetContainerView.removeFromSuperview()
+    @objc func handleTapGesture(recognizer: UITapGestureRecognizer) {
+        if let _ = self.view.viewWithTag(IslandAssets.blurView.rawValue) {
+            if let blurView = view.viewWithTag(IslandAssets.blurView.rawValue),
+                let islandAssetContainerView = view.viewWithTag(IslandAssets.assetsContainerView.rawValue) {
+                blurView.removeFromSuperview()
+                islandAssetContainerView.removeFromSuperview()
+            }
+        } else {
+            setupOverlay()
         }
+        
     }
 }

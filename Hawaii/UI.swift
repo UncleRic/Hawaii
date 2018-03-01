@@ -38,6 +38,8 @@ extension HawaiiViewController: Overlay {
     func setupOverlay() {
         let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
         visualEffectView.tag = 22
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
+        visualEffectView.gestureRecognizers = [tapGesture]
         let vib = UIVisualEffectView(effect: UIVibrancyEffect(blurEffect: visualEffectView.effect as! UIBlurEffect))
         visualEffectView.contentView.addSubview(vib)
         visualEffectView.frame = (backgroundImageView?.bounds)!
@@ -47,7 +49,6 @@ extension HawaiiViewController: Overlay {
     
     func setupNavigatorOverlay(hostView: UIView) {
         let containerView = UIView(frame:CGRect.zero)
-        // containerView.backgroundColor = UIColor.red
         containerView.tag = 23
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
         containerView.gestureRecognizers = [tapGesture]
