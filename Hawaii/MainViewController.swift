@@ -20,6 +20,47 @@ protocol Navigation: Overlay {
     func setupNavigatorOverlay()
 }
 
+enum Islands:Int {
+    case Main = 0
+    case Kauai
+    case Oahu
+    case Molokai
+    case Maui
+    case Hawaii
+    func description() -> String {
+        switch self {
+        case .Kauai:
+            return "Kauai"
+        case .Oahu:
+            return "Oahu"
+        case .Molokai:
+            return "Molokai"
+        case .Maui:
+            return "Maui"
+        case .Hawaii:
+            return "Big Island"
+        default:
+            return "none"
+        }
+    }
+    func yPosition() -> CGFloat {
+        switch self {
+        case .Kauai:
+            return -550
+        case .Oahu:
+            return -475
+        case .Molokai:
+            return -450
+        case .Maui:
+            return -400
+        case .Hawaii:
+            return -300
+        default:
+            return 0
+        }
+    }
+}
+
 enum IslandAssets:Int {
     case weather = 1
     case airport
@@ -27,6 +68,8 @@ enum IslandAssets:Int {
     case surfing
     case lodging
     case food
+    case blurView = 22
+    case assetsContainerView = 23
     func description() -> String {
         switch self {
         case .weather:
@@ -41,7 +84,10 @@ enum IslandAssets:Int {
             return "lodging"
         case .food:
             return "food"
+        default:
+            return ""
         }
+        
     }
 }
 
@@ -57,46 +103,7 @@ class MainViewController: UIViewController {
     let toolbarContainerViewTag = 10
     let childIslandViewControllerTag = 500
     
-    enum Islands:Int {
-        case Main = 0
-        case Kauai
-        case Oahu
-        case Molokai
-        case Maui
-        case Hawaii
-        func description() -> String {
-            switch self {
-            case .Kauai:
-                return "Kauai"
-            case .Oahu:
-                return "Oahu"
-            case .Molokai:
-                return "Molokai"
-            case .Maui:
-                return "Maui"
-            case .Hawaii:
-                return "Hawaii"
-            default:
-                return "none"
-            }
-        }
-        func yPosition() -> CGFloat {
-            switch self {
-            case .Kauai:
-                return -550
-            case .Oahu:
-                return -475
-            case .Molokai:
-                return -450
-            case .Maui:
-                return -400
-            case .Hawaii:
-                return -300
-            default:
-                return 0
-            }
-        }
-    }
+    
     
     // MARK: - Island Buttons
     // Kauai

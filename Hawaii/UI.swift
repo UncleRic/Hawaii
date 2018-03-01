@@ -36,8 +36,8 @@ extension MainViewController {
 
 extension HawaiiViewController: Overlay {
     func setupOverlay() {
-        
         let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
+        visualEffectView.tag = 22
         let vib = UIVisualEffectView(effect: UIVibrancyEffect(blurEffect: visualEffectView.effect as! UIBlurEffect))
         visualEffectView.contentView.addSubview(vib)
         visualEffectView.frame = (backgroundImageView?.bounds)!
@@ -47,10 +47,12 @@ extension HawaiiViewController: Overlay {
     
     func setupNavigatorOverlay(hostView: UIView) {
         let containerView = UIView(frame:CGRect.zero)
-        containerView.backgroundColor = UIColor.clear
+        // containerView.backgroundColor = UIColor.red
+        containerView.tag = 23
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
+        containerView.gestureRecognizers = [tapGesture]
         view.addSubview(containerView)
-        let mySize = CGSize(width: 100, height: 100)
-        containerView.center(containerView: view, size: mySize)
+
         containerView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                              bottom: view.safeAreaLayoutGuide.bottomAnchor,
                              left: view.safeAreaLayoutGuide.leftAnchor,
@@ -58,10 +60,11 @@ extension HawaiiViewController: Overlay {
                              centerYAnchor: nil,
                              centerXAnchor: nil,
                              paddingTop: 100,
-                             paddingLeft: 40,
-                             paddingBottom: -200,
-                             paddingRight: -40, width: 0, height: 0)
+                             paddingLeft: 20,
+                             paddingBottom: -350,
+                             paddingRight: -20, width: 0, height: 0)
         
+        containerView.addSubview(titleLabel)
         containerView.addSubview(weatherButton)
         containerView.addSubview(airportButton)
         containerView.addSubview(touristButton)
@@ -69,8 +72,19 @@ extension HawaiiViewController: Overlay {
         containerView.addSubview(lodgingButton)
         containerView.addSubview(foodButton)
         
-        let x:CGFloat = 10.0; let y:CGFloat = 10.0
+        let x:CGFloat = 10.0; let y:CGFloat = 60.0
         
+        // Title:
+        titleLabel.anchor(top: containerView.safeAreaLayoutGuide.topAnchor,
+                             bottom: nil,
+                             left: nil,
+                             right: nil,
+                             centerYAnchor: nil,
+                             centerXAnchor: containerView.safeAreaLayoutGuide.centerXAnchor,
+                             paddingTop: 0,
+                             paddingLeft: x,
+                             paddingBottom: 0,
+                             paddingRight: 0, width: 200, height: 38)
         // Weather:
         weatherButton.anchor(top: containerView.safeAreaLayoutGuide.topAnchor,
                     bottom: nil,

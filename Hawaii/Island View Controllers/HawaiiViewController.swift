@@ -13,6 +13,14 @@ class HawaiiViewController: UIViewController, BackgroundDisplay {
     var landscapeBackgroundImage: UIImage?
     var backgroundImageView:UIImageView?
     
+    let titleLabel:UILabel = {
+        var label = UILabel(frame: CGRect.zero)
+        label.text = Islands.Hawaii.description()
+        label.textAlignment = .center
+        label.textColor = UIColor.purple
+        label.font = UIFont(name: palatinoFont, size: 32.0)
+        return label
+    }()
     
     let weatherButton:UIButton = {
         var button = UIButton()
@@ -116,9 +124,11 @@ class HawaiiViewController: UIViewController, BackgroundDisplay {
     
     // -----------------------------------------------------------------------------------------------------
     
-    
-    
-    
-    
-    
+    @objc func handleTapGesture() {
+        if let blurView = view.viewWithTag(IslandAssets.blurView.rawValue),
+           let islandAssetContainerView = view.viewWithTag(IslandAssets.assetsContainerView.rawValue) {
+            blurView.removeFromSuperview()
+            islandAssetContainerView.removeFromSuperview()
+        }
+    }
 }
