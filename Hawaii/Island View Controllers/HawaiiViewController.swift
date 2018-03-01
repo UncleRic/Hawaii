@@ -13,7 +13,7 @@ class HawaiiViewController: UIViewController, BackgroundDisplay, NavigationRepor
     var landscapeBackgroundImage: UIImage?
     var backgroundImageView:UIImageView?
     
-   
+    
     // ===================================================================================================
     
     override func viewDidLoad() {
@@ -84,7 +84,8 @@ class HawaiiViewController: UIViewController, BackgroundDisplay, NavigationRepor
     
     @objc func weatherReport() {
         Navigator().removeNavigatorOverlay(sender: self)
-       return
+        WeatherService().displayWeatherReport(sender: self)
+        return
     }
     
     

@@ -392,9 +392,9 @@ class MainViewController: UIViewController {
     // -----------------------------------------------------------------------------------------------------
     
     @IBAction func weatherAction() {
-        WeatherReport.getWeatherData(sender: self) {weatherData in
-            print("Do Something")
-        }
+//        WeatherReport.getWeatherData(sender: self) {weatherData in
+//            print("Do Something")
+//        }
     }
     
 }

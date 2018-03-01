@@ -8,12 +8,24 @@
 
 import UIKit
 
-class WeatherReport {
+class WeatherService {
     
     // MARK: - Weather-Report Display
+    
+    let titleLabel:UILabel = {
+        var label = UILabel(frame: CGRect.zero)
+        label.text = currentIsland.description()
+        label.textAlignment = .center
+        label.textColor = UIColor.purple
+        label.font = UIFont(name: palatinoFont, size: 32.0)
+        return label
+    }()
+    
+    
     let weatherDescLabel: UILabel = {
         let label = UILabel(frame: CGRect.zero)
         label.textColor = UIColor.purple
+        label.backgroundColor = UIColor.yellow
         label.font = UIFont(name: palatinoFont, size: 21.0)
         label.textAlignment = .left
         return label
@@ -195,7 +207,6 @@ class WeatherReport {
         let parse:(Data) -> Data?
     }
     
-    
     final class func load(resource: WeatherResource, completion: @escaping (Any?) -> Void) {
         URLSession.shared.dataTask(with: resource.url) { (data, _, error) in
             if let error = error {
@@ -292,12 +303,42 @@ class WeatherReport {
     
     // ===================================================================================================
     
-    func buildWeatherPanel(containerView: UIView) {
-        let weatherPanel = UIView(frame: CGRect.zero)
-        let x:CGFloat = 10.0
-        // Title:
+    func displayWeatherReport(sender: UIViewController) {
+        guard let hostView = sender.view else {
+            return
+        }
         
-        weatherPanel.anchor(top: containerView.safeAreaLayoutGuide.topAnchor,
+        let containerView = UIView(frame:CGRect.zero)
+        containerView.backgroundColor = UIColor.red
+        containerView.tag = IslandAssets.assetsContainerView.rawValue
+        hostView.addSubview(containerView)
+        
+        containerView.anchor(top: hostView.safeAreaLayoutGuide.topAnchor,
+                             bottom: hostView.safeAreaLayoutGuide.bottomAnchor,
+                             left: hostView.safeAreaLayoutGuide.leftAnchor,
+                             right: hostView.safeAreaLayoutGuide.rightAnchor,
+                             centerYAnchor: nil,
+                             centerXAnchor: nil,
+                             paddingTop: 100,
+                             paddingLeft: 20,
+                             paddingBottom: -350,
+                             paddingRight: -20, width: 0, height: 0)
+        
+         let x:CGFloat = 10.0; let y:CGFloat = 60.0
+        
+        containerView.addSubview(titleLabel)
+        containerView.addSubview(weatherDescLabel)
+        containerView.addSubview(currentTempLabel)
+        containerView.addSubview(minTempLabel)
+        containerView.addSubview(maxTempLabel)
+        containerView.addSubview(humidityLabel)
+        containerView.addSubview(barometrcLabel)
+        containerView.addSubview(windSpeedAndDirectionLabel)
+        containerView.addSubview(sunSetLabel)
+        containerView.addSubview(sunSetLabel)
+        
+        // Title:
+        titleLabel.anchor(top: containerView.safeAreaLayoutGuide.topAnchor,
                           bottom: nil,
                           left: nil,
                           right: nil,
@@ -307,6 +348,19 @@ class WeatherReport {
                           paddingLeft: x,
                           paddingBottom: 0,
                           paddingRight: 0, width: 200, height: 38)
+        
+        // Weather:
+        weatherDescLabel.anchor(top: containerView.safeAreaLayoutGuide.topAnchor,
+                          bottom: nil,
+                          left: containerView.safeAreaLayoutGuide.leftAnchor,
+                          right: containerView.safeAreaLayoutGuide.rightAnchor,
+                          centerYAnchor: nil,
+                          centerXAnchor: nil,
+                          paddingTop: y,
+                          paddingLeft: 0,
+                          paddingBottom: 0,
+                          paddingRight: 0, width: 0, height: 24)
+        
         
         
     }
