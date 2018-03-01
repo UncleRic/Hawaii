@@ -127,10 +127,10 @@ class HawaiiViewController: UIViewController, BackgroundDisplay {
     // -----------------------------------------------------------------------------------------------------
     
     @objc func handleTapGesture(recognizer: UITapGestureRecognizer) {
-        if let _ = self.view.viewWithTag(IslandAssets.blurView.rawValue) {
-            if let blurView = view.viewWithTag(IslandAssets.blurView.rawValue),
+        if let _ = self.view.viewWithTag(IslandAssets.overlayView.rawValue) {
+            if let overlayView = view.viewWithTag(IslandAssets.overlayView.rawValue),
                 let islandAssetContainerView = view.viewWithTag(IslandAssets.assetsContainerView.rawValue) {
-                blurView.removeFromSuperview()
+                overlayView.removeFromSuperview()
                 islandAssetContainerView.removeFromSuperview()
             }
         } else {

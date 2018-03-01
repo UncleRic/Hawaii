@@ -68,7 +68,7 @@ enum IslandAssets:Int {
     case surfing
     case lodging
     case food
-    case blurView = 22
+    case overlayView = 22
     case assetsContainerView = 23
     func description() -> String {
         switch self {
