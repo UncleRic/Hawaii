@@ -81,6 +81,7 @@ class Navigator {
     }()
     
     // ===================================================================================================
+    // MARK: - Driver Functions
     
     func setupOverlay(sender: UIViewController) {
         
@@ -129,13 +130,22 @@ class Navigator {
     
     // -----------------------------------------------------------------------------------------------------
     
-    func setupNavigatorOverlay(host: UIViewController) {
+    func removeNavigatorOverlay(sender: UIViewController) {
+        if let assetContainer = sender.view.viewWithTag(IslandAssets.assetsContainerView.rawValue) {
+            assetContainer.removeFromSuperview()
+        }
+    }
+    
+    // -----------------------------------------------------------------------------------------------------
+    // MARK: - Private Functions
+    
+    fileprivate func setupNavigatorOverlay(host: UIViewController) {
         guard let hostView = host.view else {
             return
         }
         
         let containerView = UIView(frame:CGRect.zero)
-        containerView.tag = 23
+        containerView.tag = IslandAssets.assetsContainerView.rawValue
         
         if let hostController = host as? KauaiViewController {
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hostController.handleTapGesture))

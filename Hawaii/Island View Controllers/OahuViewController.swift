@@ -77,6 +77,6 @@ class OahuViewController: UIViewController, BackgroundDisplay {
     // MARK: - Navigation
     
     @objc func weatherReport() {
-        
+         Navigator().removeNavigatorOverlay(sender: self)
     }
 }

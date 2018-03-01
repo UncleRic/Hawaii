@@ -13,10 +13,6 @@ protocol BackgroundDisplay {
     func handleTapGesture(recognizer: UITapGestureRecognizer) 
 }
 
-protocol Overlay {
-    func setupOverlay()
-}
-
 @objc protocol NavigationReport {
     @objc func weatherReport()
 //    func surfReport()

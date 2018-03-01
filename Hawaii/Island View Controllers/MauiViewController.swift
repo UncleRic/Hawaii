@@ -76,6 +76,6 @@ class MauiViewController: UIViewController, BackgroundDisplay {
     // MARK: - Navigation
     
     @objc func weatherReport() {
-        
+         Navigator().removeNavigatorOverlay(sender: self)
     }
 }
