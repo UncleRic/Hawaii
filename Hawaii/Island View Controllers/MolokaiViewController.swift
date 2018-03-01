@@ -9,9 +9,14 @@
 import UIKit
 
 class MolokaiViewController: UIViewController, BackgroundDisplay {
-
+    var portraitBackgroundImage:UIImage?
+    var landscapeBackgroundImage: UIImage?
+    var backgroundImageView: UIImageView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
+        self.view.gestureRecognizers = [tapGesture]
         setupBackground()
     }
     
@@ -34,5 +39,21 @@ class MolokaiViewController: UIViewController, BackgroundDisplay {
                          paddingLeft: 0,
                          paddingBottom: 10,
                          paddingRight: 0, width: 0, height: 0)
+    }
+    
+    // -----------------------------------------------------------------------------------------------------
+    // MARK: - Gesture Handler
+    
+    @objc func handleTapGesture(recognizer: UITapGestureRecognizer) {
+        if let _ = self.view.viewWithTag(IslandAssets.overlayView.rawValue) {
+            if let overlayView = view.viewWithTag(IslandAssets.overlayView.rawValue),
+                let islandAssetContainerView = view.viewWithTag(IslandAssets.assetsContainerView.rawValue) {
+                overlayView.removeFromSuperview()
+                islandAssetContainerView.removeFromSuperview()
+            }
+        } else {
+            Navigator().setupOverlay(sender: self)
+        }
+        
     }
 }

@@ -10,6 +10,7 @@ import UIKit
 
 protocol BackgroundDisplay {
     func setupBackground()
+    func handleTapGesture(recognizer: UITapGestureRecognizer) 
 }
 
 protocol Overlay {
@@ -19,6 +20,8 @@ protocol Overlay {
 protocol Navigation: Overlay {
     func setupNavigatorOverlay()
 }
+
+var currentIsland:Islands = .Main
 
 enum Islands:Int {
     case Main = 0
@@ -97,7 +100,6 @@ class MainViewController: UIViewController {
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var toolBarContainerView: UIView!
     
-    var currentIsland:Islands = .Main
     var childController:UIViewController?
     
     let toolbarContainerViewTag = 10

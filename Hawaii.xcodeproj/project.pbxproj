@@ -20,6 +20,7 @@
 		1895DF8A2043696600C85493 /* OahuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1895DF892043696600C85493 /* OahuViewController.swift */; };
 		1895DF8D2043699500C85493 /* KauaiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1895DF8C2043699500C85493 /* KauaiViewController.swift */; };
 		1895DF8F204369B700C85493 /* MolokaiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1895DF8E204369B700C85493 /* MolokaiViewController.swift */; };
+		18FD5DCD2047CC140044E9FD /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FD5DCC2047CC140044E9FD /* Navigator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		1895DF892043696600C85493 /* OahuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OahuViewController.swift; sourceTree = "<group>"; };
 		1895DF8C2043699500C85493 /* KauaiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KauaiViewController.swift; sourceTree = "<group>"; };
 		1895DF8E204369B700C85493 /* MolokaiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MolokaiViewController.swift; sourceTree = "<group>"; };
+		18FD5DCC2047CC140044E9FD /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				1837082A2041FC8A00C6C833 /* AppDelegate.swift */,
+				18FD5DCC2047CC140044E9FD /* Navigator.swift */,
 				1837082C2041FC8A00C6C833 /* MainViewController.swift */,
 				1895DF7C2042069700C85493 /* WeatherService.swift */,
 				1895DF82204222D500C85493 /* UI.swift */,
@@ -180,6 +183,7 @@
 				1837082D2041FC8A00C6C833 /* MainViewController.swift in Sources */,
 				1895DF852043691400C85493 /* HawaiiViewController.swift in Sources */,
 				1895DF7D2042069700C85493 /* WeatherService.swift in Sources */,
+				18FD5DCD2047CC140044E9FD /* Navigator.swift in Sources */,
 				1837082B2041FC8A00C6C833 /* AppDelegate.swift in Sources */,
 				1895DF882043695200C85493 /* MauiViewController.swift in Sources */,
 				1895DF83204222D600C85493 /* UI.swift in Sources */,

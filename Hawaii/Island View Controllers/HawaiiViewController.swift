@@ -13,75 +13,7 @@ class HawaiiViewController: UIViewController, BackgroundDisplay {
     var landscapeBackgroundImage: UIImage?
     var backgroundImageView:UIImageView?
     
-    let titleLabel:UILabel = {
-        var label = UILabel(frame: CGRect.zero)
-        label.text = Islands.Hawaii.description()
-        label.textAlignment = .center
-        label.textColor = UIColor.purple
-        label.font = UIFont(name: palatinoFont, size: 32.0)
-        return label
-    }()
-    
-    let weatherButton:UIButton = {
-        var button = UIButton()
-        button.tag = IslandAssets.weather.rawValue
-        button.isOpaque = true
-        // button.addTarget(self, action: #selector(handleOahu), for: .touchUpInside)
-        let image = UIImage(named:IslandAssets.weather.description())
-        button.setBackgroundImage(image, for: .normal)
-        return button
-    }()
-    
-    let surfButton:UIButton = {
-        var button = UIButton()
-        button.tag = IslandAssets.surfing.rawValue
-        button.isOpaque = true
-        // button.addTarget(self, action: #selector(handleOahu), for: .touchUpInside)
-        let image = UIImage(named:IslandAssets.surfing.description())
-        button.setBackgroundImage(image, for: .normal)
-        return button
-    }()
-    
-    let lodgingButton:UIButton = {
-        var button = UIButton()
-        button.tag = IslandAssets.tourist.rawValue
-        button.isOpaque = true
-        // button.addTarget(self, action: #selector(handleOahu), for: .touchUpInside)
-        let image = UIImage(named:IslandAssets.lodging.description())
-        button.setBackgroundImage(image, for: .normal)
-        return button
-    }()
-    
-    let touristButton:UIButton = {
-        var button = UIButton()
-        button.tag = IslandAssets.surfing.rawValue
-        button.isOpaque = true
-        // button.addTarget(self, action: #selector(handleOahu), for: .touchUpInside)
-        let image = UIImage(named:IslandAssets.tourist.description())
-        button.setBackgroundImage(image, for: .normal)
-        return button
-    }()
-    
-    let foodButton:UIButton = {
-        var button = UIButton()
-        button.tag = IslandAssets.food.rawValue
-        button.isOpaque = true
-        // button.addTarget(self, action: #selector(handleOahu), for: .touchUpInside)
-        let image = UIImage(named:IslandAssets.food.description())
-        button.setBackgroundImage(image, for: .normal)
-        return button
-    }()
-    
-    let airportButton:UIButton = {
-        var button = UIButton()
-        button.isOpaque = true
-        button.tag = IslandAssets.airport.rawValue
-        // button.addTarget(self, action: #selector(handleOahu), for: .touchUpInside)
-        let image = UIImage(named:"airport")
-        button.setBackgroundImage(image, for: .normal)
-        return button
-    }()
-    
+   
     // ===================================================================================================
     
     override func viewDidLoad() {
@@ -125,6 +57,7 @@ class HawaiiViewController: UIViewController, BackgroundDisplay {
     }
     
     // -----------------------------------------------------------------------------------------------------
+    // MARK: - Gesture Handler
     
     @objc func handleTapGesture(recognizer: UITapGestureRecognizer) {
         if let _ = self.view.viewWithTag(IslandAssets.overlayView.rawValue) {
@@ -134,7 +67,7 @@ class HawaiiViewController: UIViewController, BackgroundDisplay {
                 islandAssetContainerView.removeFromSuperview()
             }
         } else {
-            setupOverlay()
+            Navigator().setupOverlay(sender: self)
         }
         
     }
