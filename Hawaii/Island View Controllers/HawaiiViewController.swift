@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HawaiiViewController: UIViewController, BackgroundDisplay {
+class HawaiiViewController: UIViewController, BackgroundDisplay, NavigationReport {
     var portraitBackgroundImage:UIImage?
     var landscapeBackgroundImage: UIImage?
     var backgroundImageView:UIImageView?
@@ -78,4 +78,13 @@ class HawaiiViewController: UIViewController, BackgroundDisplay {
         }
         
     }
+    
+    // -----------------------------------------------------------------------------------------------------
+    // MARK: - Navigation
+    
+    @objc func weatherReport() {
+       return
+    }
+    
+    
 }

@@ -17,8 +17,11 @@ protocol Overlay {
     func setupOverlay()
 }
 
-protocol Navigation: Overlay {
-    func setupNavigatorOverlay()
+@objc protocol NavigationReport {
+    @objc func weatherReport()
+//    func surfReport()
+//    func lodgingReport()
+//    func touristReport()
 }
 
 var currentIsland:Islands = .Main

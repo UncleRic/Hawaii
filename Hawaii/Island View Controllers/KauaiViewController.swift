@@ -73,4 +73,11 @@ class KauaiViewController: UIViewController, BackgroundDisplay {
         }
         
     }
+    
+    // -----------------------------------------------------------------------------------------------------
+    // MARK: - Navigation
+    
+    @objc func weatherReport() {
+        
+    }
 }

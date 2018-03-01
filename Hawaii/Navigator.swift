@@ -92,30 +92,35 @@ class Navigator {
         
         if let hostController = sender as? KauaiViewController  {
             setupNavigatorOverlay(host: hostController)
+            weatherButton.addTarget(self, action: #selector(hostController.weatherReport), for: .touchUpInside)
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hostController.handleTapGesture))
             overlayView.gestureRecognizers = [tapGesture]
             hostController.backgroundImageView?.addSubview(overlayView)
             
         } else if let hostController = sender as? OahuViewController {
             setupNavigatorOverlay(host: hostController)
+            weatherButton.addTarget(self, action: #selector(hostController.weatherReport), for: .touchUpInside)
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hostController.handleTapGesture))
             overlayView.gestureRecognizers = [tapGesture]
             hostController.backgroundImageView?.addSubview(overlayView)
             
         } else if let hostController = sender as? MolokaiViewController {
             setupNavigatorOverlay(host: hostController)
+            weatherButton.addTarget(self, action: #selector(hostController.weatherReport), for: .touchUpInside)
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hostController.handleTapGesture))
             overlayView.gestureRecognizers = [tapGesture]
             hostController.backgroundImageView?.addSubview(overlayView)
             
         } else if let hostController = sender as? MauiViewController {
             setupNavigatorOverlay(host: hostController)
+            weatherButton.addTarget(self, action: #selector(hostController.weatherReport), for: .touchUpInside)
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hostController.handleTapGesture))
             overlayView.gestureRecognizers = [tapGesture]
             hostController.backgroundImageView?.addSubview(overlayView)
             
         } else if let hostController = sender as? HawaiiViewController {
             setupNavigatorOverlay(host: hostController)
+            weatherButton.addTarget(self, action: #selector(hostController.weatherReport), for: .touchUpInside)
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hostController.handleTapGesture))
             overlayView.gestureRecognizers = [tapGesture]
             hostController.backgroundImageView?.addSubview(overlayView)

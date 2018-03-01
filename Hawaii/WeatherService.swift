@@ -9,6 +9,83 @@
 import UIKit
 
 class WeatherReport {
+    
+    // MARK: - Weather-Report Display
+    let weatherDescLabel: UILabel = {
+        let label = UILabel(frame: CGRect.zero)
+        label.textColor = UIColor.purple
+        label.font = UIFont(name: palatinoFont, size: 21.0)
+        label.textAlignment = .left
+        return label
+    }()
+    
+    let currentTempLabel: UILabel = {
+        let label = UILabel(frame: CGRect.zero)
+        label.textColor = UIColor.purple
+        label.font = UIFont(name: palatinoFont, size: 21.0)
+        label.textAlignment = .left
+        return label
+    }()
+    
+    let minTempLabel: UILabel = {
+        let label = UILabel(frame: CGRect.zero)
+        label.textColor = UIColor.purple
+        label.font = UIFont(name: palatinoFont, size: 21.0)
+        label.textAlignment = .left
+        return label
+    }()
+    
+    let maxTempLabel: UILabel = {
+        let label = UILabel(frame: CGRect.zero)
+        label.textColor = UIColor.purple
+        label.font = UIFont(name: palatinoFont, size: 21.0)
+        label.textAlignment = .left
+        return label
+    }()
+    
+    let humidityLabel: UILabel = {
+        let label = UILabel(frame: CGRect.zero)
+        label.textColor = UIColor.purple
+        label.font = UIFont(name: palatinoFont, size: 21.0)
+        label.textAlignment = .left
+        return label
+    }()
+    
+    let barometrcLabel: UILabel = {
+        let label = UILabel(frame: CGRect.zero)
+        label.textColor = UIColor.purple
+        label.font = UIFont(name: palatinoFont, size: 21.0)
+        label.textAlignment = .left
+        return label
+    }()
+    
+    let windSpeedAndDirectionLabel: UILabel = {
+        let label = UILabel(frame: CGRect.zero)
+        label.textColor = UIColor.purple
+        label.font = UIFont(name: palatinoFont, size: 21.0)
+        label.textAlignment = .left
+        return label
+    }()
+    
+    let sunRiseLabel: UILabel = {
+        let label = UILabel(frame: CGRect.zero)
+        label.textColor = UIColor.purple
+        label.font = UIFont(name: palatinoFont, size: 21.0)
+        label.textAlignment = .left
+        return label
+    }()
+    
+    let sunSetLabel: UILabel = {
+        let label = UILabel(frame: CGRect.zero)
+        label.textColor = UIColor.purple
+        label.font = UIFont(name: palatinoFont, size: 21.0)
+        label.textAlignment = .left
+        return label
+    }()
+    
+    // -----------------------------------------------------------------------------------------------------
+    // MARK: - Raw Weather Data
+    
     public struct Weather: Codable {
         let id: Int
         let main: String
@@ -189,6 +266,7 @@ class WeatherReport {
         
     }
     
+    // ===================================================================================================
     
     final class func getWeatherData(sender: MainViewController, completion:@escaping (WeatherData?)->Void)  {
         // Hawaii ID = '5856194'
@@ -210,9 +288,30 @@ class WeatherReport {
             })
         }
     }
+
+    
+    // ===================================================================================================
+    
+    func buildWeatherPanel(containerView: UIView) {
+        let weatherPanel = UIView(frame: CGRect.zero)
+        let x:CGFloat = 10.0
+        // Title:
+        
+        weatherPanel.anchor(top: containerView.safeAreaLayoutGuide.topAnchor,
+                          bottom: nil,
+                          left: nil,
+                          right: nil,
+                          centerYAnchor: nil,
+                          centerXAnchor: containerView.safeAreaLayoutGuide.centerXAnchor,
+                          paddingTop: 0,
+                          paddingLeft: x,
+                          paddingBottom: 0,
+                          paddingRight: 0, width: 200, height: 38)
+        
+        
+    }
+    
 }
-
-
 
 
 
