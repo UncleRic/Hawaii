@@ -204,7 +204,7 @@ class WeatherService {
         }
     }
     
-    final class func disseminateJSON(data: Data) -> DataListModel? {
+    private func disseminateJSON(data: Data) -> DataListModel? {
         var weatherStuff:DataListModel?
         do {
             weatherStuff = try JSONDecoder().decode(DataListModel.self, from: data)
@@ -219,27 +219,14 @@ class WeatherService {
     
     // ===================================================================================================
     
-    struct WeatherResource {
-        let url:URL
-        let parse:(Data) -> Data?
-    }
     
-    final class func load(resource: WeatherResource, completion: @escaping (Any?) -> Void) {
-        URLSession.shared.dataTask(with: resource.url) { (data, _, error) in
-            if let error = error {
-                completion(error.localizedDescription)
-            } else if let data = data {
-                completion(data)
-            } else {
-                completion(nil)
-            }
-            }.resume()
-    }
+    
     
     
     // -----------------------------------------------------------------------------------------------------
+    // MARK: - private functions
     
-    final private class func setupDataCallback(source: DataListModel) -> WeatherData? {
+    private func setupDataCallback(source: DataListModel) -> WeatherData? {
         
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
@@ -294,33 +281,9 @@ class WeatherService {
         
     }
     
-    // ===================================================================================================
+    // -----------------------------------------------------------------------------------------------------
     
-    final class func getWeatherData(sender: MainViewController, completion:@escaping (WeatherData?)->Void)  {
-        // Hawaii ID = '5856194'
-        // Units: Imperial
-        let weatherURIString = "https://api.openweathermap.org/data/2.5/weather?id=5856194&APPID=44d0f6b3ed7092adb89091cbed5372b4&units=imperial"
-        let url = URL(string:weatherURIString)
-        
-        let weatherResource = WeatherResource(url: url!) {(data) -> Data? in
-            return data
-        }
-        self.load(resource: weatherResource) {result in
-            DispatchQueue.main.async(execute: {
-                if let errorDescription = result as? String {
-                    print(errorDescription)
-                } else if let jsonData = result as? Data {
-                    completion(setupDataCallback(source: self.disseminateJSON(data: jsonData)!))
-                    
-                }
-            })
-        }
-    }
-    
-    
-    // ===================================================================================================
-    
-    func displayWeatherReport(sender: UIViewController) {
+    private func setupWeatherReport(sender: UIViewController) {
         guard let hostView = sender.view else {
             return
         }
@@ -453,31 +416,71 @@ class WeatherService {
         
         // Sun Rise:
         sunRiseLabel.anchor(top: nil,
-                             bottom: containerView.safeAreaLayoutGuide.bottomAnchor,
-                             left: containerView.safeAreaLayoutGuide.leftAnchor,
-                             right: nil,
-                             centerYAnchor: nil,
-                             centerXAnchor: nil,
-                             paddingTop: 0,
-                             paddingLeft: 0,
-                             paddingBottom: 0,
-                             paddingRight: 0, width: 200, height: 24)
-        
-
-        // Sun Set:
-        sunSetLabel.anchor(top: nil,
                             bottom: containerView.safeAreaLayoutGuide.bottomAnchor,
                             left: containerView.safeAreaLayoutGuide.leftAnchor,
-                            right: containerView.safeAreaLayoutGuide.rightAnchor,
+                            right: nil,
                             centerYAnchor: nil,
                             centerXAnchor: nil,
-                            paddingTop: y+48*4,
-                            paddingLeft: 205,
+                            paddingTop: 0,
+                            paddingLeft: 0,
                             paddingBottom: 0,
-                            paddingRight: 0, width: 0, height: 24)
+                            paddingRight: 0, width: 200, height: 24)
+        
+        
+        // Sun Set:
+        sunSetLabel.anchor(top: nil,
+                           bottom: containerView.safeAreaLayoutGuide.bottomAnchor,
+                           left: containerView.safeAreaLayoutGuide.leftAnchor,
+                           right: containerView.safeAreaLayoutGuide.rightAnchor,
+                           centerYAnchor: nil,
+                           centerXAnchor: nil,
+                           paddingTop: y+48*4,
+                           paddingLeft: 205,
+                           paddingBottom: 0,
+                           paddingRight: 0, width: 0, height: 24)
         
     }
     
+    
+    // ===================================================================================================
+    
+    private func getWeatherData(completion:@escaping (WeatherData?)->Void)  {
+        // Hawaii ID = '5856194'
+        // Units: Imperial
+        let weatherURIString = "https://api.openweathermap.org/data/2.5/weather?id=5856194&APPID=44d0f6b3ed7092adb89091cbed5372b4&units=imperial"
+        
+        if let url = URL(string:weatherURIString) {
+            
+            URLSession.shared.dataTask(with:url) { (data, response, error) in
+                DispatchQueue.main.async(execute: {
+                    if let error = error {
+                        print(error)
+                    } else if let data = data {
+                        let str = String(data: data, encoding: .ascii)
+                        if let disseminatedJSON = self.disseminateJSON(data: data) {
+                            completion(self.setupDataCallback(source: disseminatedJSON))
+                        } else {
+                            completion(nil)
+                        }
+                        
+                    }
+                })
+                
+                }.resume()
+        }
+        
+        
+    }
+    
+    // ===================================================================================================
+    
+    func displayWeatherReport(sender: UIViewController) {
+        setupWeatherReport(sender: sender)
+        getWeatherData() {weatherData in
+            print("Do Something")
+        }
+        
+    }
 }
 
 
