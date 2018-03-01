@@ -8,10 +8,72 @@
 
 import UIKit
 
-class HawaiiViewController: UIViewController, BackgroundDisplay, Overlay {
+class HawaiiViewController: UIViewController, BackgroundDisplay {
     var portraitBackgroundImage:UIImage?
     var landscapeBackgroundImage: UIImage?
     var backgroundImageView:UIImageView?
+    
+    
+    let weatherButton:UIButton = {
+        var button = UIButton()
+        button.tag = IslandAssets.weather.rawValue
+        button.isOpaque = true
+        // button.addTarget(self, action: #selector(handleOahu), for: .touchUpInside)
+        let image = UIImage(named:IslandAssets.weather.description())
+        button.setBackgroundImage(image, for: .normal)
+        return button
+    }()
+    
+    let surfButton:UIButton = {
+        var button = UIButton()
+        button.tag = IslandAssets.surfing.rawValue
+        button.isOpaque = true
+        // button.addTarget(self, action: #selector(handleOahu), for: .touchUpInside)
+        let image = UIImage(named:IslandAssets.surfing.description())
+        button.setBackgroundImage(image, for: .normal)
+        return button
+    }()
+    
+    let lodgingButton:UIButton = {
+        var button = UIButton()
+        button.tag = IslandAssets.tourist.rawValue
+        button.isOpaque = true
+        // button.addTarget(self, action: #selector(handleOahu), for: .touchUpInside)
+        let image = UIImage(named:IslandAssets.lodging.description())
+        button.setBackgroundImage(image, for: .normal)
+        return button
+    }()
+    
+    let touristButton:UIButton = {
+        var button = UIButton()
+        button.tag = IslandAssets.surfing.rawValue
+        button.isOpaque = true
+        // button.addTarget(self, action: #selector(handleOahu), for: .touchUpInside)
+        let image = UIImage(named:IslandAssets.tourist.description())
+        button.setBackgroundImage(image, for: .normal)
+        return button
+    }()
+    
+    let foodButton:UIButton = {
+        var button = UIButton()
+        button.tag = IslandAssets.food.rawValue
+        button.isOpaque = true
+        // button.addTarget(self, action: #selector(handleOahu), for: .touchUpInside)
+        let image = UIImage(named:IslandAssets.food.description())
+        button.setBackgroundImage(image, for: .normal)
+        return button
+    }()
+    
+    let airportButton:UIButton = {
+        var button = UIButton()
+        button.isOpaque = true
+        button.tag = IslandAssets.airport.rawValue
+        // button.addTarget(self, action: #selector(handleOahu), for: .touchUpInside)
+        let image = UIImage(named:"airport")
+        button.setBackgroundImage(image, for: .normal)
+        return button
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,26 +116,6 @@ class HawaiiViewController: UIViewController, BackgroundDisplay, Overlay {
     
     // -----------------------------------------------------------------------------------------------------
     
-    func setupOverlay() {
-        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
-        visualEffectView.frame = (backgroundImageView?.bounds)!
-        backgroundImageView?.addSubview(visualEffectView)
-        let myView = UIView(frame:CGRect.zero)
-        myView.backgroundColor = UIColor.green
-        view.addSubview(myView)
-        let mySize = CGSize(width: 100, height: 100)
-        myView.center(containerView: view, size: mySize)
-        myView.anchor(top: nil,
-                      bottom: nil,
-                      left: nil,
-                      right: nil,
-                      centerYAnchor: view.safeAreaLayoutGuide.centerYAnchor,
-                      centerXAnchor: view.safeAreaLayoutGuide.centerXAnchor,
-                      paddingTop: 0,
-                      paddingLeft: 0,
-                      paddingBottom: 0,
-                      paddingRight: 0, width: 100, height: 200)
-    }
     
     
     

@@ -16,6 +16,35 @@ protocol Overlay {
     func setupOverlay()
 }
 
+protocol Navigation: Overlay {
+    func setupNavigatorOverlay()
+}
+
+enum IslandAssets:Int {
+    case weather = 1
+    case airport
+    case tourist
+    case surfing
+    case lodging
+    case food
+    func description() -> String {
+        switch self {
+        case .weather:
+            return "weather"
+        case .airport:
+            return "airport"
+        case .tourist:
+            return "tourist"
+        case .surfing:
+            return "surfing"
+        case .lodging:
+            return "lodging"
+        case .food:
+            return "food"
+        }
+    }
+}
+
 class MainViewController: UIViewController {
     
     @IBOutlet weak var portraitBackgroundImageView: UIImageView!
