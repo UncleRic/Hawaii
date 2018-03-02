@@ -85,8 +85,5 @@ class HawaiiViewController: UIViewController, BackgroundDisplay, NavigationRepor
     @objc func weatherReport() {
         Navigator().removeNavigatorOverlay(sender: self)
         WeatherService().displayWeatherReport(sender: self)
-        return
     }
-    
-    
 }

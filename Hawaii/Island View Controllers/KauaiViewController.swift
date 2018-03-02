@@ -78,6 +78,7 @@ class KauaiViewController: UIViewController, BackgroundDisplay {
     // MARK: - Navigation
     
     @objc func weatherReport() {
-         Navigator().removeNavigatorOverlay(sender: self)
+        Navigator().removeNavigatorOverlay(sender: self)
+        WeatherService().displayWeatherReport(sender: self)
     }
 }
