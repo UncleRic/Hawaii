@@ -8,15 +8,55 @@
 
 import UIKit
 
-class WeatherService {
+var weatherData:WeatherData?
+
+struct WeatherData {
+    let name:String
+    let description:String
+    let currentTemp:String
+    let minTemp:String
+    let maxTemp:String
+    let humidity:String
+    let windSpeedAndDirection:String
+    let barometer:String
+    let visibility:String
+    let sunrise:String
+    let sunset:String
     
+    init (name:String,
+          description:String,
+          currentTemp:String,
+          minTemp:String,
+          maxTemp:String,
+          humidity:String,
+          windSpeedAndDirection:String,
+          barometer:String,
+          visibility:String,
+          sunrise:String,
+          sunset:String) {
+        self.name = name
+        self.description = description
+        self.currentTemp = currentTemp
+        self.minTemp = minTemp
+        self.maxTemp = maxTemp
+        self.humidity = humidity
+        self.windSpeedAndDirection = windSpeedAndDirection
+        self.barometer = barometer
+        self.visibility = visibility
+        self.sunrise = sunrise
+        self.sunset = sunset
+    }
+}
+
+class WeatherService {
+
     // MARK: - Weather-Report Display
     
     let titleLabel:UILabel = {
         var label = UILabel(frame: CGRect.zero)
         label.text = currentIsland.description()
         label.textAlignment = .center
-        label.textColor = UIColor.purple
+        label.textColor = UIColor.yellow
         label.font = UIFont(name: palatinoFont, size: 32.0)
         return label
     }()
@@ -24,90 +64,63 @@ class WeatherService {
     
     let weatherDescLabel: UILabel = {
         let label = UILabel(frame: CGRect.zero)
-        label.textColor = UIColor.purple
+        label.textColor = UIColor.yellow
         label.text = "Weather Description"
-        label.backgroundColor = UIColor.yellow
-        label.font = UIFont(name: palatinoFont, size: 21.0)
-        label.textAlignment = .left
+        label.font = UIFont(name: palatinoFont, size: 18.0)
+        label.textAlignment = .center
         return label
     }()
     
-    let currentTempLabel: UILabel = {
+    var temperatureLabel: UILabel = {
         let label = UILabel(frame: CGRect.zero)
-        label.textColor = UIColor.purple
+        label.textColor = UIColor.yellow
         label.text = "current Temp."
-        label.backgroundColor = UIColor.yellow
-        label.font = UIFont(name: palatinoFont, size: 21.0)
-        label.textAlignment = .left
-        return label
-    }()
-    
-    let minTempLabel: UILabel = {
-        let label = UILabel(frame: CGRect.zero)
-        label.textColor = UIColor.purple
-        label.text = "Min Temp"
-        label.backgroundColor = UIColor.yellow
-        label.font = UIFont(name: palatinoFont, size: 21.0)
-        label.textAlignment = .left
-        return label
-    }()
-    
-    let maxTempLabel: UILabel = {
-        let label = UILabel(frame: CGRect.zero)
-        label.textColor = UIColor.purple
-        label.text = "Max Temp"
-        label.backgroundColor = UIColor.yellow
-        label.font = UIFont(name: palatinoFont, size: 21.0)
+        label.font = UIFont(name: palatinoFont, size: 14.0)
         label.textAlignment = .left
         return label
     }()
     
     let humidityLabel: UILabel = {
         let label = UILabel(frame: CGRect.zero)
-        label.textColor = UIColor.purple
+        label.textColor = UIColor.yellow
         label.text = "Humidity"
-        label.backgroundColor = UIColor.yellow
-        label.font = UIFont(name: palatinoFont, size: 21.0)
+        label.font = UIFont(name: palatinoFont, size: 14.0)
         label.textAlignment = .left
         return label
     }()
     
     let barometricLabel: UILabel = {
         let label = UILabel(frame: CGRect.zero)
-        label.textColor = UIColor.purple
+        label.textColor = UIColor.yellow
         label.text = "Barometric"
-        label.backgroundColor = UIColor.yellow
-        label.font = UIFont(name: palatinoFont, size: 21.0)
+        label.font = UIFont(name: palatinoFont, size: 14.0)
         label.textAlignment = .left
         return label
     }()
     
     let windSpeedAndDirectionLabel: UILabel = {
         let label = UILabel(frame: CGRect.zero)
-        label.textColor = UIColor.purple
+        label.textColor = UIColor.yellow
         label.text = "Wind Speed"
-        label.backgroundColor = UIColor.yellow
-        label.font = UIFont(name: palatinoFont, size: 21.0)
+        label.font = UIFont(name: palatinoFont, size: 14.0)
         label.textAlignment = .left
         return label
     }()
     
     let sunRiseLabel: UILabel = {
         let label = UILabel(frame: CGRect.zero)
-        label.textColor = UIColor.purple
+        label.textColor = UIColor.yellow
         label.text = "SunRise"
-        label.backgroundColor = UIColor.yellow
-        label.font = UIFont(name: palatinoFont, size: 21.0)
+        label.font = UIFont(name: palatinoFont, size: 14.0)
         label.textAlignment = .left
         return label
     }()
     
     let sunSetLabel: UILabel = {
         let label = UILabel(frame: CGRect.zero)
-        label.textColor = UIColor.purple
+        label.textColor = UIColor.yellow
         label.text = "Sun Set"
-        label.backgroundColor = UIColor.yellow
-        label.font = UIFont(name: palatinoFont, size: 21.0)
+        label.font = UIFont(name: palatinoFont, size: 14.0)
         label.textAlignment = .left
         return label
     }()
@@ -163,46 +176,6 @@ class WeatherService {
         let cod: Int
     }
     
-    struct WeatherData {
-        let name:String
-        let description:String
-        let currentTemp:String
-        let minTemp:String
-        let maxTemp:String
-        let humidity:String
-        let windSpeed:String
-        let windDirection:String
-        let barometer:String
-        let visibility:String
-        let sunrise:String
-        let sunset:String
-        
-        init (name:String,
-              description:String,
-              currentTemp:String,
-              minTemp:String,
-              maxTemp:String,
-              humidity:String,
-              windSpeed:String,
-              windDirection:String,
-              barometer:String,
-              visibility:String,
-              sunrise:String,
-              sunset:String) {
-            self.name = name
-            self.description = description
-            self.currentTemp = currentTemp
-            self.minTemp = minTemp
-            self.maxTemp = maxTemp
-            self.humidity = humidity
-            self.windSpeed = windSpeed
-            self.windDirection = windDirection
-            self.barometer = barometer
-            self.visibility = visibility
-            self.sunrise = visibility
-            self.sunset = sunset
-        }
-    }
     
     private func disseminateJSON(data: Data) -> DataListModel? {
         var weatherStuff:DataListModel?
@@ -218,32 +191,32 @@ class WeatherService {
     }
     
     // ===================================================================================================
-    
-    
-    
-    
-    
-    // -----------------------------------------------------------------------------------------------------
     // MARK: - private functions
     
+    //TODO: convert deg to nav pointers.
+    //    fileprivate func convertDegToString(deg: String) -> String {
+    //          let degFloat = Float(deg)
+    //
+    //            return ""
+    //    }
     private func setupDataCallback(source: DataListModel) -> WeatherData? {
         
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         formatter.maximumFractionDigits = 1
         
-        func tempFahrenheit(_ fahrenheit: Float, desc: String) -> String {
-            let tempF  = formatter.string(from: NSNumber(value:fahrenheit))
-            return "\(tempF!) deg F. \(desc)"
+        func tempFahrenheit(_ fahrenheit: Float) -> String {
+            if let tempF  = formatter.string(from: NSNumber(value:fahrenheit)) {
+                return "\(tempF) deg F."
+            }
+            return " "
         }
         
-        func windSpeed(speed: Float) -> String {
-            let windSpeed  = formatter.string(from: NSNumber(value:speed))
-            return "\(String(describing: windSpeed)) m.p.h"
-        }
-        
-        func windDirection(deg: Float) -> String {
-            return "\(deg) degrees"
+        func windSpeedAndDirection(speed: Float, deg:Float) -> String {
+            if let windSpeed  = formatter.string(from: NSNumber(value:speed)) {
+                return "Wind Speed: \(windSpeed) mph at \(deg) degrees"
+            }
+            return "Calm"
         }
         
         func humidity(hum: Float) -> String {
@@ -252,7 +225,7 @@ class WeatherService {
         
         func pressure(_ press: Float) -> String {
             let mmHG = press/1.33322387415
-            return  "\(formatter.string(from: NSNumber(value:mmHG))!) mm HG"
+            return  "Barometer: \(formatter.string(from: NSNumber(value:mmHG))!) mm HG"
         }
         
         func visibility(meters: Double) -> String {
@@ -265,19 +238,20 @@ class WeatherService {
             return "\(UTC) \(desc) Local time <--to do"
         }
         
-        
-        return WeatherData (name:source.name,
+       
+        weatherData =  WeatherData (name:source.name,
                             description:source.weather[0].description,
-                            currentTemp:tempFahrenheit(source.main.temp, desc: "current"),
-                            minTemp:tempFahrenheit(source.main.temp_min, desc: "min"),
-                            maxTemp:tempFahrenheit(source.main.temp_max, desc: "max"),
+                            currentTemp:tempFahrenheit(source.main.temp),
+                            minTemp:tempFahrenheit(source.main.temp_min),
+                            maxTemp:tempFahrenheit(source.main.temp_max),
                             humidity:humidity(hum: source.main.humidity),
-                            windSpeed:windSpeed(speed: source.wind.speed),
-                            windDirection:windDirection(deg: source.wind.deg),
+                            windSpeedAndDirection:windSpeedAndDirection(speed: source.wind.speed, deg: source.wind.deg),
                             barometer:pressure(source.main.pressure),
                             visibility:visibility(meters: source.visibility),
                             sunrise:HNLTime(UTC: source.sys.sunrise, desc: "Sunrise"),
                             sunset:HNLTime(UTC: source.sys.sunset, desc: "Sunset"))
+        
+        return weatherData
         
     }
     
@@ -289,7 +263,6 @@ class WeatherService {
         }
         
         let containerView = UIView(frame:CGRect.zero)
-        containerView.backgroundColor = UIColor.red
         containerView.tag = IslandAssets.assetsContainerView.rawValue
         hostView.addSubview(containerView)
         
@@ -304,13 +277,11 @@ class WeatherService {
                              paddingBottom: -350,
                              paddingRight: -20, width: 0, height: 0)
         
-        let x:CGFloat = 10.0; let y:CGFloat = 60.0
+        let x:CGFloat = 10.0; let y:CGFloat = 40.0
         
         containerView.addSubview(titleLabel)
         containerView.addSubview(weatherDescLabel)
-        containerView.addSubview(currentTempLabel)
-        containerView.addSubview(minTempLabel)
-        containerView.addSubview(maxTempLabel)
+        containerView.addSubview(temperatureLabel)
         containerView.addSubview(humidityLabel)
         containerView.addSubview(barometricLabel)
         containerView.addSubview(windSpeedAndDirectionLabel)
@@ -342,40 +313,16 @@ class WeatherService {
                                 paddingRight: 0, width: 0, height: 24)
         
         // Current Temperature:
-        currentTempLabel.anchor(top: containerView.safeAreaLayoutGuide.topAnchor,
+        temperatureLabel.anchor(top: containerView.safeAreaLayoutGuide.topAnchor,
                                 bottom: nil,
                                 left: containerView.safeAreaLayoutGuide.leftAnchor,
-                                right: nil,
+                                right: containerView.safeAreaLayoutGuide.rightAnchor,
                                 centerYAnchor: nil,
                                 centerXAnchor: nil,
-                                paddingTop: y+48,
+                                paddingTop: y+32,
                                 paddingLeft: 0,
                                 paddingBottom: 0,
-                                paddingRight: 0, width: 150, height: 24)
-        
-        // Minimum Temperature:
-        minTempLabel.anchor(top: containerView.safeAreaLayoutGuide.topAnchor,
-                            bottom: nil,
-                            left: containerView.safeAreaLayoutGuide.leftAnchor,
-                            right: nil,
-                            centerYAnchor: nil,
-                            centerXAnchor: nil,
-                            paddingTop: y+48,
-                            paddingLeft: 165,
-                            paddingBottom: 0,
-                            paddingRight: 0, width: 100, height: 24)
-        
-        // Maximum Temperature:
-        maxTempLabel.anchor(top: containerView.safeAreaLayoutGuide.topAnchor,
-                            bottom: nil,
-                            left: containerView.safeAreaLayoutGuide.leftAnchor,
-                            right: containerView.safeAreaLayoutGuide.rightAnchor,
-                            centerYAnchor: nil,
-                            centerXAnchor: nil,
-                            paddingTop: y+48,
-                            paddingLeft: 270,
-                            paddingBottom: 0,
-                            paddingRight: 0, width: 0, height: 24)
+                                paddingRight: 0, width: 0, height: 18)
         
         // Humidity:
         humidityLabel.anchor(top: containerView.safeAreaLayoutGuide.topAnchor,
@@ -384,10 +331,10 @@ class WeatherService {
                              right: nil,
                              centerYAnchor: nil,
                              centerXAnchor: nil,
-                             paddingTop: y+48*2,
+                             paddingTop: y+32*2,
                              paddingLeft: 0,
                              paddingBottom: 0,
-                             paddingRight: 0, width: 225, height: 24)
+                             paddingRight: 0, width: 225, height: 18)
         
         // Barometric:
         barometricLabel.anchor(top: containerView.safeAreaLayoutGuide.topAnchor,
@@ -396,10 +343,10 @@ class WeatherService {
                                right: containerView.safeAreaLayoutGuide.rightAnchor,
                                centerYAnchor: nil,
                                centerXAnchor: nil,
-                               paddingTop: y+48*2,
-                               paddingLeft: 230,
+                               paddingTop: y+32*3,
+                               paddingLeft: 0,
                                paddingBottom: 0,
-                               paddingRight: 0, width: 0, height: 24)
+                               paddingRight: 0, width: 0, height: 18)
         
         // Wind Speed & Direction:
         windSpeedAndDirectionLabel.anchor(top: containerView.safeAreaLayoutGuide.topAnchor,
@@ -408,10 +355,10 @@ class WeatherService {
                                           right: containerView.safeAreaLayoutGuide.rightAnchor,
                                           centerYAnchor: nil,
                                           centerXAnchor: nil,
-                                          paddingTop: y+48*3,
+                                          paddingTop: y+32*4,
                                           paddingLeft: 0,
                                           paddingBottom: 0,
-                                          paddingRight: 0, width: 0, height: 24)
+                                          paddingRight: 0, width: 0, height: 18)
         
         
         // Sun Rise:
@@ -423,8 +370,8 @@ class WeatherService {
                             centerXAnchor: nil,
                             paddingTop: 0,
                             paddingLeft: 0,
-                            paddingBottom: 0,
-                            paddingRight: 0, width: 200, height: 24)
+                            paddingBottom: -78,
+                            paddingRight: 0, width: 200, height: 18)
         
         
         // Sun Set:
@@ -434,10 +381,10 @@ class WeatherService {
                            right: containerView.safeAreaLayoutGuide.rightAnchor,
                            centerYAnchor: nil,
                            centerXAnchor: nil,
-                           paddingTop: y+48*4,
+                           paddingTop: 0,
                            paddingLeft: 205,
-                           paddingBottom: 0,
-                           paddingRight: 0, width: 0, height: 24)
+                           paddingBottom: -78,
+                           paddingRight: 0, width: 0, height: 18)
         
     }
     
@@ -456,7 +403,6 @@ class WeatherService {
                     if let error = error {
                         print(error)
                     } else if let data = data {
-                        let str = String(data: data, encoding: .ascii)
                         if let disseminatedJSON = self.disseminateJSON(data: data) {
                             completion(self.setupDataCallback(source: disseminatedJSON))
                         } else {
@@ -468,16 +414,34 @@ class WeatherService {
                 
                 }.resume()
         }
-        
-        
     }
     
     // ===================================================================================================
     
     func displayWeatherReport(sender: UIViewController) {
         setupWeatherReport(sender: sender)
+        if let weatherData = weatherData {
+            self.weatherDescLabel.text = weatherData.description
+            let currentTemp = weatherData.currentTemp; let minTemp = weatherData.minTemp; let maxTemp = weatherData.maxTemp
+                self.temperatureLabel.text = "Currently: \(currentTemp); low: \(minTemp), high: \(maxTemp)"
+            
+            self.humidityLabel.text = weatherData.humidity
+            self.barometricLabel.text = weatherData.barometer
+            self.windSpeedAndDirectionLabel.text = weatherData.windSpeedAndDirection
+            self.sunRiseLabel.text = weatherData.sunrise
+            self.sunSetLabel.text = weatherData.sunset
+            return
+        }
         getWeatherData() {weatherData in
-            print("Do Something")
+            self.weatherDescLabel.text = weatherData?.description
+            if let currentTemp = weatherData?.currentTemp, let minTemp = weatherData?.minTemp, let maxTemp = weatherData?.maxTemp {
+                self.temperatureLabel.text = "Currently: \(currentTemp); low: \(minTemp), high: \(maxTemp)"
+            }
+            self.humidityLabel.text = weatherData?.humidity
+            self.barometricLabel.text = weatherData?.barometer
+            self.windSpeedAndDirectionLabel.text = weatherData?.windSpeedAndDirection
+            self.sunRiseLabel.text = weatherData?.sunrise
+            self.sunSetLabel.text = weatherData?.sunset
         }
         
     }
