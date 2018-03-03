@@ -20,6 +20,7 @@
 		1895DF8A2043696600C85493 /* OahuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1895DF892043696600C85493 /* OahuViewController.swift */; };
 		1895DF8D2043699500C85493 /* KauaiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1895DF8C2043699500C85493 /* KauaiViewController.swift */; };
 		1895DF8F204369B700C85493 /* MolokaiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1895DF8E204369B700C85493 /* MolokaiViewController.swift */; };
+		18EF25D7204B33A900E50162 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 18EF25D6204B33A900E50162 /* README.md */; };
 		18FD5DCD2047CC140044E9FD /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FD5DCC2047CC140044E9FD /* Navigator.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		1895DF892043696600C85493 /* OahuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OahuViewController.swift; sourceTree = "<group>"; };
 		1895DF8C2043699500C85493 /* KauaiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KauaiViewController.swift; sourceTree = "<group>"; };
 		1895DF8E204369B700C85493 /* MolokaiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MolokaiViewController.swift; sourceTree = "<group>"; };
+		18EF25D6204B33A900E50162 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		18FD5DCC2047CC140044E9FD /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -56,6 +58,7 @@
 		1837081E2041FC8A00C6C833 = {
 			isa = PBXGroup;
 			children = (
+				18EF25D6204B33A900E50162 /* README.md */,
 				183708292041FC8A00C6C833 /* Hawaii */,
 				183708282041FC8A00C6C833 /* Products */,
 			);
@@ -167,6 +170,7 @@
 			files = (
 				183708352041FC8B00C6C833 /* LaunchScreen.storyboard in Resources */,
 				183708322041FC8B00C6C833 /* Assets.xcassets in Resources */,
+				18EF25D7204B33A900E50162 /* README.md in Resources */,
 				183708302041FC8A00C6C833 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
