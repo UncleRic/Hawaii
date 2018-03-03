@@ -362,28 +362,28 @@ class WeatherService {
         
         
         // Sun Rise:
-        sunRiseLabel.anchor(top: nil,
-                            bottom: containerView.safeAreaLayoutGuide.bottomAnchor,
+        sunRiseLabel.anchor(top: containerView.safeAreaLayoutGuide.topAnchor,
+                            bottom: nil,
                             left: containerView.safeAreaLayoutGuide.leftAnchor,
-                            right: nil,
+                            right: containerView.safeAreaLayoutGuide.rightAnchor,
                             centerYAnchor: nil,
                             centerXAnchor: nil,
-                            paddingTop: 0,
+                            paddingTop: y+32*5,
                             paddingLeft: 0,
-                            paddingBottom: -78,
+                            paddingBottom: 0,
                             paddingRight: 0, width: 200, height: 18)
         
         
         // Sun Set:
-        sunSetLabel.anchor(top: nil,
-                           bottom: containerView.safeAreaLayoutGuide.bottomAnchor,
+        sunSetLabel.anchor(top: containerView.safeAreaLayoutGuide.topAnchor,
+                           bottom: nil,
                            left: containerView.safeAreaLayoutGuide.leftAnchor,
                            right: containerView.safeAreaLayoutGuide.rightAnchor,
                            centerYAnchor: nil,
                            centerXAnchor: nil,
-                           paddingTop: 0,
-                           paddingLeft: 205,
-                           paddingBottom: -78,
+                           paddingTop: y+32*6,
+                           paddingLeft: 0,
+                           paddingBottom: 0,
                            paddingRight: 0, width: 0, height: 18)
         
     }

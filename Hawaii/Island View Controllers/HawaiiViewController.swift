@@ -26,12 +26,8 @@ class HawaiiViewController: UIViewController, BackgroundDisplay, NavigationRepor
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         if UIDevice.current.orientation.isLandscape {
-            if let _ = self.view.viewWithTag(IslandAssets.overlayView.rawValue) {
-                if let overlayView = view.viewWithTag(IslandAssets.overlayView.rawValue),
-                    let islandAssetContainerView = view.viewWithTag(IslandAssets.assetsContainerView.rawValue) {
-                    overlayView.removeFromSuperview()
-                    islandAssetContainerView.removeFromSuperview()
-                }
+            if let containerView = self.view.viewWithTag(IslandAssets.assetsContainerView.rawValue) {
+                containerView.removeFromSuperview()
             }
             backgroundImageView?.image = landscapeBackgroundImage
         } else {
@@ -73,7 +69,7 @@ class HawaiiViewController: UIViewController, BackgroundDisplay, NavigationRepor
                 overlayView.removeFromSuperview()
                 islandAssetContainerView.removeFromSuperview()
             }
-        } else {
+        } else if UIDevice.current.orientation.isPortrait {
             Navigator().setupOverlay(sender: self)
         }
         

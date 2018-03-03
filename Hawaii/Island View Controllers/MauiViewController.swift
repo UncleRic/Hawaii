@@ -61,13 +61,9 @@ class MauiViewController: UIViewController, BackgroundDisplay {
     // MARK: - Gesture Handler
     
     @objc func handleTapGesture(recognizer: UITapGestureRecognizer) {
-        if let _ = self.view.viewWithTag(IslandAssets.overlayView.rawValue) {
-            if let overlayView = view.viewWithTag(IslandAssets.overlayView.rawValue),
-                let islandAssetContainerView = view.viewWithTag(IslandAssets.assetsContainerView.rawValue) {
-                overlayView.removeFromSuperview()
-                islandAssetContainerView.removeFromSuperview()
-            }
-        } else {
+        if let containerView = self.view.viewWithTag(IslandAssets.assetsContainerView.rawValue) {
+            containerView.removeFromSuperview()
+        } else if UIDevice.current.orientation.isPortrait {
             Navigator().setupOverlay(sender: self)
         }
         
