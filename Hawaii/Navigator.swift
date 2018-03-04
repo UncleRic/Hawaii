@@ -24,7 +24,6 @@ class Navigator {
         var button = UIButton()
         button.tag = IslandAssets.weather.rawValue
         button.isOpaque = true
-        // button.addTarget(self, action: #selector(handleOahu), for: .touchUpInside)
         let image = UIImage(named:IslandAssets.weather.description())
         button.setBackgroundImage(image, for: .normal)
         return button
@@ -34,7 +33,6 @@ class Navigator {
         var button = UIButton()
         button.tag = IslandAssets.surfing.rawValue
         button.isOpaque = true
-        // button.addTarget(self, action: #selector(handleOahu), for: .touchUpInside)
         let image = UIImage(named:IslandAssets.surfing.description())
         button.setBackgroundImage(image, for: .normal)
         return button
@@ -44,7 +42,6 @@ class Navigator {
         var button = UIButton()
         button.tag = IslandAssets.tourist.rawValue
         button.isOpaque = true
-        // button.addTarget(self, action: #selector(handleOahu), for: .touchUpInside)
         let image = UIImage(named:IslandAssets.lodging.description())
         button.setBackgroundImage(image, for: .normal)
         return button
@@ -54,7 +51,6 @@ class Navigator {
         var button = UIButton()
         button.tag = IslandAssets.surfing.rawValue
         button.isOpaque = true
-        // button.addTarget(self, action: #selector(handleOahu), for: .touchUpInside)
         let image = UIImage(named:IslandAssets.tourist.description())
         button.setBackgroundImage(image, for: .normal)
         return button
@@ -64,7 +60,6 @@ class Navigator {
         var button = UIButton()
         button.tag = IslandAssets.food.rawValue
         button.isOpaque = true
-        // button.addTarget(self, action: #selector(handleOahu), for: .touchUpInside)
         let image = UIImage(named:IslandAssets.food.description())
         button.setBackgroundImage(image, for: .normal)
         return button
@@ -74,59 +69,11 @@ class Navigator {
         var button = UIButton()
         button.isOpaque = true
         button.tag = IslandAssets.airport.rawValue
-        // button.addTarget(self, action: #selector(handleOahu), for: .touchUpInside)
         let image = UIImage(named:"airport")
         button.setBackgroundImage(image, for: .normal)
         return button
     }()
     
-    // ===================================================================================================
-    // MARK: - Driver Functions
-    
-    func setupOverlay(sender: UIViewController) {
-        
-        let overlayView = UIView(frame:CGRect.zero)
-        overlayView.backgroundColor = UIColor.init(white: 0.5, alpha: 0.5)
-        
-        overlayView.tag = 22
-        overlayView.frame = UIScreen.main.bounds
-        
-        if let hostController = sender as? KauaiViewController  {
-            setupNavigatorOverlay(host: hostController)
-            weatherButton.addTarget(self, action: #selector(hostController.weatherReport), for: .touchUpInside)
-            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hostController.handleTapGesture))
-            overlayView.gestureRecognizers = [tapGesture]
-            hostController.backgroundImageView?.addSubview(overlayView)
-            
-        } else if let hostController = sender as? OahuViewController {
-            setupNavigatorOverlay(host: hostController)
-            weatherButton.addTarget(self, action: #selector(hostController.weatherReport), for: .touchUpInside)
-            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hostController.handleTapGesture))
-            overlayView.gestureRecognizers = [tapGesture]
-            hostController.backgroundImageView?.addSubview(overlayView)
-            
-        } else if let hostController = sender as? MolokaiViewController {
-            setupNavigatorOverlay(host: hostController)
-            weatherButton.addTarget(self, action: #selector(hostController.weatherReport), for: .touchUpInside)
-            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hostController.handleTapGesture))
-            overlayView.gestureRecognizers = [tapGesture]
-            hostController.backgroundImageView?.addSubview(overlayView)
-            
-        } else if let hostController = sender as? MauiViewController {
-            setupNavigatorOverlay(host: hostController)
-            weatherButton.addTarget(self, action: #selector(hostController.weatherReport), for: .touchUpInside)
-            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hostController.handleTapGesture))
-            overlayView.gestureRecognizers = [tapGesture]
-            hostController.backgroundImageView?.addSubview(overlayView)
-            
-        } else if let hostController = sender as? HawaiiViewController {
-            setupNavigatorOverlay(host: hostController)
-            weatherButton.addTarget(self, action: #selector(hostController.weatherReport), for: .touchUpInside)
-            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hostController.handleTapGesture))
-            overlayView.gestureRecognizers = [tapGesture]
-            hostController.backgroundImageView?.addSubview(overlayView)
-        }
-    }
     
     // -----------------------------------------------------------------------------------------------------
     
@@ -276,4 +223,56 @@ class Navigator {
         
     }
     
+    // ===================================================================================================
+    // MARK: - Driver Functions
+    
+    func setupOverlay(sender: UIViewController) {
+        
+        let overlayView = UIView(frame:CGRect.zero)
+        overlayView.backgroundColor = UIColor.init(white: 0.5, alpha: 0.5)
+        
+        overlayView.tag = 22
+        overlayView.frame = UIScreen.main.bounds
+        
+        if let hostController = sender as? KauaiViewController  {
+            setupNavigatorOverlay(host: hostController)
+            weatherButton.addTarget(self, action: #selector(hostController.weatherReport), for: .touchUpInside)
+            surfButton.addTarget(self, action: #selector(hostController.surfReport), for: .touchUpInside)
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hostController.handleTapGesture))
+            overlayView.gestureRecognizers = [tapGesture]
+            hostController.backgroundImageView?.addSubview(overlayView)
+            
+        } else if let hostController = sender as? OahuViewController {
+            setupNavigatorOverlay(host: hostController)
+            weatherButton.addTarget(self, action: #selector(hostController.weatherReport), for: .touchUpInside)
+            surfButton.addTarget(self, action: #selector(hostController.surfReport), for: .touchUpInside)
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hostController.handleTapGesture))
+            overlayView.gestureRecognizers = [tapGesture]
+            hostController.backgroundImageView?.addSubview(overlayView)
+            
+        } else if let hostController = sender as? MolokaiViewController {
+            setupNavigatorOverlay(host: hostController)
+            weatherButton.addTarget(self, action: #selector(hostController.weatherReport), for: .touchUpInside)
+            surfButton.addTarget(self, action: #selector(hostController.surfReport), for: .touchUpInside)
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hostController.handleTapGesture))
+            overlayView.gestureRecognizers = [tapGesture]
+            hostController.backgroundImageView?.addSubview(overlayView)
+            
+        } else if let hostController = sender as? MauiViewController {
+            setupNavigatorOverlay(host: hostController)
+            weatherButton.addTarget(self, action: #selector(hostController.weatherReport), for: .touchUpInside)
+            surfButton.addTarget(self, action: #selector(hostController.surfReport), for: .touchUpInside)
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hostController.handleTapGesture))
+            overlayView.gestureRecognizers = [tapGesture]
+            hostController.backgroundImageView?.addSubview(overlayView)
+            
+        } else if let hostController = sender as? HawaiiViewController {
+            setupNavigatorOverlay(host: hostController)
+            weatherButton.addTarget(self, action: #selector(hostController.weatherReport), for: .touchUpInside)
+            surfButton.addTarget(self, action: #selector(hostController.surfReport), for: .touchUpInside)
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hostController.handleTapGesture))
+            overlayView.gestureRecognizers = [tapGesture]
+            hostController.backgroundImageView?.addSubview(overlayView)
+        }
+    }
 }

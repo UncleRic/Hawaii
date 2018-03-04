@@ -15,7 +15,7 @@ protocol BackgroundDisplay {
 
 @objc protocol NavigationReport {
     @objc func weatherReport()
-//    func surfReport()
+    @objc func surfReport()
 //    func lodgingReport()
 //    func touristReport()
 }
@@ -387,14 +387,6 @@ class MainViewController: UIViewController {
                 })
             }
         }
-    }
-    
-    // -----------------------------------------------------------------------------------------------------
-    
-    @IBAction func weatherAction() {
-//        WeatherReport.getWeatherData(sender: self) {weatherData in
-//            print("Do Something")
-//        }
     }
     
 }

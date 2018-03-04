@@ -21,6 +21,7 @@
 		1895DF8D2043699500C85493 /* KauaiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1895DF8C2043699500C85493 /* KauaiViewController.swift */; };
 		1895DF8F204369B700C85493 /* MolokaiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1895DF8E204369B700C85493 /* MolokaiViewController.swift */; };
 		18EF25D7204B33A900E50162 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 18EF25D6204B33A900E50162 /* README.md */; };
+		18F7D9DE204C955600F58D80 /* WebKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F7D9DD204C955600F58D80 /* WebKit.swift */; };
 		18FD5DCD2047CC140044E9FD /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FD5DCC2047CC140044E9FD /* Navigator.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		1895DF8C2043699500C85493 /* KauaiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KauaiViewController.swift; sourceTree = "<group>"; };
 		1895DF8E204369B700C85493 /* MolokaiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MolokaiViewController.swift; sourceTree = "<group>"; };
 		18EF25D6204B33A900E50162 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		18F7D9DD204C955600F58D80 /* WebKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebKit.swift; sourceTree = "<group>"; };
 		18FD5DCC2047CC140044E9FD /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,6 +77,7 @@
 		183708292041FC8A00C6C833 /* Hawaii */ = {
 			isa = PBXGroup;
 			children = (
+				18F7D9DD204C955600F58D80 /* WebKit.swift */,
 				1837082A2041FC8A00C6C833 /* AppDelegate.swift */,
 				18FD5DCC2047CC140044E9FD /* Navigator.swift */,
 				1837082C2041FC8A00C6C833 /* MainViewController.swift */,
@@ -191,6 +194,7 @@
 				1837082B2041FC8A00C6C833 /* AppDelegate.swift in Sources */,
 				1895DF882043695200C85493 /* MauiViewController.swift in Sources */,
 				1895DF83204222D600C85493 /* UI.swift in Sources */,
+				18F7D9DE204C955600F58D80 /* WebKit.swift in Sources */,
 				1895DF7F204206C100C85493 /* Extensions.swift in Sources */,
 				1895DF8A2043696600C85493 /* OahuViewController.swift in Sources */,
 			);
