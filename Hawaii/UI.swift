@@ -15,7 +15,22 @@ let papyrusFont = "Papyrus"
 extension MainViewController {
     
     func setupToolBar() {
+        
+        let toolbarWidth:CGFloat = UIScreen.main.bounds.size.width/2
+        toolBarContainerView.anchor(top: nil,
+                                    bottom: self.view.safeAreaLayoutGuide.bottomAnchor,
+                                    left: nil,
+                                    right: self.view.safeAreaLayoutGuide.rightAnchor,
+                                    centerYAnchor: nil,
+                                    centerXAnchor: nil,
+                                    paddingTop: 0,
+                                    paddingLeft: 0,
+                                    paddingBottom: 0,
+                                    paddingRight: 0, width: toolbarWidth, height: 44)
+        
+        
         let infoButton = UIButton(type: .infoLight)
+        
         infoButton.addTarget(self, action: #selector(infoButtonHandler), for: .touchUpInside)
         toolBarContainerView.addSubview(infoButton)
         infoButton.anchor(top: nil,
@@ -29,6 +44,6 @@ extension MainViewController {
                           paddingBottom: 0,
                           paddingRight: -20, width: 32, height: 32)
     }
-    
 }
+
 

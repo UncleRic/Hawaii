@@ -23,27 +23,21 @@
                             <imageView userInteractionEnabled="NO" tag="200" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GirlViewingCoast" translatesAutoresizingMaskIntoConstraints="NO" id="KJj-Re-TSJ" userLabel="PortraitBackground Image View">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
-                            <view tag="10" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y5H-84-tS5" userLabel="ToolContainerView">
+                            <view tag="10" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y5H-84-tS5" userLabel="ToolContainerView">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="ph7-jL-nyK"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.32549019610000002" green="0.45882352939999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Y5H-84-tS5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="HvS-Ws-PdH"/>
                             <constraint firstItem="ayw-Y3-3ej" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Lyr-AS-rM1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ayw-Y3-3ej" secondAttribute="trailing" id="M0c-F3-cYQ"/>
                             <constraint firstItem="ayw-Y3-3ej" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="N9H-gU-Yst"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KJj-Re-TSJ" secondAttribute="trailing" id="POV-FP-zpr"/>
                             <constraint firstItem="KJj-Re-TSJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ZHY-GV-BeM"/>
                             <constraint firstItem="KJj-Re-TSJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bB9-yY-lYb"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Y5H-84-tS5" secondAttribute="trailing" id="eS9-rt-I3W"/>
                             <constraint firstAttribute="bottom" secondItem="KJj-Re-TSJ" secondAttribute="bottom" id="pzD-wj-rG7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ayw-Y3-3ej" secondAttribute="bottom" id="tHG-AT-Scw"/>
-                            <constraint firstAttribute="bottom" secondItem="Y5H-84-tS5" secondAttribute="bottom" id="tek-R6-qzo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
