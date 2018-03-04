@@ -18,14 +18,13 @@ class KauaiViewController: UIViewController, BackgroundDisplay {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
         self.view.gestureRecognizers = [tapGesture]
         setupBackground()
+        setupToolBar()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         if UIDevice.current.orientation.isLandscape {
-            if let containerView = self.view.viewWithTag(IslandAssets.assetsContainerView.rawValue) {
-                containerView.removeFromSuperview()
-            }
+            removeVestigialViews()
             backgroundImageView?.image = landscapeBackgroundImage
         } else {
             backgroundImageView?.image = portraitBackgroundImage
@@ -55,6 +54,21 @@ class KauaiViewController: UIViewController, BackgroundDisplay {
     }
     
     // -----------------------------------------------------------------------------------------------------
+    // MARK: - Private Functions
+    
+    fileprivate func removeVestigialViews() {
+        if let containerView = self.view.viewWithTag(IslandAssets.assetsContainerView.rawValue) {
+            containerView.removeFromSuperview()
+        }
+        if let webView = self.view.viewWithTag(IslandAssets.webView.rawValue) {
+            webView.removeFromSuperview()
+        }
+        if let overlay = self.view.viewWithTag(IslandAssets.overlayView.rawValue) {
+            overlay.removeFromSuperview()
+        }
+    }
+    
+    // -----------------------------------------------------------------------------------------------------
     // MARK: - Gesture Handler
     
     @objc func handleTapGesture(recognizer: UITapGestureRecognizer) {
@@ -81,5 +95,10 @@ class KauaiViewController: UIViewController, BackgroundDisplay {
     @objc func surfReport() {
         Navigator().removeNavigatorOverlay(sender: self)
         WebKit.setupWebView(sender: self)
+    }
+    
+    @objc func reportMenu() {
+        WebKit.removeWebView(sender: self)
+        Navigator().setupOverlay(sender: self)
     }
 }

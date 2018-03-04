@@ -27,9 +27,7 @@ class HawaiiViewController: UIViewController, BackgroundDisplay, NavigationRepor
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         if UIDevice.current.orientation.isLandscape {
-            if let containerView = self.view.viewWithTag(IslandAssets.assetsContainerView.rawValue) {
-                containerView.removeFromSuperview()
-            }
+            removeVestigialViews()
             backgroundImageView?.image = landscapeBackgroundImage
         } else {
             backgroundImageView?.image = portraitBackgroundImage
@@ -58,6 +56,21 @@ class HawaiiViewController: UIViewController, BackgroundDisplay, NavigationRepor
                                     paddingLeft: 0,
                                     paddingBottom: 10,
                                     paddingRight: 0, width: 0, height: 0)
+    }
+    
+    // -----------------------------------------------------------------------------------------------------
+    // MARK: - Private Functions
+    
+    fileprivate func removeVestigialViews() {
+        if let containerView = self.view.viewWithTag(IslandAssets.assetsContainerView.rawValue) {
+            containerView.removeFromSuperview()
+        }
+        if let webView = self.view.viewWithTag(IslandAssets.webView.rawValue) {
+            webView.removeFromSuperview()
+        }
+        if let overlay = self.view.viewWithTag(IslandAssets.overlayView.rawValue) {
+            overlay.removeFromSuperview()
+        }
     }
     
     // -----------------------------------------------------------------------------------------------------
@@ -90,8 +103,8 @@ class HawaiiViewController: UIViewController, BackgroundDisplay, NavigationRepor
     }
     
     @objc func reportMenu() {
-        print("Greetings from Hawaii!")
+         WebKit.removeWebView(sender: self)
+         Navigator().setupOverlay(sender: self)
     }
-    
     
 }

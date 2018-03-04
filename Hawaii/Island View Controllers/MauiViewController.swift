@@ -19,18 +19,20 @@ class MauiViewController: UIViewController, BackgroundDisplay {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
         self.view.gestureRecognizers = [tapGesture]
         setupBackground()
+        setupToolBar()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         if UIDevice.current.orientation.isLandscape {
-            if let _ = self.view.viewWithTag(IslandAssets.overlayView.rawValue) {
-                if let overlayView = view.viewWithTag(IslandAssets.overlayView.rawValue),
-                    let islandAssetContainerView = view.viewWithTag(IslandAssets.assetsContainerView.rawValue) {
-                    overlayView.removeFromSuperview()
-                    islandAssetContainerView.removeFromSuperview()
-                }
-            }
+            removeVestigialViews()
+//            if let _ = self.view.viewWithTag(IslandAssets.overlayView.rawValue) {
+//                if let overlayView = view.viewWithTag(IslandAssets.overlayView.rawValue),
+//                    let islandAssetContainerView = view.viewWithTag(IslandAssets.assetsContainerView.rawValue) {
+//                    overlayView.removeFromSuperview()
+//                    islandAssetContainerView.removeFromSuperview()
+//                }
+//            }
         }
     }
     
@@ -41,7 +43,6 @@ class MauiViewController: UIViewController, BackgroundDisplay {
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFill
         view.backgroundColor = UIColor.white
-        
         
         view.addSubview(imageView)
         imageView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
@@ -55,6 +56,21 @@ class MauiViewController: UIViewController, BackgroundDisplay {
                          paddingBottom: 10,
                          paddingRight: 0, width: 0, height: 0)
         
+    }
+    
+    // -----------------------------------------------------------------------------------------------------
+    // MARK: - Private Functions
+    
+    fileprivate func removeVestigialViews() {
+        if let containerView = self.view.viewWithTag(IslandAssets.assetsContainerView.rawValue) {
+            containerView.removeFromSuperview()
+        }
+        if let webView = self.view.viewWithTag(IslandAssets.webView.rawValue) {
+            webView.removeFromSuperview()
+        }
+        if let overlay = self.view.viewWithTag(IslandAssets.overlayView.rawValue) {
+            overlay.removeFromSuperview()
+        }
     }
     
     // -----------------------------------------------------------------------------------------------------
@@ -79,5 +95,10 @@ class MauiViewController: UIViewController, BackgroundDisplay {
     @objc func surfReport() {
         Navigator().removeNavigatorOverlay(sender: self)
         WebKit.setupWebView(sender: self)
+    }
+    
+    @objc func reportMenu() {
+        WebKit.removeWebView(sender: self)
+        Navigator().setupOverlay(sender: self)
     }
 }
