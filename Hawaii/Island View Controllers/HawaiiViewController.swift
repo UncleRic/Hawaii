@@ -21,6 +21,7 @@ class HawaiiViewController: UIViewController, BackgroundDisplay, NavigationRepor
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
         self.view.gestureRecognizers = [tapGesture]
         setupBackground()
+        setupToolBar()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -87,4 +88,10 @@ class HawaiiViewController: UIViewController, BackgroundDisplay, NavigationRepor
         Navigator().removeNavigatorOverlay(sender: self)
         WebKit.setupWebView(sender: self)
     }
+    
+    @objc func reportMenu() {
+        print("Greetings from Hawaii!")
+    }
+    
+    
 }

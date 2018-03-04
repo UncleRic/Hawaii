@@ -70,8 +70,12 @@ enum IslandAssets:Int {
     case surfing
     case lodging
     case food
+    case mainToolbarTag = 10
     case overlayView = 22
     case assetsContainerView = 23
+    case mainInfo = 50
+    case islandMenu = 51
+    case childIslandViewControllerTag = 500
     func description() -> String {
         switch self {
         case .weather:
@@ -100,10 +104,6 @@ class MainViewController: UIViewController {
     @IBOutlet weak var toolBarContainerView: UIView!
     
     var childController:UIViewController?
-    
-    let toolbarContainerViewTag = 10
-    let childIslandViewControllerTag = 500
-    
     
     // MARK: - Island Buttons
     // Kauai
@@ -344,11 +344,11 @@ class MainViewController: UIViewController {
         if let childController = childController {
             
             childController.view.alpha = 0.0
-            childController.view.tag = childIslandViewControllerTag
+            childController.view.tag = IslandAssets.childIslandViewControllerTag.rawValue
             
             // Adding child Island ViewController into Main Container ViewController (self):
             
-            if let targetView = view.viewWithTag(toolbarContainerViewTag) {
+            if let targetView = view.viewWithTag(IslandAssets.mainToolbarTag.rawValue) {
                 self.addChildViewController(childController)
                 view.insertSubview(childController.view, belowSubview: targetView)
                 childController.view.overlay(containerView: view)

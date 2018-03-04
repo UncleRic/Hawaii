@@ -12,11 +12,10 @@ import UIKit
 let palatinoFont = "Palatino"
 let papyrusFont = "Papyrus"
 
+let toolbarWidth:CGFloat = UIScreen.main.bounds.size.width/2
+
 extension MainViewController {
-    
     func setupToolBar() {
-        
-        let toolbarWidth:CGFloat = UIScreen.main.bounds.size.width/2
         toolBarContainerView.anchor(top: nil,
                                     bottom: self.view.safeAreaLayoutGuide.bottomAnchor,
                                     left: nil,
@@ -30,7 +29,7 @@ extension MainViewController {
         
         
         let infoButton = UIButton(type: .infoLight)
-        
+        infoButton.tag = IslandAssets.mainInfo.rawValue
         infoButton.addTarget(self, action: #selector(infoButtonHandler), for: .touchUpInside)
         toolBarContainerView.addSubview(infoButton)
         infoButton.anchor(top: nil,
@@ -43,6 +42,46 @@ extension MainViewController {
                           paddingLeft: 0,
                           paddingBottom: 0,
                           paddingRight: -20, width: 32, height: 32)
+    }
+}
+
+// ===================================================================================================
+
+extension HawaiiViewController {
+    func setupToolBar() {
+        let toolBarContainerView = UIView(frame: CGRect.zero)
+        self.view.addSubview(toolBarContainerView)
+        toolBarContainerView.anchor(top: nil,
+                                    bottom: self.view.safeAreaLayoutGuide.bottomAnchor,
+                                    left: self.view.safeAreaLayoutGuide.leftAnchor,
+                                    right: nil,
+                                    centerYAnchor: nil,
+                                    centerXAnchor: nil,
+                                    paddingTop: 0,
+                                    paddingLeft: 0,
+                                    paddingBottom: 0,
+                                    paddingRight: 0, width: toolbarWidth, height: 44)
+        
+        let menuIcon = UIImage(named: "menuIcon")
+        let menuButton = UIButton(type: .custom)
+        menuButton.tag = IslandAssets.islandMenu.rawValue
+        menuButton.tintColor = UIColor.blue
+        menuButton.setImage(menuIcon, for: .normal)
+        
+        menuButton.addTarget(self, action: #selector(reportMenu), for: .touchUpInside)
+        toolBarContainerView.addSubview(menuButton)
+        
+        menuButton.anchor(top: nil,
+                          bottom: nil,
+                          left: toolBarContainerView.safeAreaLayoutGuide.leftAnchor,
+                          right: nil,
+                          centerYAnchor: toolBarContainerView.centerYAnchor,
+                          centerXAnchor: nil,
+                          paddingTop: 0,
+                          paddingLeft: 20,
+                          paddingBottom: 0,
+                          paddingRight: 0, width: 32, height: 32)
+        
     }
 }
 
