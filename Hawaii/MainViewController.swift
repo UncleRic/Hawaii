@@ -9,7 +9,8 @@
 import UIKit
 
 protocol BackgroundDisplay {
-    func setupLandscapeBackground()
+//    func viewWillTransition()
+   // func setupLandscapeBackground()
     func handleTapGesture(recognizer: UITapGestureRecognizer) 
 }
 

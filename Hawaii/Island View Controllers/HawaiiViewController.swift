@@ -32,7 +32,6 @@ class HawaiiViewController: UIViewController, BackgroundDisplay, NavigationRepor
             removeVestigialViews()
             backgroundImageView?.removeFromSuperview()
             setupLandscapeBackground()
-            
         } else {
             backgroundScrollView.removeFromSuperview()
             setupPortraitBackground()
@@ -108,9 +107,8 @@ class HawaiiViewController: UIViewController, BackgroundDisplay, NavigationRepor
             scrollViewContentWidth += photo.frame.size.width + space
             backgroundScrollView.contentSize = CGSize(width: scrollViewContentWidth, height: photo.frame.size.height)
         }
-        
-        
     }
+    
     // -----------------------------------------------------------------------------------------------------
     // MARK: - Private Functions
     

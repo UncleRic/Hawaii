@@ -13,12 +13,14 @@ class MauiViewController: UIViewController, BackgroundDisplay {
     var portraitBackgroundImage:UIImage?
     var landscapeBackgroundImage: UIImage?
     var backgroundImageView:UIImageView?
+     var backgroundScrollView = UIScrollView(frame: CGRect.zero)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
         self.view.gestureRecognizers = [tapGesture]
-        setupLandscapeBackground()
+        loadImages()
+        setupPortraitBackground()
         setupToolBar()
     }
     
@@ -26,37 +28,84 @@ class MauiViewController: UIViewController, BackgroundDisplay {
         super.viewWillTransition(to: size, with: coordinator)
         if UIDevice.current.orientation.isLandscape {
             removeVestigialViews()
-//            if let _ = self.view.viewWithTag(IslandAssets.overlayView.rawValue) {
-//                if let overlayView = view.viewWithTag(IslandAssets.overlayView.rawValue),
-//                    let islandAssetContainerView = view.viewWithTag(IslandAssets.assetsContainerView.rawValue) {
-//                    overlayView.removeFromSuperview()
-//                    islandAssetContainerView.removeFromSuperview()
-//                }
-//            }
+            backgroundImageView?.removeFromSuperview()
+            setupLandscapeBackground()
+        } else {
+            backgroundScrollView.removeFromSuperview()
+            setupPortraitBackground()
         }
     }
     
     // -----------------------------------------------------------------------------------------------------
     
-    func setupLandscapeBackground() {
-        let image = UIImage(named:"Maui1")
-        let imageView = UIImageView(image: image)
-        imageView.contentMode = .scaleAspectFill
+    fileprivate func setupPortraitBackground() {
         view.backgroundColor = UIColor.white
-        
-        view.addSubview(imageView)
-        imageView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
-                         bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                         left: view.safeAreaLayoutGuide.leftAnchor,
-                         right: view.safeAreaLayoutGuide.rightAnchor,
-                         centerYAnchor: nil,
-                         centerXAnchor: nil,
-                         paddingTop: 0,
-                         paddingLeft: 0,
-                         paddingBottom: 10,
-                         paddingRight: 0, width: 0, height: 0)
-        
+        if nil == backgroundImageView {
+            backgroundImageView = UIImageView(image:UIImage(named:"MauiMain"))
+            backgroundImageView?.contentMode = .scaleAspectFill
+        }
+        view.addSubview(backgroundImageView!)
+        backgroundImageView?.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+                                    bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                                    left: view.safeAreaLayoutGuide.leftAnchor,
+                                    right: view.safeAreaLayoutGuide.rightAnchor,
+                                    centerYAnchor: nil,
+                                    centerXAnchor: nil,
+                                    paddingTop: 0,
+                                    paddingLeft: 0,
+                                    paddingBottom: 10,
+                                    paddingRight: 0, width: 0, height: 0)
     }
+    
+    // -----------------------------------------------------------------------------------------------------
+    
+    func setupLandscapeBackground() {
+        view.backgroundColor = UIColor.black
+        view.addSubview(backgroundScrollView)
+        backgroundScrollView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+                                    bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                                    left: view.safeAreaLayoutGuide.leftAnchor,
+                                    right: view.safeAreaLayoutGuide.rightAnchor,
+                                    centerYAnchor: nil,
+                                    centerXAnchor: nil,
+                                    paddingTop: 0,
+                                    paddingLeft: 0,
+                                    paddingBottom: 10,
+                                    paddingRight: 0, width: 0, height: 0)
+    }
+    
+    // -----------------------------------------------------------------------------------------------------
+    
+    fileprivate func loadImages() {
+        let imageView1 = UIImageView(image: UIImage(named: "MauiMain"))
+        let imageView2 = UIImageView(image: UIImage(named: "Maui1"))
+        let imageView3 = UIImageView(image: UIImage(named: "Maui2"))
+        let imageView4 = UIImageView(image: UIImage(named: "Maui3"))
+        let imageView5 = UIImageView(image: UIImage(named: "Maui4"))
+        let imageView6 = UIImageView(image: UIImage(named: "Maui5"))
+        let imageView7 = UIImageView(image: UIImage(named: "Maui6"))
+        let imageView8 = UIImageView(image: UIImage(named: "Maui7"))
+        
+        let photos = [imageView1, imageView8, imageView2, imageView3, imageView4, imageView5, imageView6, imageView7]
+        var xPosition:CGFloat = 0.0
+        
+        backgroundScrollView.isPagingEnabled = true
+        
+        var scrollViewContentWidth:CGFloat = 0
+        let space:CGFloat = 10.0
+        
+        for photo in photos {
+            photo.frame.size.width = UIScreen.main.bounds.height
+            photo.frame.size.height = UIScreen.main.bounds.width
+            photo.contentMode = .scaleAspectFill
+            photo.frame.origin.x = xPosition
+            backgroundScrollView.addSubview(photo)
+            xPosition += photo.frame.size.width + space
+            scrollViewContentWidth += photo.frame.size.width + space
+            backgroundScrollView.contentSize = CGSize(width: scrollViewContentWidth, height: photo.frame.size.height)
+        }
+    }
+    
     
     // -----------------------------------------------------------------------------------------------------
     // MARK: - Private Functions
