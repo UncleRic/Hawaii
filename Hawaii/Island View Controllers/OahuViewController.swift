@@ -18,7 +18,7 @@ class OahuViewController: UIViewController, BackgroundDisplay {
         super.viewDidLoad()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
         self.view.gestureRecognizers = [tapGesture]
-        setupBackground()
+        setupLandscapeBackground()
         setupToolBar()
     }
     
@@ -31,7 +31,7 @@ class OahuViewController: UIViewController, BackgroundDisplay {
     
     // -----------------------------------------------------------------------------------------------------
     
-    func setupBackground() {
+    func setupLandscapeBackground() {
         let image = UIImage(named:"Honolulu")
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFill

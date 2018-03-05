@@ -17,9 +17,11 @@ class KauaiViewController: UIViewController, BackgroundDisplay {
         super.viewDidLoad()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
         self.view.gestureRecognizers = [tapGesture]
-        setupBackground()
+        setupLandscapeBackground()
         setupToolBar()
     }
+    
+    // -----------------------------------------------------------------------------------------------------
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
@@ -33,7 +35,7 @@ class KauaiViewController: UIViewController, BackgroundDisplay {
     
     // -----------------------------------------------------------------------------------------------------
     
-    func setupBackground() {
+    func setupLandscapeBackground() {
         view.backgroundColor = UIColor.white
         
         portraitBackgroundImage = UIImage(named:"KauaiSwim")

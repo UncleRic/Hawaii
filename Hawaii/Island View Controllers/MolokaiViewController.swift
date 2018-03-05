@@ -17,7 +17,7 @@ class MolokaiViewController: UIViewController, BackgroundDisplay {
         super.viewDidLoad()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
         self.view.gestureRecognizers = [tapGesture]
-        setupBackground()
+        setupLandscapeBackground()
         setupToolBar()
     }
     
@@ -30,7 +30,7 @@ class MolokaiViewController: UIViewController, BackgroundDisplay {
     
     // -----------------------------------------------------------------------------------------------------
     
-    func setupBackground() {
+    func setupLandscapeBackground() {
         let image = UIImage(named:"Molokai2")
         let imageView = UIImageView(image: image)
         view.backgroundColor = UIColor.white

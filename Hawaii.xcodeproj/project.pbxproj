@@ -12,6 +12,8 @@
 		183708302041FC8A00C6C833 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1837082E2041FC8A00C6C833 /* Main.storyboard */; };
 		183708322041FC8B00C6C833 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 183708312041FC8B00C6C833 /* Assets.xcassets */; };
 		183708352041FC8B00C6C833 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 183708332041FC8B00C6C833 /* LaunchScreen.storyboard */; };
+		187DBAC0204DE4AC009D686C /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187DBABF204DE4AC009D686C /* Photos.swift */; };
+		187DBAC2204DE555009D686C /* BigIsland.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 187DBAC1204DE555009D686C /* BigIsland.xcassets */; };
 		1895DF7D2042069700C85493 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1895DF7C2042069700C85493 /* WeatherService.swift */; };
 		1895DF7F204206C100C85493 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1895DF7E204206C100C85493 /* Extensions.swift */; };
 		1895DF83204222D600C85493 /* UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1895DF82204222D500C85493 /* UI.swift */; };
@@ -33,6 +35,8 @@
 		183708312041FC8B00C6C833 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		183708342041FC8B00C6C833 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		183708362041FC8B00C6C833 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		187DBABF204DE4AC009D686C /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
+		187DBAC1204DE555009D686C /* BigIsland.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = BigIsland.xcassets; sourceTree = "<group>"; };
 		1895DF7C2042069700C85493 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		1895DF7E204206C100C85493 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		1895DF82204222D500C85493 /* UI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UI.swift; sourceTree = "<group>"; };
@@ -61,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				18EF25D6204B33A900E50162 /* README.md */,
+				1837082A2041FC8A00C6C833 /* AppDelegate.swift */,
 				183708292041FC8A00C6C833 /* Hawaii */,
 				183708282041FC8A00C6C833 /* Products */,
 			);
@@ -78,7 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				18F7D9DD204C955600F58D80 /* WebKit.swift */,
-				1837082A2041FC8A00C6C833 /* AppDelegate.swift */,
+				187DBABF204DE4AC009D686C /* Photos.swift */,
 				18FD5DCC2047CC140044E9FD /* Navigator.swift */,
 				1837082C2041FC8A00C6C833 /* MainViewController.swift */,
 				1895DF7C2042069700C85493 /* WeatherService.swift */,
@@ -87,6 +92,7 @@
 				1895DF862043692200C85493 /* Island View Controllers */,
 				18E51BB2204520C900068CEA /* Storyboards */,
 				183708312041FC8B00C6C833 /* Assets.xcassets */,
+				187DBAC1204DE555009D686C /* BigIsland.xcassets */,
 				183708362041FC8B00C6C833 /* Info.plist */,
 			);
 			path = Hawaii;
@@ -173,6 +179,7 @@
 			files = (
 				183708352041FC8B00C6C833 /* LaunchScreen.storyboard in Resources */,
 				183708322041FC8B00C6C833 /* Assets.xcassets in Resources */,
+				187DBAC2204DE555009D686C /* BigIsland.xcassets in Resources */,
 				18EF25D7204B33A900E50162 /* README.md in Resources */,
 				183708302041FC8A00C6C833 /* Main.storyboard in Resources */,
 			);
@@ -192,6 +199,7 @@
 				1895DF7D2042069700C85493 /* WeatherService.swift in Sources */,
 				18FD5DCD2047CC140044E9FD /* Navigator.swift in Sources */,
 				1837082B2041FC8A00C6C833 /* AppDelegate.swift in Sources */,
+				187DBAC0204DE4AC009D686C /* Photos.swift in Sources */,
 				1895DF882043695200C85493 /* MauiViewController.swift in Sources */,
 				1895DF83204222D600C85493 /* UI.swift in Sources */,
 				18F7D9DE204C955600F58D80 /* WebKit.swift in Sources */,

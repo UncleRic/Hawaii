@@ -9,7 +9,7 @@
 import UIKit
 
 protocol BackgroundDisplay {
-    func setupBackground()
+    func setupLandscapeBackground()
     func handleTapGesture(recognizer: UITapGestureRecognizer) 
 }
 
@@ -21,6 +21,7 @@ protocol BackgroundDisplay {
 }
 
 var currentIsland:Islands = .Main
+var photoSource = [UIImage]()
 
 enum Islands:Int {
     case Main = 0

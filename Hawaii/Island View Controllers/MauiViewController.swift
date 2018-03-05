@@ -18,7 +18,7 @@ class MauiViewController: UIViewController, BackgroundDisplay {
         super.viewDidLoad()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
         self.view.gestureRecognizers = [tapGesture]
-        setupBackground()
+        setupLandscapeBackground()
         setupToolBar()
     }
     
@@ -38,7 +38,7 @@ class MauiViewController: UIViewController, BackgroundDisplay {
     
     // -----------------------------------------------------------------------------------------------------
     
-    func setupBackground() {
+    func setupLandscapeBackground() {
         let image = UIImage(named:"Maui1")
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFill
