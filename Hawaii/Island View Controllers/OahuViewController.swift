@@ -13,7 +13,7 @@ class OahuViewController: UIViewController, BackgroundDisplay {
     var portraitBackgroundImage:UIImage?
     var landscapeBackgroundImage: UIImage?
     var backgroundImageView:UIImageView?
-    var backgroundScrollView = UIScrollView(frame: CGRect.zero)
+    var backgroundScrollView = HawaiianScrollView(frame: CGRect.zero)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +37,7 @@ class OahuViewController: UIViewController, BackgroundDisplay {
     }
     
     // -----------------------------------------------------------------------------------------------------
+    // MARK: -
     
     func setupPortraitBackground() {
         view.backgroundColor = UIColor.white

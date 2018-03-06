@@ -253,4 +253,55 @@ extension HawaiiViewController {
 
 // ===================================================================================================
 
+class HawaiianScrollView: UIScrollView {
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+     //   recenterIfNecessary()
+//        // Tile content in visible bounds
+//        let visibleBounds = self.bounds
+//        // Min & Max values of the scroll view:
+//        let minimumVisibleX = visibleBounds.minX
+//        let maximumVisibleX = visibleBounds.maxX
+//
+        
+    }
+    
+    // -----------------------------------------------------------------------------------------------------
+    // Compute when it's time to re-center:
+    
+    func recenterIfNecessary() {
+        let photos = self.subviews
+        let currentOffset: CGPoint = self.contentOffset
+        let contentWidth: CGFloat = self.contentSize.width
+        // Calculate what the content offset that would be perfectly centered
+        // in the middle our our content would be.
+        // ...where the left content is the same length as the right content (horz scrolling):
+        let centerOffsetX: CGFloat = (contentWidth - self.bounds.size.width/2.0)
+        
+        // Where we are now: currentOffset.x vs
+        // Where we want to be: centerOffsetX
+        let distanceFromCenter: CGFloat = fabs(currentOffset.x - centerOffsetX)
+        
+        if (distanceFromCenter > (contentWidth / 4.0)) {
+            self.contentOffset = CGPoint(x: centerOffsetX, y: currentOffset.y)
+            photos.forEach { (photo) in
+                var center = photo.center
+                center.x += (centerOffsetX - currentOffset.x)
+                photo.center = center
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
 
