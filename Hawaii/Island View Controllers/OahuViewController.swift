@@ -119,7 +119,6 @@ class OahuViewController: UIViewController, BackgroundDisplay {
         for photo in photos {
             photo.frame.size.width = UIScreen.main.bounds.height
             photo.frame.size.height = UIScreen.main.bounds.width
-            //photo.center = self.view.center
             photo.contentMode = .scaleAspectFit
             photo.frame.origin.x = xPosition
             backgroundScrollView.addSubview(photo)
