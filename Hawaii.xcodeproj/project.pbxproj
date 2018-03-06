@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1823BB58204F40BE003DB79C /* Molokai.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1823BB57204F40BE003DB79C /* Molokai.xcassets */; };
 		1837082B2041FC8A00C6C833 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1837082A2041FC8A00C6C833 /* AppDelegate.swift */; };
 		1837082D2041FC8A00C6C833 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1837082C2041FC8A00C6C833 /* MainViewController.swift */; };
 		183708302041FC8A00C6C833 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1837082E2041FC8A00C6C833 /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1823BB57204F40BE003DB79C /* Molokai.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Molokai.xcassets; sourceTree = "<group>"; };
 		183708272041FC8A00C6C833 /* Hawaii.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hawaii.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1837082A2041FC8A00C6C833 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1837082C2041FC8A00C6C833 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				18843C7F204E09FF000A9F16 /* Oahu.xcassets */,
 				18843C7B204E02C0000A9F16 /* Kauai.xcassets */,
 				18843C7D204E02DD000A9F16 /* Maui.xcassets */,
+				1823BB57204F40BE003DB79C /* Molokai.xcassets */,
 				187DBAC1204DE555009D686C /* BigIsland.xcassets */,
 				183708362041FC8B00C6C833 /* Info.plist */,
 			);
@@ -186,6 +189,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1823BB58204F40BE003DB79C /* Molokai.xcassets in Resources */,
 				18843C7E204E02DD000A9F16 /* Maui.xcassets in Resources */,
 				183708352041FC8B00C6C833 /* LaunchScreen.storyboard in Resources */,
 				18843C7C204E02C0000A9F16 /* Kauai.xcassets in Resources */,
