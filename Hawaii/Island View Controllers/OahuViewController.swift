@@ -110,12 +110,10 @@ class OahuViewController: UIViewController, BackgroundDisplay {
         let imageView17 = UIImageView(image: UIImage(named: "Oahu17"))
         
         let photos = [imageView9, imageView11, imageView2, imageView4, imageView6, imageView7, imageView10,  imageView13, imageView17, imageView1, imageView3, imageView5, imageView8, imageView12, imageView16, imageView14, imageView15]
+    
         var xPosition:CGFloat = 0.0
-        
         backgroundScrollView.isPagingEnabled = true
-        
         var scrollViewContentWidth:CGFloat = 0
-        let space:CGFloat = 10.0
         
         for photo in photos {
             photo.frame.size.width = UIScreen.main.bounds.height
@@ -124,8 +122,8 @@ class OahuViewController: UIViewController, BackgroundDisplay {
             photo.contentMode = .scaleAspectFit
             photo.frame.origin.x = xPosition
             backgroundScrollView.addSubview(photo)
-            xPosition += photo.frame.size.width + space
-            scrollViewContentWidth += photo.frame.size.width + space
+            xPosition += photo.frame.size.width
+            scrollViewContentWidth += photo.frame.size.width
             backgroundScrollView.contentSize = CGSize(width: scrollViewContentWidth, height: photo.frame.size.height)
         }
     }
