@@ -138,7 +138,6 @@ class MolokaiViewController: UIViewController, BackgroundDisplay, NavigationRepo
     // MARK: - Navigation
     
     @objc func weatherReport() {
-        Navigator().removeNavigatorOverlay(sender: self)
         WeatherService().displayWeatherReport(sender: self)
     }
     

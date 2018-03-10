@@ -52,9 +52,6 @@ struct WeatherData {
 // MARK: -
 
 class WeatherService {
-    
-    var sender: UIViewController?
-    
     // MARK: - Weather-Report Display
     
     let titleLabel:UILabel = {
@@ -396,7 +393,7 @@ class WeatherService {
     
     // ===================================================================================================
     
-    private func getWeatherData(completion:@escaping (WeatherData?)->Void)  {
+    private func getWeatherData(sender: UIViewController, completion:@escaping (WeatherData?)->Void)  {
         // Hawaii ID = '5856194'
         // Units: Imperial
         let weatherURIString = "https://api.openweathermap.org/data/2.5/weather?id=5856194&APPID=44d0f6b3ed7092adb89091cbed5372b4&units=imperial"
@@ -409,7 +406,7 @@ class WeatherService {
                         let controller = UIAlertController(title: "No Wi-Fi", message: "Wi-Fi needs to be restored before continuing.", preferredStyle: .alert)
                         let myAlertAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
                         controller.addAction(myAlertAction)
-                        self.sender?.present(controller, animated:true, completion:nil)
+                        sender.present(controller, animated:true, completion:nil)
                     } else if let data = data {
                         if let disseminatedJSON = self.disseminateJSON(data: data) {
                             completion(self.setupDataCallback(source: disseminatedJSON))
@@ -426,8 +423,9 @@ class WeatherService {
     // ===================================================================================================
     
     func displayWeatherReport(sender: UIViewController) {
-        self.sender = sender
+    
         if let weatherData = weatherData {
+            Navigator().removeNavigatorOverlay(sender: sender)
             setupWeatherReport(sender: sender)
             self.weatherDescLabel.text = weatherData.description
             let currentTemp = weatherData.currentTemp; let minTemp = weatherData.minTemp; let maxTemp = weatherData.maxTemp
@@ -439,14 +437,17 @@ class WeatherService {
             self.sunRiseLabel.text = weatherData.sunrise
             self.sunSetLabel.text = weatherData.sunset
         } else {
-            getWeatherData() {weatherData in
-                self.weatherDescLabel.text = weatherData?.description
-                self.temperatureLabel.text = "Currently: \(weatherData?.currentTemp); low: \(weatherData?.minTemp), high: \(weatherData?.maxTemp)"
-                self.humidityLabel.text = weatherData?.humidity
-                self.barometricLabel.text = weatherData?.barometer
-                self.windSpeedAndDirectionLabel.text = weatherData?.windSpeedAndDirection
-                self.sunRiseLabel.text = weatherData?.sunrise
-                self.sunSetLabel.text = weatherData?.sunset
+            getWeatherData(sender: sender) {weatherData in
+                if let weatherData = weatherData {
+                    Navigator().removeNavigatorOverlay(sender: sender)
+                    self.weatherDescLabel.text = weatherData.description
+                    self.temperatureLabel.text = "Currently: \(weatherData.currentTemp); low: \(weatherData.minTemp), high: \(weatherData.maxTemp)"
+                    self.humidityLabel.text = weatherData.humidity
+                    self.barometricLabel.text = weatherData.barometer
+                    self.windSpeedAndDirectionLabel.text = weatherData.windSpeedAndDirection
+                    self.sunRiseLabel.text = weatherData.sunrise
+                    self.sunSetLabel.text = weatherData.sunset
+                }
             }
         }
     }
