@@ -154,8 +154,7 @@ class HawaiiViewController: UIViewController, BackgroundDisplay, NavigationRepor
     }
     
     @objc func reportMenu() {
-        WebKit.removeWebView(sender: self)
+        removeVestigialViews()
         Navigator().setupOverlay(sender: self)
     }
-    
 }

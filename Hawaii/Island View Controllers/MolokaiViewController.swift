@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MolokaiViewController: UIViewController, BackgroundDisplay {
+class MolokaiViewController: UIViewController, BackgroundDisplay, NavigationReport {
     var portraitBackgroundImage:UIImage?
     var landscapeBackgroundImage: UIImage?
     var backgroundImageView: UIImageView?
@@ -132,7 +132,6 @@ class MolokaiViewController: UIViewController, BackgroundDisplay {
             // Display Navigator:
             Navigator().setupOverlay(sender: self)
         }
-        
     }
     
     // -----------------------------------------------------------------------------------------------------
@@ -149,7 +148,7 @@ class MolokaiViewController: UIViewController, BackgroundDisplay {
     }
     
     @objc func reportMenu() {
-        WebKit.removeWebView(sender: self)
+        removeVestigialViews()
         Navigator().setupOverlay(sender: self)
     }
 }

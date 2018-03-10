@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OahuViewController: UIViewController, BackgroundDisplay {
+class OahuViewController: UIViewController, BackgroundDisplay, NavigationReport {
     
     var portraitBackgroundImage:UIImage?
     var landscapeBackgroundImage: UIImage?
@@ -154,10 +154,7 @@ class OahuViewController: UIViewController, BackgroundDisplay {
     }
     
     @objc func reportMenu() {
-        WebKit.removeWebView(sender: self)
+        removeVestigialViews()
         Navigator().setupOverlay(sender: self)
     }
-    
-    
-    
 }

@@ -432,18 +432,7 @@ class WeatherService {
             self.sunSetLabel.text = weatherData.sunset
             return
         }
-        getWeatherData() {weatherData in
-            self.weatherDescLabel.text = weatherData?.description
-            if let currentTemp = weatherData?.currentTemp, let minTemp = weatherData?.minTemp, let maxTemp = weatherData?.maxTemp {
-                self.temperatureLabel.text = "Currently: \(currentTemp); low: \(minTemp), high: \(maxTemp)"
-            }
-            self.humidityLabel.text = weatherData?.humidity
-            self.barometricLabel.text = weatherData?.barometer
-            self.windSpeedAndDirectionLabel.text = weatherData?.windSpeedAndDirection
-            self.sunRiseLabel.text = weatherData?.sunrise
-            self.sunSetLabel.text = weatherData?.sunset
-        }
-        
+      
     }
 }
 

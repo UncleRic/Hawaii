@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 protocol BackgroundDisplay {
 //    func viewWillTransition()
    // func setupLandscapeBackground()
@@ -17,6 +18,7 @@ protocol BackgroundDisplay {
 @objc protocol NavigationReport {
     @objc func weatherReport()
     @objc func surfReport()
+    @objc func reportMenu()
 //    func lodgingReport()
 //    func touristReport()
 }

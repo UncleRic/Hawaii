@@ -8,7 +8,7 @@
 
 import UIKit
 
-class KauaiViewController: UIViewController, BackgroundDisplay {
+class KauaiViewController: UIViewController, BackgroundDisplay, NavigationReport {
     var portraitBackgroundImage:UIImage?
     var landscapeBackgroundImage: UIImage?
     var backgroundImageView:UIImageView?
@@ -100,7 +100,7 @@ class KauaiViewController: UIViewController, BackgroundDisplay {
     }
     
     @objc func reportMenu() {
-        WebKit.removeWebView(sender: self)
+        removeVestigialViews()
         Navigator().setupOverlay(sender: self)
     }
 }

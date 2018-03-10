@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MauiViewController: UIViewController, BackgroundDisplay {
+class MauiViewController: UIViewController, BackgroundDisplay, NavigationReport {
 
     var portraitBackgroundImage:UIImage?
     var landscapeBackgroundImage: UIImage?
@@ -147,7 +147,7 @@ class MauiViewController: UIViewController, BackgroundDisplay {
     }
     
     @objc func reportMenu() {
-        WebKit.removeWebView(sender: self)
+        removeVestigialViews()
         Navigator().setupOverlay(sender: self)
     }
 }
