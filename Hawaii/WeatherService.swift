@@ -48,8 +48,13 @@ struct WeatherData {
     }
 }
 
-class WeatherService {
+// ===================================================================================================
+// MARK: -
 
+class WeatherService {
+    
+    var sender: UIViewController?
+    
     // MARK: - Weather-Report Display
     
     let titleLabel:UILabel = {
@@ -238,18 +243,18 @@ class WeatherService {
             return "\(UTC) \(desc) Local time <--to do"
         }
         
-       
+        
         weatherData =  WeatherData (name:source.name,
-                            description:source.weather[0].description,
-                            currentTemp:tempFahrenheit(source.main.temp),
-                            minTemp:tempFahrenheit(source.main.temp_min),
-                            maxTemp:tempFahrenheit(source.main.temp_max),
-                            humidity:humidity(hum: source.main.humidity),
-                            windSpeedAndDirection:windSpeedAndDirection(speed: source.wind.speed, deg: source.wind.deg),
-                            barometer:pressure(source.main.pressure),
-                            visibility:visibility(meters: source.visibility),
-                            sunrise:HNLTime(UTC: source.sys.sunrise, desc: "Sunrise"),
-                            sunset:HNLTime(UTC: source.sys.sunset, desc: "Sunset"))
+                                    description:source.weather[0].description,
+                                    currentTemp:tempFahrenheit(source.main.temp),
+                                    minTemp:tempFahrenheit(source.main.temp_min),
+                                    maxTemp:tempFahrenheit(source.main.temp_max),
+                                    humidity:humidity(hum: source.main.humidity),
+                                    windSpeedAndDirection:windSpeedAndDirection(speed: source.wind.speed, deg: source.wind.deg),
+                                    barometer:pressure(source.main.pressure),
+                                    visibility:visibility(meters: source.visibility),
+                                    sunrise:HNLTime(UTC: source.sys.sunrise, desc: "Sunrise"),
+                                    sunset:HNLTime(UTC: source.sys.sunset, desc: "Sunset"))
         
         return weatherData
         
@@ -400,15 +405,17 @@ class WeatherService {
             
             URLSession.shared.dataTask(with:url) { (data, response, error) in
                 DispatchQueue.main.async(execute: {
-                    if let error = error {
-                        print(error)
+                    if let _ = error {
+                        let controller = UIAlertController(title: "No Wi-Fi", message: "Wi-Fi needs to be restored before continuing.", preferredStyle: .alert)
+                        let myAlertAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+                        controller.addAction(myAlertAction)
+                        self.sender?.present(controller, animated:true, completion:nil)
                     } else if let data = data {
                         if let disseminatedJSON = self.disseminateJSON(data: data) {
                             completion(self.setupDataCallback(source: disseminatedJSON))
                         } else {
                             completion(nil)
                         }
-                        
                     }
                 })
                 
@@ -419,23 +426,31 @@ class WeatherService {
     // ===================================================================================================
     
     func displayWeatherReport(sender: UIViewController) {
-        setupWeatherReport(sender: sender)
+        self.sender = sender
         if let weatherData = weatherData {
+            setupWeatherReport(sender: sender)
             self.weatherDescLabel.text = weatherData.description
             let currentTemp = weatherData.currentTemp; let minTemp = weatherData.minTemp; let maxTemp = weatherData.maxTemp
-                self.temperatureLabel.text = "Currently: \(currentTemp); low: \(minTemp), high: \(maxTemp)"
+            self.temperatureLabel.text = "Currently: \(currentTemp); low: \(minTemp), high: \(maxTemp)"
             
             self.humidityLabel.text = weatherData.humidity
             self.barometricLabel.text = weatherData.barometer
             self.windSpeedAndDirectionLabel.text = weatherData.windSpeedAndDirection
             self.sunRiseLabel.text = weatherData.sunrise
             self.sunSetLabel.text = weatherData.sunset
-            return
+        } else {
+            getWeatherData() {weatherData in
+                self.weatherDescLabel.text = weatherData?.description
+                self.temperatureLabel.text = "Currently: \(weatherData?.currentTemp); low: \(weatherData?.minTemp), high: \(weatherData?.maxTemp)"
+                self.humidityLabel.text = weatherData?.humidity
+                self.barometricLabel.text = weatherData?.barometer
+                self.windSpeedAndDirectionLabel.text = weatherData?.windSpeedAndDirection
+                self.sunRiseLabel.text = weatherData?.sunrise
+                self.sunSetLabel.text = weatherData?.sunset
+            }
         }
-      
     }
 }
-
 
 
 
