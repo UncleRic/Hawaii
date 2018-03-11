@@ -142,7 +142,7 @@ class MauiViewController: UIViewController, BackgroundDisplay, NavigationReport 
     
     @objc func surfReport() {
         Navigator().removeNavigatorOverlay(sender: self)
-        WebKit.setupWebView(sender: self)
+        WebKit.setupWebView(sender: self, forBeach: Islands.Maui)
     }
     
     @objc func reportMenu() {

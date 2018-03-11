@@ -148,7 +148,7 @@ class HawaiiViewController: UIViewController, BackgroundDisplay, NavigationRepor
     }
     
     @objc func surfReport() {
-        WebKit.setupWebView(sender: self)
+        WebKit.setupWebView(sender: self, forBeach: Islands.Hawaii)
     }
     
     @objc func reportMenu() {

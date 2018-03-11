@@ -49,6 +49,24 @@ enum Islands:Int {
             return "none"
         }
     }
+    
+    func beaches() -> URL {
+        switch self {
+        case .Kauai:
+            return URL(string: "https://www.gohawaii.com/islands/kauai/things-to-do/beaches")!
+        case .Oahu:
+             return URL(string: "https://www.gohawaii.com/islands/oahu/things-to-do/beaches")!
+        case .Molokai:
+            return URL(string: "https://www.gohawaii.com/islands/molokai/things-to-do/beaches")!
+        case .Maui:
+            return URL(string: "https://www.gohawaii.com/islands/maui/things-to-do/beaches")!
+        case .Hawaii:
+           return URL(string: "hhttps://www.gohawaii.com/islands/hawaii-big-island")!
+        default:
+             return URL(string: "https://apple.com")!
+        }
+    }
+    
     func yPosition() -> CGFloat {
         switch self {
         case .Kauai:

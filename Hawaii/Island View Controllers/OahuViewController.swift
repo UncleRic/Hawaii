@@ -149,7 +149,7 @@ class OahuViewController: UIViewController, BackgroundDisplay, NavigationReport 
     
     @objc func surfReport() {
         Navigator().removeNavigatorOverlay(sender: self)
-        WebKit.setupWebView(sender: self)
+        WebKit.setupWebView(sender: self, forBeach: Islands.Oahu)
     }
     
     @objc func reportMenu() {

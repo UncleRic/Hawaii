@@ -11,10 +11,10 @@ import WebKit
 
 
 class WebKit {
-    class public func setupWebView(sender: UIViewController) {
-        let webView = WKWebView(frame: UIScreen.main.bounds)
+    class public func setupWebView(sender: UIViewController, forBeach: Islands) {
+        let webView = WKWebView(frame: UIScreen.main.bounds) 
         webView.tag = IslandAssets.webView.rawValue
-        let url = URL(string: "https://www.tripsavvy.com/best-maui-beaches-1533312")!
+        let url = forBeach.beaches()
         
         webView.load(URLRequest(url:url))
         
@@ -40,6 +40,8 @@ class WebKit {
             }
         }
     }
+    
+    // ===================================================================================================
     
     class public func removeWebView(sender: UIViewController) {
         if let hostViewController = sender as? KauaiViewController {

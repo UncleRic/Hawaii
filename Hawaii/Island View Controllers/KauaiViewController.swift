@@ -95,7 +95,7 @@ class KauaiViewController: UIViewController, BackgroundDisplay, NavigationReport
     
     @objc func surfReport() {
         Navigator().removeNavigatorOverlay(sender: self)
-        WebKit.setupWebView(sender: self)
+         WebKit.setupWebView(sender: self, forBeach: Islands.Kauai)
     }
     
     @objc func reportMenu() {
