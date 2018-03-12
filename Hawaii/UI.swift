@@ -29,7 +29,7 @@ extension MainViewController {
         
         
         let infoButton = UIButton(type: .infoLight)
-        infoButton.tag = IslandAssets.mainInfo.rawValue
+        infoButton.tag = IslandAssets.mainInfoTag.rawValue
         infoButton.addTarget(self, action: #selector(infoButtonHandler), for: .touchUpInside)
         toolBarContainerView.addSubview(infoButton)
         infoButton.anchor(top: nil,
@@ -66,7 +66,7 @@ extension KauaiViewController {
         
         let menuIcon = UIImage(named: "menuIcon")
         let menuButton = UIButton(type: .custom)
-        menuButton.tag = IslandAssets.islandMenu.rawValue
+        menuButton.tag = IslandAssets.islandMenuTag.rawValue
         menuButton.tintColor = UIColor.blue
         menuButton.setImage(menuIcon, for: .normal)
         
@@ -107,7 +107,7 @@ extension OahuViewController {
         
         let menuIcon = UIImage(named: "menuIcon")
         let menuButton = UIButton(type: .custom)
-        menuButton.tag = IslandAssets.islandMenu.rawValue
+        menuButton.tag = IslandAssets.islandMenuTag.rawValue
         menuButton.tintColor = UIColor.blue
         menuButton.setImage(menuIcon, for: .normal)
         
@@ -148,7 +148,7 @@ extension MolokaiViewController {
         
         let menuIcon = UIImage(named: "menuIcon")
         let menuButton = UIButton(type: .custom)
-        menuButton.tag = IslandAssets.islandMenu.rawValue
+        menuButton.tag = IslandAssets.islandMenuTag.rawValue
         menuButton.tintColor = UIColor.blue
         menuButton.setImage(menuIcon, for: .normal)
         
@@ -189,7 +189,7 @@ extension MauiViewController {
         
         let menuIcon = UIImage(named: "menuIcon")
         let menuButton = UIButton(type: .custom)
-        menuButton.tag = IslandAssets.islandMenu.rawValue
+        menuButton.tag = IslandAssets.islandMenuTag.rawValue
         menuButton.tintColor = UIColor.blue
         menuButton.setImage(menuIcon, for: .normal)
         
@@ -230,7 +230,7 @@ extension HawaiiViewController {
         
         let menuIcon = UIImage(named: "menuIcon")
         let menuButton = UIButton(type: .custom)
-        menuButton.tag = IslandAssets.islandMenu.rawValue
+        menuButton.tag = IslandAssets.islandMenuTag.rawValue
         menuButton.tintColor = UIColor.blue
         menuButton.setImage(menuIcon, for: .normal)
         

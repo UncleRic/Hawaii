@@ -94,11 +94,13 @@ enum IslandAssets:Int {
     case food
     case mainToolbarTag = 10
     case islandToolbarTag = 11
-    case overlayView = 22
-    case assetsContainerView = 23
-    case mainInfo = 50
-    case islandMenu = 51
-    case webView = 100
+    case overlayViewTag = 22
+    case assetsContainerViewTag = 23
+    case mainInfoTag = 50
+    case islandMenuTag = 51
+    case backgroundImageViewTag = 100
+    case webViewTag = 101
+    case mapViewTag = 102
     case childIslandViewControllerTag = 500
     func description() -> String {
         switch self {

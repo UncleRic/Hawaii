@@ -80,13 +80,13 @@ class OahuViewController: UIViewController, BackgroundDisplay, NavigationReport 
     // MARK: - Private Functions
     
     fileprivate func removeVestigialViews() {
-        if let containerView = self.view.viewWithTag(IslandAssets.assetsContainerView.rawValue) {
+        if let containerView = self.view.viewWithTag(IslandAssets.assetsContainerViewTag.rawValue) {
             containerView.removeFromSuperview()
         }
-        if let webView = self.view.viewWithTag(IslandAssets.webView.rawValue) {
+        if let webView = self.view.viewWithTag(IslandAssets.webViewTag.rawValue) {
             webView.removeFromSuperview()
         }
-        if let overlay = self.view.viewWithTag(IslandAssets.overlayView.rawValue) {
+        if let overlay = self.view.viewWithTag(IslandAssets.overlayViewTag.rawValue) {
             overlay.removeFromSuperview()
         }
     }
@@ -132,7 +132,7 @@ class OahuViewController: UIViewController, BackgroundDisplay, NavigationReport 
     // MARK: - Gesture Handler
     
     @objc func handleTapGesture(recognizer: UITapGestureRecognizer) {
-        if let containerView = self.view.viewWithTag(IslandAssets.overlayView.rawValue) {
+        if let containerView = self.view.viewWithTag(IslandAssets.overlayViewTag.rawValue) {
             containerView.removeFromSuperview()
         } else if UIDevice.current.orientation.isPortrait {
             Navigator().setupOverlay(sender: self)

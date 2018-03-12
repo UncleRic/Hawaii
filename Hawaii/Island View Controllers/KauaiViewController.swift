@@ -59,13 +59,13 @@ class KauaiViewController: UIViewController, BackgroundDisplay, NavigationReport
     // MARK: - Private Functions
     
     fileprivate func removeVestigialViews() {
-        if let containerView = self.view.viewWithTag(IslandAssets.assetsContainerView.rawValue) {
+        if let containerView = self.view.viewWithTag(IslandAssets.assetsContainerViewTag.rawValue) {
             containerView.removeFromSuperview()
         }
-        if let webView = self.view.viewWithTag(IslandAssets.webView.rawValue) {
+        if let webView = self.view.viewWithTag(IslandAssets.webViewTag.rawValue) {
             webView.removeFromSuperview()
         }
-        if let overlay = self.view.viewWithTag(IslandAssets.overlayView.rawValue) {
+        if let overlay = self.view.viewWithTag(IslandAssets.overlayViewTag.rawValue) {
             overlay.removeFromSuperview()
         }
     }
@@ -74,9 +74,9 @@ class KauaiViewController: UIViewController, BackgroundDisplay, NavigationReport
     // MARK: - Gesture Handler
     
     @objc func handleTapGesture(recognizer: UITapGestureRecognizer) {
-        if let _ = self.view.viewWithTag(IslandAssets.overlayView.rawValue) {
-            if let overlayView = view.viewWithTag(IslandAssets.overlayView.rawValue),
-                let islandAssetContainerView = view.viewWithTag(IslandAssets.assetsContainerView.rawValue) {
+        if let _ = self.view.viewWithTag(IslandAssets.overlayViewTag.rawValue) {
+            if let overlayView = view.viewWithTag(IslandAssets.overlayViewTag.rawValue),
+                let islandAssetContainerView = view.viewWithTag(IslandAssets.assetsContainerViewTag.rawValue) {
                 overlayView.removeFromSuperview()
                 islandAssetContainerView.removeFromSuperview()
             }

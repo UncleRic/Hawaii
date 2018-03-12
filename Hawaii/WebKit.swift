@@ -13,7 +13,7 @@ import WebKit
 class WebKit {
     class public func setupWebView(sender: UIViewController, forBeach: Islands) {
         let webView = WKWebView(frame: UIScreen.main.bounds) 
-        webView.tag = IslandAssets.webView.rawValue
+        webView.tag = IslandAssets.webViewTag.rawValue
         let url = forBeach.beaches()
         
         webView.load(URLRequest(url:url))
@@ -45,23 +45,23 @@ class WebKit {
     
     class public func removeWebView(sender: UIViewController) {
         if let hostViewController = sender as? KauaiViewController {
-            if let webView = hostViewController.view.viewWithTag(IslandAssets.webView.rawValue) {
+            if let webView = hostViewController.view.viewWithTag(IslandAssets.webViewTag.rawValue) {
                 webView.removeFromSuperview()
             }
         } else if let hostViewController = sender as? OahuViewController {
-            if let webView = hostViewController.view.viewWithTag(IslandAssets.webView.rawValue) {
+            if let webView = hostViewController.view.viewWithTag(IslandAssets.webViewTag.rawValue) {
                 webView.removeFromSuperview()
             }
         } else if let hostViewController = sender as? MolokaiViewController {
-            if let webView = hostViewController.view.viewWithTag(IslandAssets.webView.rawValue) {
+            if let webView = hostViewController.view.viewWithTag(IslandAssets.webViewTag.rawValue) {
                 webView.removeFromSuperview()
             }
         } else if let hostViewController = sender as? MauiViewController {
-            if let webView = hostViewController.view.viewWithTag(IslandAssets.webView.rawValue) {
+            if let webView = hostViewController.view.viewWithTag(IslandAssets.webViewTag.rawValue) {
                 webView.removeFromSuperview()
             }
         } else if let hostViewController = sender as? HawaiiViewController {
-            if let webView = hostViewController.view.viewWithTag(IslandAssets.webView.rawValue) {
+            if let webView = hostViewController.view.viewWithTag(IslandAssets.webViewTag.rawValue) {
                 webView.removeFromSuperview()
             }
         }
