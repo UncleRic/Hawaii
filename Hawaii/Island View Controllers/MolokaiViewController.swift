@@ -32,6 +32,7 @@ class MolokaiViewController: UIViewController, BackgroundDisplay, NavigationRepo
         } else {
             backgroundScrollView.removeFromSuperview()
             setupPortraitBackground()
+            setupToolBar()
         }
     }
     
@@ -108,7 +109,7 @@ class MolokaiViewController: UIViewController, BackgroundDisplay, NavigationRepo
         let imageView10 = UIImageView(image: UIImage(named: "Molokai10"))
         let imageView11 = UIImageView(image: UIImage(named: "Molokai11"))
         let imageView12 = UIImageView(image: UIImage(named: "Molokai9"))
-       
+        
         
         let photos = [imageView1, imageView2, imageView3, imageView3a, imageView4, imageView5, imageView6, imageView7, imageView8, imageView9, imageView10, imageView11, imageView12]
         
@@ -133,6 +134,8 @@ class MolokaiViewController: UIViewController, BackgroundDisplay, NavigationRepo
     @objc func handleTapGesture(recognizer: UITapGestureRecognizer) {
         if let containerView = self.view.viewWithTag(IslandAssets.assetsContainerViewTag.rawValue) {
             containerView.removeFromSuperview()
+            let toolBarContainerView = view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)
+            toolBarContainerView?.removeFromSuperview()
         } else if UIDevice.current.orientation.isPortrait {
             // Display Navigator:
             Navigator().setupOverlay(sender: self)
@@ -148,7 +151,7 @@ class MolokaiViewController: UIViewController, BackgroundDisplay, NavigationRepo
     
     @objc func surfReport() {
         Navigator().removeNavigatorOverlay(sender: self)
-         WebKit.setupWebView(sender: self, forBeach: Islands.Molokai)
+        WebKit.setupWebView(sender: self, forBeach: Islands.Molokai)
     }
     
     @objc func reportMenu() {

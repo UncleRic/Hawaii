@@ -28,11 +28,14 @@ class MauiViewController: UIViewController, BackgroundDisplay, NavigationReport 
         super.viewWillTransition(to: size, with: coordinator)
         if UIDevice.current.orientation.isLandscape {
             removeVestigialViews()
+            let toolBarContainerView = view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)
+            toolBarContainerView?.removeFromSuperview()
             backgroundImageView?.removeFromSuperview()
             setupLandscapeBackground()
         } else {
             backgroundScrollView.removeFromSuperview()
             setupPortraitBackground()
+            setupToolBar()
         }
     }
     
