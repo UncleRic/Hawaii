@@ -16,7 +16,6 @@
 		184E9E082055EEE500ACEA2B /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184E9E072055EEE500ACEA2B /* Map.swift */; };
 		187DBAC0204DE4AC009D686C /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187DBABF204DE4AC009D686C /* Photos.swift */; };
 		187DBAC2204DE555009D686C /* BigIsland.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 187DBAC1204DE555009D686C /* BigIsland.xcassets */; };
-		18843C7C204E02C0000A9F16 /* Kauai.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18843C7B204E02C0000A9F16 /* Kauai.xcassets */; };
 		18843C7E204E02DD000A9F16 /* Maui.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18843C7D204E02DD000A9F16 /* Maui.xcassets */; };
 		18843C80204E09FF000A9F16 /* Oahu.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18843C7F204E09FF000A9F16 /* Oahu.xcassets */; };
 		18843CB9204E1E53000A9F16 /* Hawaii.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 18843CB8204E1E53000A9F16 /* Hawaii.pdf */; };
@@ -44,7 +43,6 @@
 		184E9E072055EEE500ACEA2B /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		187DBABF204DE4AC009D686C /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 		187DBAC1204DE555009D686C /* BigIsland.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = BigIsland.xcassets; sourceTree = "<group>"; };
-		18843C7B204E02C0000A9F16 /* Kauai.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Kauai.xcassets; sourceTree = "<group>"; };
 		18843C7D204E02DD000A9F16 /* Maui.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Maui.xcassets; sourceTree = "<group>"; };
 		18843C7F204E09FF000A9F16 /* Oahu.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Oahu.xcassets; sourceTree = "<group>"; };
 		18843CB8204E1E53000A9F16 /* Hawaii.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Hawaii.pdf; sourceTree = "<group>"; };
@@ -104,7 +102,6 @@
 				18E51BB2204520C900068CEA /* Storyboards */,
 				183708312041FC8B00C6C833 /* Assets.xcassets */,
 				18843C7F204E09FF000A9F16 /* Oahu.xcassets */,
-				18843C7B204E02C0000A9F16 /* Kauai.xcassets */,
 				18843C7D204E02DD000A9F16 /* Maui.xcassets */,
 				1823BB57204F40BE003DB79C /* Molokai.xcassets */,
 				187DBAC1204DE555009D686C /* BigIsland.xcassets */,
@@ -195,7 +192,6 @@
 				1823BB58204F40BE003DB79C /* Molokai.xcassets in Resources */,
 				18843C7E204E02DD000A9F16 /* Maui.xcassets in Resources */,
 				183708352041FC8B00C6C833 /* LaunchScreen.storyboard in Resources */,
-				18843C7C204E02C0000A9F16 /* Kauai.xcassets in Resources */,
 				183708322041FC8B00C6C833 /* Assets.xcassets in Resources */,
 				187DBAC2204DE555009D686C /* BigIsland.xcassets in Resources */,
 				18843CB9204E1E53000A9F16 /* Hawaii.pdf in Resources */,

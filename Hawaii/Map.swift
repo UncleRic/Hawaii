@@ -17,7 +17,7 @@ class Map {
         mapView.tag = IslandAssets.mapViewTag.rawValue
         
         let span = MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
-        let region = MKCoordinateRegion(center: Islands.Hawaii.coord(), span: span)
+        let region = MKCoordinateRegion(center: sender.coord(), span: span)
         
         mapView.region = region
         return mapView

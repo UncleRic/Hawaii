@@ -167,7 +167,7 @@ class HawaiiViewController: UIViewController, BackgroundDisplay, NavigationRepor
         if let mapView = view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
             mapView.removeFromSuperview()
         } else {
-            let mapView = Map.setupMapView(sender: Islands.Kauai)
+            let mapView = Map.setupMapView(sender: Islands.Hawaii)
             view.insertSubview(mapView, belowSubview: view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)!)
             mapView.overlay(containerView: view)
         }
