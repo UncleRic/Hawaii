@@ -78,6 +78,9 @@ class MolokaiViewController: UIViewController, BackgroundDisplay, NavigationRepo
     // MARK: - Private Functions
     
     fileprivate func removeVestigialViews() {
+        if let mapView = self.view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
+            mapView.removeFromSuperview()
+        }
         if let containerView = self.view.viewWithTag(IslandAssets.assetsContainerViewTag.rawValue) {
             containerView.removeFromSuperview()
         }
@@ -88,6 +91,8 @@ class MolokaiViewController: UIViewController, BackgroundDisplay, NavigationRepo
             overlay.removeFromSuperview()
         }
     }
+    
+    // -----------------------------------------------------------------------------------------------------
     
     fileprivate func loadImages() {
         let imageView1 = UIImageView(image: UIImage(named: "Molokai1a"))
@@ -150,4 +155,16 @@ class MolokaiViewController: UIViewController, BackgroundDisplay, NavigationRepo
         removeVestigialViews()
         Navigator().setupOverlay(sender: self)
     }
+    
+    @objc func mapDisplay() {
+        removeVestigialViews()
+        if let mapView = view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
+            mapView.removeFromSuperview()
+        } else {
+            let mapView = Map.setupMapView(sender: Islands.Kauai)
+            view.insertSubview(mapView, belowSubview: view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)!)
+            mapView.overlay(containerView: view)
+        }
+    }
+    
 }

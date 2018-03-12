@@ -113,6 +113,9 @@ class HawaiiViewController: UIViewController, BackgroundDisplay, NavigationRepor
     // MARK: - Private Functions
     
     fileprivate func removeVestigialViews() {
+        if let mapView = self.view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
+            mapView.removeFromSuperview()
+        }
         if let containerView = self.view.viewWithTag(IslandAssets.assetsContainerViewTag.rawValue) {
             containerView.removeFromSuperview()
         }
@@ -154,5 +157,16 @@ class HawaiiViewController: UIViewController, BackgroundDisplay, NavigationRepor
     @objc func reportMenu() {
         removeVestigialViews()
         Navigator().setupOverlay(sender: self)
+    }
+    
+    @objc func mapDisplay() {
+        removeVestigialViews()
+        if let mapView = view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
+            mapView.removeFromSuperview()
+        } else {
+            let mapView = Map.setupMapView(sender: Islands.Kauai)
+            view.insertSubview(mapView, belowSubview: view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)!)
+            mapView.overlay(containerView: view)
+        }
     }
 }

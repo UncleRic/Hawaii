@@ -53,7 +53,7 @@ enum Islands:Int {
     func coord() -> CLLocationCoordinate2D {
         switch self {
         case .Kauai:
-            return CLLocationCoordinate2DMake(19.7297222, -155.09000000000003)
+            return CLLocationCoordinate2DMake(21.0, -165.09)
         case .Oahu:
             return CLLocationCoordinate2DMake(19.7297222, -155.09000000000003)
         case .Molokai:

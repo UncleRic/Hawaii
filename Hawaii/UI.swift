@@ -98,16 +98,15 @@ extension KauaiViewController {
                           paddingRight: 0, width: 32, height: 32)
         
         mapButton.anchor(top: nil,
-                          bottom: nil,
-                          left: toolBarContainerView.safeAreaLayoutGuide.leftAnchor,
-                          right: nil,
-                          centerYAnchor: toolBarContainerView.centerYAnchor,
-                          centerXAnchor: nil,
-                          paddingTop: 0,
-                          paddingLeft: 60,
-                          paddingBottom: 0,
-                          paddingRight: 0, width: 32, height: 32)
-        
+                         bottom: nil,
+                         left: toolBarContainerView.safeAreaLayoutGuide.leftAnchor,
+                         right: nil,
+                         centerYAnchor: toolBarContainerView.centerYAnchor,
+                         centerXAnchor: nil,
+                         paddingTop: 0,
+                         paddingLeft: 70,
+                         paddingBottom: 0,
+                         paddingRight: 0, width: 32, height: 32)
     }
 }
 
@@ -129,14 +128,26 @@ extension OahuViewController {
                                     paddingBottom: 0,
                                     paddingRight: 0, width: toolbarWidth, height: 44)
         
+        // Menu:
         let menuIcon = UIImage(named: "menuIcon")
         let menuButton = UIButton(type: .custom)
         menuButton.tag = IslandAssets.islandMenuTag.rawValue
+        
         menuButton.tintColor = UIColor.blue
         menuButton.setImage(menuIcon, for: .normal)
         
         menuButton.addTarget(self, action: #selector(reportMenu), for: .touchUpInside)
+        
+        // Map:
+        let mapImage = UIImage(named: "pin.png")
+        let mapButton = UIButton(type: .custom)
+        mapButton.tag = IslandAssets.islandMapTag.rawValue
+        
+        mapButton.setImage(mapImage, for: .normal)
+        mapButton.addTarget(self, action: #selector(mapDisplay), for: .touchUpInside)
+        
         toolBarContainerView.addSubview(menuButton)
+        toolBarContainerView.addSubview(mapButton)
         
         menuButton.anchor(top: nil,
                           bottom: nil,
@@ -149,6 +160,16 @@ extension OahuViewController {
                           paddingBottom: 0,
                           paddingRight: 0, width: 32, height: 32)
         
+        mapButton.anchor(top: nil,
+                         bottom: nil,
+                         left: toolBarContainerView.safeAreaLayoutGuide.leftAnchor,
+                         right: nil,
+                         centerYAnchor: toolBarContainerView.centerYAnchor,
+                         centerXAnchor: nil,
+                         paddingTop: 0,
+                         paddingLeft: 70,
+                         paddingBottom: 0,
+                         paddingRight: 0, width: 32, height: 32)
     }
 }
 
@@ -170,14 +191,26 @@ extension MolokaiViewController {
                                     paddingBottom: 0,
                                     paddingRight: 0, width: toolbarWidth, height: 44)
         
+        // Menu:
         let menuIcon = UIImage(named: "menuIcon")
         let menuButton = UIButton(type: .custom)
         menuButton.tag = IslandAssets.islandMenuTag.rawValue
+        
         menuButton.tintColor = UIColor.blue
         menuButton.setImage(menuIcon, for: .normal)
         
         menuButton.addTarget(self, action: #selector(reportMenu), for: .touchUpInside)
+        
+        // Map:
+        let mapImage = UIImage(named: "pin.png")
+        let mapButton = UIButton(type: .custom)
+        mapButton.tag = IslandAssets.islandMapTag.rawValue
+        
+        mapButton.setImage(mapImage, for: .normal)
+        mapButton.addTarget(self, action: #selector(mapDisplay), for: .touchUpInside)
+        
         toolBarContainerView.addSubview(menuButton)
+        toolBarContainerView.addSubview(mapButton)
         
         menuButton.anchor(top: nil,
                           bottom: nil,
@@ -190,6 +223,16 @@ extension MolokaiViewController {
                           paddingBottom: 0,
                           paddingRight: 0, width: 32, height: 32)
         
+        mapButton.anchor(top: nil,
+                         bottom: nil,
+                         left: toolBarContainerView.safeAreaLayoutGuide.leftAnchor,
+                         right: nil,
+                         centerYAnchor: toolBarContainerView.centerYAnchor,
+                         centerXAnchor: nil,
+                         paddingTop: 0,
+                         paddingLeft: 70,
+                         paddingBottom: 0,
+                         paddingRight: 0, width: 32, height: 32)
     }
 }
 
@@ -211,14 +254,26 @@ extension MauiViewController {
                                     paddingBottom: 0,
                                     paddingRight: 0, width: toolbarWidth, height: 44)
         
+        // Menu:
         let menuIcon = UIImage(named: "menuIcon")
         let menuButton = UIButton(type: .custom)
         menuButton.tag = IslandAssets.islandMenuTag.rawValue
+        
         menuButton.tintColor = UIColor.blue
         menuButton.setImage(menuIcon, for: .normal)
         
         menuButton.addTarget(self, action: #selector(reportMenu), for: .touchUpInside)
+        
+        // Map:
+        let mapImage = UIImage(named: "pin.png")
+        let mapButton = UIButton(type: .custom)
+        mapButton.tag = IslandAssets.islandMapTag.rawValue
+        
+        mapButton.setImage(mapImage, for: .normal)
+        mapButton.addTarget(self, action: #selector(mapDisplay), for: .touchUpInside)
+        
         toolBarContainerView.addSubview(menuButton)
+        toolBarContainerView.addSubview(mapButton)
         
         menuButton.anchor(top: nil,
                           bottom: nil,
@@ -231,6 +286,16 @@ extension MauiViewController {
                           paddingBottom: 0,
                           paddingRight: 0, width: 32, height: 32)
         
+        mapButton.anchor(top: nil,
+                         bottom: nil,
+                         left: toolBarContainerView.safeAreaLayoutGuide.leftAnchor,
+                         right: nil,
+                         centerYAnchor: toolBarContainerView.centerYAnchor,
+                         centerXAnchor: nil,
+                         paddingTop: 0,
+                         paddingLeft: 70,
+                         paddingBottom: 0,
+                         paddingRight: 0, width: 32, height: 32)
     }
 }
 
@@ -252,14 +317,26 @@ extension HawaiiViewController {
                                     paddingBottom: 0,
                                     paddingRight: 0, width: toolbarWidth, height: 44)
         
+        // Menu:
         let menuIcon = UIImage(named: "menuIcon")
         let menuButton = UIButton(type: .custom)
         menuButton.tag = IslandAssets.islandMenuTag.rawValue
+        
         menuButton.tintColor = UIColor.blue
         menuButton.setImage(menuIcon, for: .normal)
         
         menuButton.addTarget(self, action: #selector(reportMenu), for: .touchUpInside)
+        
+        // Map:
+        let mapImage = UIImage(named: "pin.png")
+        let mapButton = UIButton(type: .custom)
+        mapButton.tag = IslandAssets.islandMapTag.rawValue
+        
+        mapButton.setImage(mapImage, for: .normal)
+        mapButton.addTarget(self, action: #selector(mapDisplay), for: .touchUpInside)
+        
         toolBarContainerView.addSubview(menuButton)
+        toolBarContainerView.addSubview(mapButton)
         
         menuButton.anchor(top: nil,
                           bottom: nil,
@@ -272,6 +349,16 @@ extension HawaiiViewController {
                           paddingBottom: 0,
                           paddingRight: 0, width: 32, height: 32)
         
+        mapButton.anchor(top: nil,
+                         bottom: nil,
+                         left: toolBarContainerView.safeAreaLayoutGuide.leftAnchor,
+                         right: nil,
+                         centerYAnchor: toolBarContainerView.centerYAnchor,
+                         centerXAnchor: nil,
+                         paddingTop: 0,
+                         paddingLeft: 70,
+                         paddingBottom: 0,
+                         paddingRight: 0, width: 32, height: 32)
     }
 }
 
@@ -282,13 +369,13 @@ class HawaiianScrollView: UIScrollView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-     //   recenterIfNecessary()
-//        // Tile content in visible bounds
-//        let visibleBounds = self.bounds
-//        // Min & Max values of the scroll view:
-//        let minimumVisibleX = visibleBounds.minX
-//        let maximumVisibleX = visibleBounds.maxX
-//
+        //   recenterIfNecessary()
+        //        // Tile content in visible bounds
+        //        let visibleBounds = self.bounds
+        //        // Min & Max values of the scroll view:
+        //        let minimumVisibleX = visibleBounds.minX
+        //        let maximumVisibleX = visibleBounds.maxX
+        //
         
     }
     

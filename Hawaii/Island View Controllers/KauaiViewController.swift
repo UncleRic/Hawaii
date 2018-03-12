@@ -41,6 +41,7 @@ class KauaiViewController: UIViewController, BackgroundDisplay, NavigationReport
         portraitBackgroundImage = UIImage(named:"KauaiSwim")
         landscapeBackgroundImage = UIImage(named:"KauaiSwim2")
         backgroundImageView = UIImageView(image:portraitBackgroundImage)
+        backgroundImageView?.tag = IslandAssets.backgroundImageViewTag.rawValue
         
         view.addSubview(backgroundImageView!)
         backgroundImageView?.anchor(top: view.safeAreaLayoutGuide.topAnchor,
@@ -59,6 +60,9 @@ class KauaiViewController: UIViewController, BackgroundDisplay, NavigationReport
     // MARK: - Private Functions
     
     fileprivate func removeVestigialViews() {
+        if let mapView = self.view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
+            mapView.removeFromSuperview()
+        }
         if let containerView = self.view.viewWithTag(IslandAssets.assetsContainerViewTag.rawValue) {
             containerView.removeFromSuperview()
         }
@@ -110,6 +114,7 @@ class KauaiViewController: UIViewController, BackgroundDisplay, NavigationReport
         } else {
             let mapView = Map.setupMapView(sender: Islands.Kauai)
             view.insertSubview(mapView, belowSubview: view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)!)
+            mapView.overlay(containerView: view)
         }
     }
 }
