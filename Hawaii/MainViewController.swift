@@ -114,6 +114,7 @@ enum IslandAssets:Int {
     case assetsContainerViewTag = 23
     case mainInfoTag = 50
     case islandMenuTag = 51
+    case islandMapTag = 52
     case backgroundImageViewTag = 100
     case webViewTag = 101
     case mapViewTag = 102

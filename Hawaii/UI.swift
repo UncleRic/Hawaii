@@ -50,6 +50,7 @@ extension MainViewController {
 
 extension KauaiViewController {
     func setupToolBar() {
+        // Island Nav Container:
         let toolBarContainerView = UIView(frame: CGRect.zero)
         toolBarContainerView.tag = IslandAssets.islandToolbarTag.rawValue
         self.view.addSubview(toolBarContainerView)
@@ -64,14 +65,26 @@ extension KauaiViewController {
                                     paddingBottom: 0,
                                     paddingRight: 0, width: toolbarWidth, height: 44)
         
+        // Menu:
         let menuIcon = UIImage(named: "menuIcon")
         let menuButton = UIButton(type: .custom)
         menuButton.tag = IslandAssets.islandMenuTag.rawValue
+        
         menuButton.tintColor = UIColor.blue
         menuButton.setImage(menuIcon, for: .normal)
         
         menuButton.addTarget(self, action: #selector(reportMenu), for: .touchUpInside)
+        
+        // Map:
+        let mapImage = UIImage(named: "pin.png")
+        let mapButton = UIButton(type: .custom)
+        mapButton.tag = IslandAssets.islandMapTag.rawValue
+        
+        mapButton.setImage(mapImage, for: .normal)
+        mapButton.addTarget(self, action: #selector(mapDisplay), for: .touchUpInside)
+        
         toolBarContainerView.addSubview(menuButton)
+        toolBarContainerView.addSubview(mapButton)
         
         menuButton.anchor(top: nil,
                           bottom: nil,
@@ -81,6 +94,17 @@ extension KauaiViewController {
                           centerXAnchor: nil,
                           paddingTop: 0,
                           paddingLeft: 20,
+                          paddingBottom: 0,
+                          paddingRight: 0, width: 32, height: 32)
+        
+        mapButton.anchor(top: nil,
+                          bottom: nil,
+                          left: toolBarContainerView.safeAreaLayoutGuide.leftAnchor,
+                          right: nil,
+                          centerYAnchor: toolBarContainerView.centerYAnchor,
+                          centerXAnchor: nil,
+                          paddingTop: 0,
+                          paddingLeft: 60,
                           paddingBottom: 0,
                           paddingRight: 0, width: 32, height: 32)
         

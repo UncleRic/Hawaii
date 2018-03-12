@@ -95,11 +95,21 @@ class KauaiViewController: UIViewController, BackgroundDisplay, NavigationReport
     
     @objc func surfReport() {
         Navigator().removeNavigatorOverlay(sender: self)
-         WebKit.setupWebView(sender: self, forBeach: Islands.Kauai)
+        WebKit.setupWebView(sender: self, forBeach: Islands.Kauai)
     }
     
     @objc func reportMenu() {
         removeVestigialViews()
         Navigator().setupOverlay(sender: self)
+    }
+    
+    @objc func mapDisplay() {
+        removeVestigialViews()
+        if let mapView = view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
+            mapView.removeFromSuperview()
+        } else {
+            let mapView = Map.setupMapView(sender: Islands.Kauai)
+            view.insertSubview(mapView, belowSubview: view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)!)
+        }
     }
 }
