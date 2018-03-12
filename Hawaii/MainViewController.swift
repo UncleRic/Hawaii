@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import MapKit
 
 protocol BackgroundDisplay {
 //    func viewWillTransition()
@@ -50,6 +50,22 @@ enum Islands:Int {
         }
     }
     
+    func coord() -> CLLocationCoordinate2D {
+        switch self {
+        case .Kauai:
+            return CLLocationCoordinate2DMake(19.7297222, -155.09000000000003)
+        case .Oahu:
+            return CLLocationCoordinate2DMake(19.7297222, -155.09000000000003)
+        case .Molokai:
+            return CLLocationCoordinate2DMake(19.7297222, -155.09000000000003)
+        case .Maui:
+            return CLLocationCoordinate2DMake(19.7297222, -155.09000000000003)
+        case .Hawaii:
+            return CLLocationCoordinate2DMake(19.7297222, -155.09000000000003)
+        default:
+            return CLLocationCoordinate2DMake(0.0, 0.0)
+        }
+    }
     func beaches() -> URL {
         switch self {
         case .Kauai:
