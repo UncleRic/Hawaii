@@ -8,7 +8,7 @@
 
 import UIKit
 import MapKit
-
+import SystemConfiguration
 
 class MainViewController: UIViewController {
     
@@ -81,6 +81,16 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupToolBar()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if !isConnectedToNetwork() {
+            let title = "Missing WiFi"
+            let msg = "The internet is required."
+            let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .`default`, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -186,6 +196,29 @@ class MainViewController: UIViewController {
         
     }
     
+    // -----------------------------------------------------------------------------------------------------
+    
+    func isConnectedToNetwork() -> Bool {
+        
+        var zeroAddress = sockaddr_in()
+        zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        
+        let defaultRouteReachability = withUnsafePointer(to: &zeroAddress) {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {zeroSockAddress in
+                SCNetworkReachabilityCreateWithAddress(nil, zeroSockAddress)
+            }
+        }
+        
+        var flags = SCNetworkReachabilityFlags()
+        if !SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) {
+            return false
+        }
+        let isReachable = (flags.rawValue & UInt32(kSCNetworkFlagsReachable)) != 0
+        let needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
+        return (isReachable && !needsConnection)
+        
+    }
     // -----------------------------------------------------------------------------------------------------
     
     func removeIslands() {

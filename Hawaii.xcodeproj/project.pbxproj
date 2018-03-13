@@ -29,6 +29,7 @@
 		1895DF8D2043699500C85493 /* KauaiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1895DF8C2043699500C85493 /* KauaiViewController.swift */; };
 		1895DF8F204369B700C85493 /* MolokaiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1895DF8E204369B700C85493 /* MolokaiViewController.swift */; };
 		18B42FDC20588A7800166F45 /* Kauai.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18B42FDB20588A7800166F45 /* Kauai.xcassets */; };
+		18B42FDF205890E900166F45 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B42FDE205890E900166F45 /* SystemConfiguration.framework */; };
 		18F7D9DE204C955600F58D80 /* WebKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F7D9DD204C955600F58D80 /* WebKit.swift */; };
 		18FD5DCD2047CC140044E9FD /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FD5DCC2047CC140044E9FD /* Navigator.swift */; };
 /* End PBXBuildFile section */
@@ -58,6 +59,7 @@
 		1895DF8C2043699500C85493 /* KauaiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KauaiViewController.swift; sourceTree = "<group>"; };
 		1895DF8E204369B700C85493 /* MolokaiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MolokaiViewController.swift; sourceTree = "<group>"; };
 		18B42FDB20588A7800166F45 /* Kauai.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Kauai.xcassets; sourceTree = "<group>"; };
+		18B42FDE205890E900166F45 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		18F7D9DD204C955600F58D80 /* WebKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebKit.swift; sourceTree = "<group>"; };
 		18FD5DCC2047CC140044E9FD /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18B42FDF205890E900166F45 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +83,7 @@
 				1837082A2041FC8A00C6C833 /* AppDelegate.swift */,
 				183708292041FC8A00C6C833 /* Hawaii */,
 				183708282041FC8A00C6C833 /* Products */,
+				18B42FDD205890E900166F45 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -126,6 +130,14 @@
 				1895DF8E204369B700C85493 /* MolokaiViewController.swift */,
 			);
 			path = "Island View Controllers";
+			sourceTree = "<group>";
+		};
+		18B42FDD205890E900166F45 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				18B42FDE205890E900166F45 /* SystemConfiguration.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		18E51BB2204520C900068CEA /* Storyboards */ = {
