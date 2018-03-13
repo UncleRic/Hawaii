@@ -18,11 +18,8 @@ class HawaiiViewController: UIViewController, BackgroundDisplay, NavigationRepor
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
-        self.view.gestureRecognizers = [tapGesture]
         loadImages()
         setupPortraitBackground()
-        setupToolBar()
     }
     
     // -----------------------------------------------------------------------------------------------------
@@ -50,6 +47,7 @@ class HawaiiViewController: UIViewController, BackgroundDisplay, NavigationRepor
                 backgroundScrollView.removeFromSuperview()
                 restorePortraitBackground()
             }
+            setupToolBar()
         }
     }
     
@@ -62,7 +60,6 @@ class HawaiiViewController: UIViewController, BackgroundDisplay, NavigationRepor
             mapView.removeFromSuperview()
         }
         setupPortraitBackground()
-        setupToolBar()
     }
     
     // -----------------------------------------------------------------------------------------------------
@@ -71,10 +68,11 @@ class HawaiiViewController: UIViewController, BackgroundDisplay, NavigationRepor
         view.backgroundColor = UIColor.white
         if nil == backgroundImageView {
             backgroundImageView = UIImageView(image:UIImage(named:"HawaiiLava2"))
-            backgroundImageView?.contentMode = .scaleAspectFill
             backgroundImageView?.tag = IslandAssets.backgroundImageViewTag.rawValue
+            backgroundImageView?.contentMode = .scaleAspectFill
         }
-        view.addSubview(backgroundImageView!)
+        setupToolBar()
+        view.insertSubview(backgroundImageView!, belowSubview: view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)!)
         backgroundImageView?.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                                     bottom: view.safeAreaLayoutGuide.bottomAnchor,
                                     left: view.safeAreaLayoutGuide.leftAnchor,
@@ -102,6 +100,17 @@ class HawaiiViewController: UIViewController, BackgroundDisplay, NavigationRepor
                                     paddingLeft: 0,
                                     paddingBottom: 10,
                                     paddingRight: 0, width: 0, height: 0)
+    }
+    
+    // -----------------------------------------------------------------------------------------------------
+    // MARK: Gesture Handler
+    
+    @objc func handleTapGesture(recognizer: UITapGestureRecognizer) {
+        if let containerView = self.view.viewWithTag(IslandAssets.assetsContainerViewTag.rawValue) {
+            containerView.removeFromSuperview()
+        } else if UIDevice.current.orientation.isPortrait {
+            Navigator().setupOverlay(sender: self)
+        }
     }
     
     // -----------------------------------------------------------------------------------------------------
@@ -148,21 +157,6 @@ class HawaiiViewController: UIViewController, BackgroundDisplay, NavigationRepor
         }
         if let overlay = self.view.viewWithTag(IslandAssets.overlayViewTag.rawValue) {
             overlay.removeFromSuperview()
-        }
-    }
-    
-    // -----------------------------------------------------------------------------------------------------
-    // MARK: - Gesture Handler
-    
-    @objc func handleTapGesture(recognizer: UITapGestureRecognizer) {
-        if let _ = self.view.viewWithTag(IslandAssets.overlayViewTag.rawValue) {
-            if let overlayView = view.viewWithTag(IslandAssets.overlayViewTag.rawValue),
-                let islandAssetContainerView = view.viewWithTag(IslandAssets.assetsContainerViewTag.rawValue) {
-                overlayView.removeFromSuperview()
-                islandAssetContainerView.removeFromSuperview()
-            }
-        } else if UIDevice.current.orientation.isPortrait {
-            Navigator().setupOverlay(sender: self)
         }
     }
     

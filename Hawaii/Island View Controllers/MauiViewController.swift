@@ -9,11 +9,11 @@
 import UIKit
 
 class MauiViewController: UIViewController, BackgroundDisplay, NavigationReport {
-
+    
     var portraitBackgroundImage:UIImage?
     var landscapeBackgroundImage: UIImage?
     var backgroundImageView:UIImageView?
-     var backgroundScrollView = UIScrollView(frame: CGRect.zero)
+    var backgroundScrollView = UIScrollView(frame: CGRect.zero)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +21,6 @@ class MauiViewController: UIViewController, BackgroundDisplay, NavigationReport 
         self.view.gestureRecognizers = [tapGesture]
         loadImages()
         setupPortraitBackground()
-        setupToolBar()
     }
     
     // -----------------------------------------------------------------------------------------------------
@@ -29,17 +28,38 @@ class MauiViewController: UIViewController, BackgroundDisplay, NavigationReport 
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
+        
+        var isMapShown = false
+        
+        if let _ = view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
+            isMapShown = true
+        }
+        
         if UIDevice.current.orientation.isLandscape {
             removeVestigialViews()
             let toolBarContainerView = view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)
-            toolBarContainerView?.removeFromSuperview()
+            toolBarContainerView?.isHidden = true
             backgroundImageView?.removeFromSuperview()
-            setupLandscapeBackground()
+            if !isMapShown {
+                setupLandscapeBackground()
+            }
         } else {
-            backgroundScrollView.removeFromSuperview()
-            setupPortraitBackground()
-            setupToolBar()
+            if !isMapShown {
+                backgroundScrollView.removeFromSuperview()
+                restorePortraitBackground()
+            }
+             setupToolBar()
         }
+    }
+    
+    // -----------------------------------------------------------------------------------------------------
+    
+    func restorePortraitBackground() {
+        removeVestigialViews()
+        if let mapView = view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
+            mapView.removeFromSuperview()
+        }
+        setupPortraitBackground()
     }
     
     // -----------------------------------------------------------------------------------------------------
@@ -48,9 +68,11 @@ class MauiViewController: UIViewController, BackgroundDisplay, NavigationReport 
         view.backgroundColor = UIColor.white
         if nil == backgroundImageView {
             backgroundImageView = UIImageView(image:UIImage(named:"MauiMain"))
+            backgroundImageView?.tag = IslandAssets.backgroundImageViewTag.rawValue
             backgroundImageView?.contentMode = .scaleAspectFill
         }
-        view.addSubview(backgroundImageView!)
+        setupToolBar()
+        view.insertSubview(backgroundImageView!, belowSubview: view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)!)
         backgroundImageView?.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                                     bottom: view.safeAreaLayoutGuide.bottomAnchor,
                                     left: view.safeAreaLayoutGuide.leftAnchor,
@@ -129,9 +151,6 @@ class MauiViewController: UIViewController, BackgroundDisplay, NavigationReport 
     // MARK: - Private Functions
     
     fileprivate func removeVestigialViews() {
-        if let mapView = self.view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
-            mapView.removeFromSuperview()
-        }
         if let containerView = self.view.viewWithTag(IslandAssets.assetsContainerViewTag.rawValue) {
             containerView.removeFromSuperview()
         }
@@ -162,12 +181,13 @@ class MauiViewController: UIViewController, BackgroundDisplay, NavigationReport 
     
     @objc func mapDisplay() {
         removeVestigialViews()
-        if let mapView = view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
-            mapView.removeFromSuperview()
+        if let _ = view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
+            restorePortraitBackground()
         } else {
             let mapView = Map.setupMapView(sender: Islands.Maui)
             view.insertSubview(mapView, belowSubview: view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)!)
             mapView.overlay(containerView: view)
         }
+        view.setNeedsLayout()
     }
 }

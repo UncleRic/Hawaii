@@ -20,7 +20,6 @@ class MolokaiViewController: UIViewController, BackgroundDisplay, NavigationRepo
         self.view.gestureRecognizers = [tapGesture]
         loadImages()
         setupPortraitBackground()
-        setupToolBar()
     }
     
     // -----------------------------------------------------------------------------------------------------
@@ -35,9 +34,19 @@ class MolokaiViewController: UIViewController, BackgroundDisplay, NavigationRepo
         } else {
             backgroundScrollView.removeFromSuperview()
             setupPortraitBackground()
-            setupToolBar()
         }
     }
+    
+    // -----------------------------------------------------------------------------------------------------
+    
+    func restorePortraitBackground() {
+        removeVestigialViews()
+        if let mapView = view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
+            mapView.removeFromSuperview()
+        }
+        setupPortraitBackground()
+    }
+    
     
     // -----------------------------------------------------------------------------------------------------
     
@@ -45,9 +54,11 @@ class MolokaiViewController: UIViewController, BackgroundDisplay, NavigationRepo
         view.backgroundColor = UIColor.white
         if nil == backgroundImageView {
             backgroundImageView = UIImageView(image:UIImage(named:"Molokai2"))
+            backgroundImageView?.tag = IslandAssets.backgroundImageViewTag.rawValue
             backgroundImageView?.contentMode = .scaleAspectFill
         }
-        view.addSubview(backgroundImageView!)
+        setupToolBar()
+        view.insertSubview(backgroundImageView!, belowSubview: view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)!)
         backgroundImageView?.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                                     bottom: view.safeAreaLayoutGuide.bottomAnchor,
                                     left: view.safeAreaLayoutGuide.leftAnchor,
@@ -59,6 +70,7 @@ class MolokaiViewController: UIViewController, BackgroundDisplay, NavigationRepo
                                     paddingBottom: 10,
                                     paddingRight: 0, width: 0, height: 0)
     }
+
     
     // -----------------------------------------------------------------------------------------------------
     
@@ -95,9 +107,6 @@ class MolokaiViewController: UIViewController, BackgroundDisplay, NavigationRepo
     // MARK: - Private Functions
     
     fileprivate func removeVestigialViews() {
-        if let mapView = self.view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
-            mapView.removeFromSuperview()
-        }
         if let containerView = self.view.viewWithTag(IslandAssets.assetsContainerViewTag.rawValue) {
             containerView.removeFromSuperview()
         }

@@ -21,7 +21,6 @@ class OahuViewController: UIViewController, BackgroundDisplay, NavigationReport 
         self.view.gestureRecognizers = [tapGesture]
         loadImages()
         setupPortraitBackground()
-        setupToolBar()
     }
     
     // -----------------------------------------------------------------------------------------------------
@@ -40,6 +39,16 @@ class OahuViewController: UIViewController, BackgroundDisplay, NavigationReport 
             setupPortraitBackground()
             setupToolBar()
         }
+    }
+    
+    // -----------------------------------------------------------------------------------------------------
+    
+    func restorePortraitBackground() {
+        removeVestigialViews()
+        if let mapView = view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
+            mapView.removeFromSuperview()
+        }
+        setupPortraitBackground()
     }
     
     // -----------------------------------------------------------------------------------------------------
@@ -96,9 +105,6 @@ class OahuViewController: UIViewController, BackgroundDisplay, NavigationReport 
     // MARK: - Private Functions
     
     fileprivate func removeVestigialViews() {
-        if let mapView = self.view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
-            mapView.removeFromSuperview()
-        }
         if let containerView = self.view.viewWithTag(IslandAssets.assetsContainerViewTag.rawValue) {
             containerView.removeFromSuperview()
         }
@@ -168,12 +174,13 @@ class OahuViewController: UIViewController, BackgroundDisplay, NavigationReport 
     
     @objc func mapDisplay() {
         removeVestigialViews()
-        if let mapView = view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
-            mapView.removeFromSuperview()
+        if let _ = view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
+            restorePortraitBackground()
         } else {
             let mapView = Map.setupMapView(sender: Islands.Oahu)
             view.insertSubview(mapView, belowSubview: view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)!)
             mapView.overlay(containerView: view)
         }
+        view.setNeedsLayout()
     }
 }

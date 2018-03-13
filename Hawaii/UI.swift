@@ -50,6 +50,10 @@ extension MainViewController {
 
 extension KauaiViewController {
     func setupToolBar() {
+        if let toolBarContainerView = view.viewWithTag(IslandAssets.islandToolbarTag.rawValue) {
+            toolBarContainerView.isHidden = false
+            return
+        }
         // Island Nav Container:
         let toolBarContainerView = UIView(frame: CGRect.zero)
         toolBarContainerView.tag = IslandAssets.islandToolbarTag.rawValue
@@ -114,6 +118,10 @@ extension KauaiViewController {
 
 extension OahuViewController {
     func setupToolBar() {
+        if let toolBarContainerView = view.viewWithTag(IslandAssets.islandToolbarTag.rawValue) {
+            toolBarContainerView.isHidden = false
+            return
+        }
         let toolBarContainerView = UIView(frame: CGRect.zero)
         toolBarContainerView.tag = IslandAssets.islandToolbarTag.rawValue
         self.view.addSubview(toolBarContainerView)
@@ -177,6 +185,10 @@ extension OahuViewController {
 
 extension MolokaiViewController {
     func setupToolBar() {
+        if let toolBarContainerView = view.viewWithTag(IslandAssets.islandToolbarTag.rawValue) {
+            toolBarContainerView.isHidden = false
+            return
+        }
         let toolBarContainerView = UIView(frame: CGRect.zero)
         toolBarContainerView.tag = IslandAssets.islandToolbarTag.rawValue
         self.view.addSubview(toolBarContainerView)
@@ -240,6 +252,10 @@ extension MolokaiViewController {
 
 extension MauiViewController {
     func setupToolBar() {
+        if let toolBarContainerView = view.viewWithTag(IslandAssets.islandToolbarTag.rawValue) {
+            toolBarContainerView.isHidden = false
+            return
+        }
         let toolBarContainerView = UIView(frame: CGRect.zero)
         toolBarContainerView.tag = IslandAssets.islandToolbarTag.rawValue
         self.view.addSubview(toolBarContainerView)
@@ -360,7 +376,7 @@ extension HawaiiViewController {
                          centerYAnchor: toolBarContainerView.centerYAnchor,
                          centerXAnchor: nil,
                          paddingTop: 0,
-                         paddingLeft: 70,
+                         paddingLeft: 90,
                          paddingBottom: 0,
                          paddingRight: 0, width: 32, height: 32)
     }

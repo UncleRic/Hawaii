@@ -18,7 +18,6 @@ class KauaiViewController: UIViewController, BackgroundDisplay, NavigationReport
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
         self.view.gestureRecognizers = [tapGesture]
         setupLandscapeBackground()
-        setupToolBar()
     }
     
     /// -----------------------------------------------------------------------------------------------------
@@ -39,8 +38,35 @@ class KauaiViewController: UIViewController, BackgroundDisplay, NavigationReport
     
     // -----------------------------------------------------------------------------------------------------
     
+    func restorePortraitBackground() {
+        removeVestigialViews()
+        if let mapView = view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
+            mapView.removeFromSuperview()
+        }
+        setupPortraitBackground()
+    }
+    
+    // -----------------------------------------------------------------------------------------------------
+    
     func setupPortraitBackground() {
-        
+        view.backgroundColor = UIColor.white
+        if nil == backgroundImageView {
+            backgroundImageView = UIImageView(image:UIImage(named:"KauaiSwim"))
+            backgroundImageView?.tag = IslandAssets.backgroundImageViewTag.rawValue
+            backgroundImageView?.contentMode = .scaleAspectFill
+        }
+        setupToolBar()
+        view.insertSubview(backgroundImageView!, belowSubview: view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)!)
+        backgroundImageView?.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+                                    bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                                    left: view.safeAreaLayoutGuide.leftAnchor,
+                                    right: view.safeAreaLayoutGuide.rightAnchor,
+                                    centerYAnchor: nil,
+                                    centerXAnchor: nil,
+                                    paddingTop: 0,
+                                    paddingLeft: 0,
+                                    paddingBottom: 10,
+                                    paddingRight: 0, width: 0, height: 0)
     }
     
     // -----------------------------------------------------------------------------------------------------
@@ -48,7 +74,6 @@ class KauaiViewController: UIViewController, BackgroundDisplay, NavigationReport
     func setupLandscapeBackground() {
         view.backgroundColor = UIColor.white
         
-        portraitBackgroundImage = UIImage(named:"KauaiSwim")
         landscapeBackgroundImage = UIImage(named:"KauaiSwim2")
         backgroundImageView = UIImageView(image:portraitBackgroundImage)
         backgroundImageView?.tag = IslandAssets.backgroundImageViewTag.rawValue
@@ -85,9 +110,6 @@ class KauaiViewController: UIViewController, BackgroundDisplay, NavigationReport
     // MARK: - Private Functions
     
     fileprivate func removeVestigialViews() {
-        if let mapView = self.view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
-            mapView.removeFromSuperview()
-        }
         if let containerView = self.view.viewWithTag(IslandAssets.assetsContainerViewTag.rawValue) {
             containerView.removeFromSuperview()
         }
@@ -118,12 +140,13 @@ class KauaiViewController: UIViewController, BackgroundDisplay, NavigationReport
     
     @objc func mapDisplay() {
         removeVestigialViews()
-        if let mapView = view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
-            mapView.removeFromSuperview()
+        if let _ = view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
+            restorePortraitBackground()
         } else {
             let mapView = Map.setupMapView(sender: Islands.Kauai)
             view.insertSubview(mapView, belowSubview: view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)!)
             mapView.overlay(containerView: view)
         }
+        view.setNeedsLayout()
     }
 }
