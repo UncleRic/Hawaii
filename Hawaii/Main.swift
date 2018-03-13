@@ -11,6 +11,7 @@ import MapKit
 protocol BackgroundDisplay: class {
     func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator)
     func setupPortraitBackground()
+    func restorePortraitBackground()
     func setupLandscapeBackground()
 }
 

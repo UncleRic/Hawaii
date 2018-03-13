@@ -17,8 +17,6 @@ class MauiViewController: UIViewController, BackgroundDisplay, NavigationReport 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
-        self.view.gestureRecognizers = [tapGesture]
         loadImages()
         setupPortraitBackground()
     }
@@ -106,11 +104,7 @@ class MauiViewController: UIViewController, BackgroundDisplay, NavigationReport 
     // MARK: Gesture Handler
     
     @objc func handleTapGesture(recognizer: UITapGestureRecognizer) {
-        if let containerView = self.view.viewWithTag(IslandAssets.assetsContainerViewTag.rawValue) {
-            containerView.removeFromSuperview()
-        } else if UIDevice.current.orientation.isPortrait {
-            Navigator().setupOverlay(sender: self)
-        }
+        reportMenu()
     }
     
     // -----------------------------------------------------------------------------------------------------
@@ -175,8 +169,11 @@ class MauiViewController: UIViewController, BackgroundDisplay, NavigationReport 
     }
     
     @objc func reportMenu() {
-        removeVestigialViews()
-        Navigator().setupOverlay(sender: self)
+        if let _ = view.viewWithTag(IslandAssets.assetsContainerViewTag.rawValue) {
+            removeVestigialViews()
+        } else {
+            Navigator().setupOverlay(sender: self)
+        }
     }
     
     @objc func mapDisplay() {

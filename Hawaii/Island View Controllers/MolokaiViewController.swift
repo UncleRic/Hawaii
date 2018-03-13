@@ -16,8 +16,6 @@ class MolokaiViewController: UIViewController, BackgroundDisplay, NavigationRepo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
-        self.view.gestureRecognizers = [tapGesture]
         loadImages()
         setupPortraitBackground()
     }
@@ -27,13 +25,27 @@ class MolokaiViewController: UIViewController, BackgroundDisplay, NavigationRepo
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
+        
+        var isMapShown = false
+        
+        if let _ = view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
+            isMapShown = true
+        }
+        
         if UIDevice.current.orientation.isLandscape {
             removeVestigialViews()
+            let toolBarContainerView = view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)
+            toolBarContainerView?.isHidden = true
             backgroundImageView?.removeFromSuperview()
-            setupLandscapeBackground()
+            if !isMapShown {
+                setupLandscapeBackground()
+            }
         } else {
-            backgroundScrollView.removeFromSuperview()
-            setupPortraitBackground()
+            if !isMapShown {
+                backgroundScrollView.removeFromSuperview()
+                restorePortraitBackground()
+            }
+            setupToolBar()
         }
     }
     
@@ -93,14 +105,7 @@ class MolokaiViewController: UIViewController, BackgroundDisplay, NavigationRepo
     // MARK: Gesture Handler
     
     @objc func handleTapGesture(recognizer: UITapGestureRecognizer) {
-        if let containerView = self.view.viewWithTag(IslandAssets.assetsContainerViewTag.rawValue) {
-            containerView.removeFromSuperview()
-            let toolBarContainerView = view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)
-            toolBarContainerView?.removeFromSuperview()
-        } else if UIDevice.current.orientation.isPortrait {
-            // Display Navigator:
-            Navigator().setupOverlay(sender: self)
-        }
+        reportMenu()
     }
     
     // -----------------------------------------------------------------------------------------------------
@@ -167,8 +172,11 @@ class MolokaiViewController: UIViewController, BackgroundDisplay, NavigationRepo
     }
     
     @objc func reportMenu() {
-        removeVestigialViews()
-        Navigator().setupOverlay(sender: self)
+        if let _ = view.viewWithTag(IslandAssets.assetsContainerViewTag.rawValue) {
+            removeVestigialViews()
+        } else {
+            Navigator().setupOverlay(sender: self)
+        }
     }
     
     @objc func mapDisplay() {

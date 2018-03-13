@@ -106,11 +106,7 @@ class HawaiiViewController: UIViewController, BackgroundDisplay, NavigationRepor
     // MARK: Gesture Handler
     
     @objc func handleTapGesture(recognizer: UITapGestureRecognizer) {
-        if let containerView = self.view.viewWithTag(IslandAssets.assetsContainerViewTag.rawValue) {
-            containerView.removeFromSuperview()
-        } else if UIDevice.current.orientation.isPortrait {
-            Navigator().setupOverlay(sender: self)
-        }
+        reportMenu()
     }
     
     // -----------------------------------------------------------------------------------------------------
@@ -172,8 +168,11 @@ class HawaiiViewController: UIViewController, BackgroundDisplay, NavigationRepor
     }
     
     @objc func reportMenu() {
-        removeVestigialViews()
-        Navigator().setupOverlay(sender: self)
+        if let _ = view.viewWithTag(IslandAssets.assetsContainerViewTag.rawValue) {
+            removeVestigialViews()
+        } else {
+            Navigator().setupOverlay(sender: self)
+        }
     }
     
     @objc func mapDisplay() {

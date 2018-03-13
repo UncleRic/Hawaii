@@ -17,8 +17,6 @@ class OahuViewController: UIViewController, BackgroundDisplay, NavigationReport 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
-        self.view.gestureRecognizers = [tapGesture]
         loadImages()
         setupPortraitBackground()
     }
@@ -28,15 +26,26 @@ class OahuViewController: UIViewController, BackgroundDisplay, NavigationReport 
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
+        
+        var isMapShown = false
+        
+        if let _ = view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
+            isMapShown = true
+        }
+        
         if UIDevice.current.orientation.isLandscape {
             removeVestigialViews()
             let toolBarContainerView = view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)
-            toolBarContainerView?.removeFromSuperview()
+            toolBarContainerView?.isHidden = true
             backgroundImageView?.removeFromSuperview()
-            setupLandscapeBackground()
+            if !isMapShown {
+                setupLandscapeBackground()
+            }
         } else {
-            backgroundScrollView.removeFromSuperview()
-            setupPortraitBackground()
+            if !isMapShown {
+                backgroundScrollView.removeFromSuperview()
+                restorePortraitBackground()
+            }
             setupToolBar()
         }
     }
@@ -57,9 +66,11 @@ class OahuViewController: UIViewController, BackgroundDisplay, NavigationReport 
         view.backgroundColor = UIColor.white
         if nil == backgroundImageView {
             backgroundImageView = UIImageView(image:UIImage(named:"Honolulu"))
+            backgroundImageView?.tag = IslandAssets.backgroundImageViewTag.rawValue
             backgroundImageView?.contentMode = .scaleAspectFill
         }
-        view.addSubview(backgroundImageView!)
+        setupToolBar()
+        view.insertSubview(backgroundImageView!, belowSubview: view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)!)
         backgroundImageView?.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                                     bottom: view.safeAreaLayoutGuide.bottomAnchor,
                                     left: view.safeAreaLayoutGuide.leftAnchor,
@@ -94,11 +105,7 @@ class OahuViewController: UIViewController, BackgroundDisplay, NavigationReport 
     // MARK: Gesture Handler
     
     @objc func handleTapGesture(recognizer: UITapGestureRecognizer) {
-        if let containerView = self.view.viewWithTag(IslandAssets.overlayViewTag.rawValue) {
-            containerView.removeFromSuperview()
-        } else if UIDevice.current.orientation.isPortrait {
-            Navigator().setupOverlay(sender: self)
-        }
+        reportMenu()
     }
     
     // -----------------------------------------------------------------------------------------------------
@@ -168,8 +175,11 @@ class OahuViewController: UIViewController, BackgroundDisplay, NavigationReport 
     }
     
     @objc func reportMenu() {
-        removeVestigialViews()
-        Navigator().setupOverlay(sender: self)
+        if let _ = view.viewWithTag(IslandAssets.assetsContainerViewTag.rawValue) {
+            removeVestigialViews()
+        } else {
+            Navigator().setupOverlay(sender: self)
+        }
     }
     
     @objc func mapDisplay() {
