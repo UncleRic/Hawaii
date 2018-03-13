@@ -18,27 +18,27 @@ class WebKit {
         
         webView.load(URLRequest(url:url))
         
-        if let hostViewController = sender as? KauaiViewController {
-            if let targetView = hostViewController.view.viewWithTag(IslandAssets.islandToolbarTag.rawValue) {
-                hostViewController.view.insertSubview(webView, belowSubview: targetView)
-            }
-        } else if let hostViewController = sender as? OahuViewController {
-            if let targetView = hostViewController.view.viewWithTag(IslandAssets.islandToolbarTag.rawValue) {
-                hostViewController.view.insertSubview(webView, belowSubview: targetView)
-            }
-        } else if let hostViewController = sender as? MolokaiViewController {
-            if let targetView = hostViewController.view.viewWithTag(IslandAssets.islandToolbarTag.rawValue) {
-                hostViewController.view.insertSubview(webView, belowSubview: targetView)
-            }
-        } else if let hostViewController = sender as? MauiViewController {
-            if let targetView = hostViewController.view.viewWithTag(IslandAssets.islandToolbarTag.rawValue) {
-                hostViewController.view.insertSubview(webView, belowSubview: targetView)
-            }
-        } else if let hostViewController = sender as? HawaiiViewController {
-            if let targetView = hostViewController.view.viewWithTag(IslandAssets.islandToolbarTag.rawValue) {
-                hostViewController.view.insertSubview(webView, belowSubview: targetView)
-            }
-        }
+//        if let hostViewController = sender as? KauaiViewController {
+//            if let targetView = hostViewController.view.viewWithTag(IslandAssets.islandToolbarTag.rawValue) {
+//                hostViewController.view.insertSubview(webView, belowSubview: targetView)
+//            }
+//        } else if let hostViewController = sender as? OahuViewController {
+//            if let targetView = hostViewController.view.viewWithTag(IslandAssets.islandToolbarTag.rawValue) {
+//                hostViewController.view.insertSubview(webView, belowSubview: targetView)
+//            }
+//        } else if let hostViewController = sender as? MolokaiViewController {
+//            if let targetView = hostViewController.view.viewWithTag(IslandAssets.islandToolbarTag.rawValue) {
+//                hostViewController.view.insertSubview(webView, belowSubview: targetView)
+//            }
+//        } else if let hostViewController = sender as? MauiViewController {
+//            if let targetView = hostViewController.view.viewWithTag(IslandAssets.islandToolbarTag.rawValue) {
+//                hostViewController.view.insertSubview(webView, belowSubview: targetView)
+//            }
+//        } else if let hostViewController = sender as? HawaiiViewController {
+//            if let targetView = hostViewController.view.viewWithTag(IslandAssets.islandToolbarTag.rawValue) {
+//                hostViewController.view.insertSubview(webView, belowSubview: targetView)
+//            }
+//        }
     }
     
     // ===================================================================================================

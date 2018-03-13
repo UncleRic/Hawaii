@@ -21,7 +21,8 @@ class KauaiViewController: UIViewController, BackgroundDisplay, NavigationReport
         setupToolBar()
     }
     
-    // -----------------------------------------------------------------------------------------------------
+    /// -----------------------------------------------------------------------------------------------------
+    // MARK: - BackgroundDisplay Protocol functions
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
@@ -34,6 +35,12 @@ class KauaiViewController: UIViewController, BackgroundDisplay, NavigationReport
             backgroundImageView?.image = portraitBackgroundImage
             setupToolBar()
         }
+    }
+    
+    // -----------------------------------------------------------------------------------------------------
+    
+    func setupPortraitBackground() {
+        
     }
     
     // -----------------------------------------------------------------------------------------------------
@@ -60,6 +67,21 @@ class KauaiViewController: UIViewController, BackgroundDisplay, NavigationReport
     }
     
     // -----------------------------------------------------------------------------------------------------
+    // MARK: Gesture Handler
+    
+    @objc func handleTapGesture(recognizer: UITapGestureRecognizer) {
+        if let _ = self.view.viewWithTag(IslandAssets.overlayViewTag.rawValue) {
+            if let overlayView = view.viewWithTag(IslandAssets.overlayViewTag.rawValue),
+                let islandAssetContainerView = view.viewWithTag(IslandAssets.assetsContainerViewTag.rawValue) {
+                overlayView.removeFromSuperview()
+                islandAssetContainerView.removeFromSuperview()
+            }
+        } else if UIDevice.current.orientation.isPortrait {
+            Navigator().setupOverlay(sender: self)
+        }
+    }
+    
+    // -----------------------------------------------------------------------------------------------------
     // MARK: - Private Functions
     
     fileprivate func removeVestigialViews() {
@@ -75,22 +97,6 @@ class KauaiViewController: UIViewController, BackgroundDisplay, NavigationReport
         if let overlay = self.view.viewWithTag(IslandAssets.overlayViewTag.rawValue) {
             overlay.removeFromSuperview()
         }
-    }
-    
-    // -----------------------------------------------------------------------------------------------------
-    // MARK: - Gesture Handler
-    
-    @objc func handleTapGesture(recognizer: UITapGestureRecognizer) {
-        if let _ = self.view.viewWithTag(IslandAssets.overlayViewTag.rawValue) {
-            if let overlayView = view.viewWithTag(IslandAssets.overlayViewTag.rawValue),
-                let islandAssetContainerView = view.viewWithTag(IslandAssets.assetsContainerViewTag.rawValue) {
-                overlayView.removeFromSuperview()
-                islandAssetContainerView.removeFromSuperview()
-            }
-        } else if UIDevice.current.orientation.isPortrait {
-            Navigator().setupOverlay(sender: self)
-        }
-        
     }
     
     // -----------------------------------------------------------------------------------------------------

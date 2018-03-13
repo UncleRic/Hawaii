@@ -303,6 +303,10 @@ extension MauiViewController {
 
 extension HawaiiViewController {
     func setupToolBar() {
+        if let toolBarContainerView = view.viewWithTag(IslandAssets.islandToolbarTag.rawValue) {
+            toolBarContainerView.isHidden = false
+            return
+        }
         let toolBarContainerView = UIView(frame: CGRect.zero)
         toolBarContainerView.tag = IslandAssets.islandToolbarTag.rawValue
         self.view.addSubview(toolBarContainerView)

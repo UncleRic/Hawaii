@@ -14,7 +14,6 @@ class HawaiiViewController: UIViewController, BackgroundDisplay, NavigationRepor
     var backgroundImageView:UIImageView?
     var backgroundScrollView = UIScrollView(frame: CGRect.zero)
     
-    
     // ===================================================================================================
     
     override func viewDidLoad() {
@@ -26,29 +25,54 @@ class HawaiiViewController: UIViewController, BackgroundDisplay, NavigationRepor
         setupToolBar()
     }
     
+    // -----------------------------------------------------------------------------------------------------
+    // MARK: - BackgroundDisplay Protocol
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
+        
+        var isMapShown = false
+        
+        if let _ = view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
+            isMapShown = true
+        }
+        
         if UIDevice.current.orientation.isLandscape {
             removeVestigialViews()
             let toolBarContainerView = view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)
-            toolBarContainerView?.removeFromSuperview()
+            toolBarContainerView?.isHidden = true
             backgroundImageView?.removeFromSuperview()
-            setupLandscapeBackground()
+            if !isMapShown {
+                setupLandscapeBackground()
+            }
         } else {
-            backgroundScrollView.removeFromSuperview()
-            setupPortraitBackground()
-            setupToolBar()
+            if !isMapShown {
+                backgroundScrollView.removeFromSuperview()
+                restorePortraitBackground()
+            }
         }
     }
     
     // -----------------------------------------------------------------------------------------------------
     // MARK: - Layout
     
+    func restorePortraitBackground() {
+        removeVestigialViews()
+        if let mapView = view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
+            mapView.removeFromSuperview()
+        }
+        setupPortraitBackground()
+        setupToolBar()
+    }
+    
+    // -----------------------------------------------------------------------------------------------------
+    
     func setupPortraitBackground() {
         view.backgroundColor = UIColor.white
         if nil == backgroundImageView {
             backgroundImageView = UIImageView(image:UIImage(named:"HawaiiLava2"))
             backgroundImageView?.contentMode = .scaleAspectFill
+            backgroundImageView?.tag = IslandAssets.backgroundImageViewTag.rawValue
         }
         view.addSubview(backgroundImageView!)
         backgroundImageView?.anchor(top: view.safeAreaLayoutGuide.topAnchor,
@@ -116,9 +140,6 @@ class HawaiiViewController: UIViewController, BackgroundDisplay, NavigationRepor
     // MARK: - Private Functions
     
     fileprivate func removeVestigialViews() {
-        if let mapView = self.view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
-            mapView.removeFromSuperview()
-        }
         if let containerView = self.view.viewWithTag(IslandAssets.assetsContainerViewTag.rawValue) {
             containerView.removeFromSuperview()
         }
@@ -143,7 +164,6 @@ class HawaiiViewController: UIViewController, BackgroundDisplay, NavigationRepor
         } else if UIDevice.current.orientation.isPortrait {
             Navigator().setupOverlay(sender: self)
         }
-        
     }
     
     // -----------------------------------------------------------------------------------------------------
@@ -164,12 +184,13 @@ class HawaiiViewController: UIViewController, BackgroundDisplay, NavigationRepor
     
     @objc func mapDisplay() {
         removeVestigialViews()
-        if let mapView = view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
-            mapView.removeFromSuperview()
+        if let _ = view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
+            restorePortraitBackground()
         } else {
             let mapView = Map.setupMapView(sender: Islands.Hawaii)
             view.insertSubview(mapView, belowSubview: view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)!)
             mapView.overlay(containerView: view)
         }
+        view.setNeedsLayout()
     }
 }

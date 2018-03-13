@@ -14,6 +14,7 @@
 		183708322041FC8B00C6C833 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 183708312041FC8B00C6C833 /* Assets.xcassets */; };
 		183708352041FC8B00C6C833 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 183708332041FC8B00C6C833 /* LaunchScreen.storyboard */; };
 		184E9E082055EEE500ACEA2B /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184E9E072055EEE500ACEA2B /* Map.swift */; };
+		185AB1412058468800E316AC /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185AB1402058468800E316AC /* Main.swift */; };
 		187DBAC0204DE4AC009D686C /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187DBABF204DE4AC009D686C /* Photos.swift */; };
 		187DBAC2204DE555009D686C /* BigIsland.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 187DBAC1204DE555009D686C /* BigIsland.xcassets */; };
 		18843C7E204E02DD000A9F16 /* Maui.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18843C7D204E02DD000A9F16 /* Maui.xcassets */; };
@@ -41,6 +42,7 @@
 		183708342041FC8B00C6C833 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		183708362041FC8B00C6C833 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		184E9E072055EEE500ACEA2B /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		185AB1402058468800E316AC /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		187DBABF204DE4AC009D686C /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 		187DBAC1204DE555009D686C /* BigIsland.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = BigIsland.xcassets; sourceTree = "<group>"; };
 		18843C7D204E02DD000A9F16 /* Maui.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Maui.xcassets; sourceTree = "<group>"; };
@@ -90,11 +92,12 @@
 		183708292041FC8A00C6C833 /* Hawaii */ = {
 			isa = PBXGroup;
 			children = (
+				185AB1402058468800E316AC /* Main.swift */,
+				1837082C2041FC8A00C6C833 /* MainViewController.swift */,
 				18F7D9DD204C955600F58D80 /* WebKit.swift */,
 				187DBABF204DE4AC009D686C /* Photos.swift */,
 				18FD5DCC2047CC140044E9FD /* Navigator.swift */,
 				184E9E072055EEE500ACEA2B /* Map.swift */,
-				1837082C2041FC8A00C6C833 /* MainViewController.swift */,
 				1895DF7C2042069700C85493 /* WeatherService.swift */,
 				1895DF82204222D500C85493 /* UI.swift */,
 				1895DF7E204206C100C85493 /* Extensions.swift */,
@@ -207,6 +210,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				185AB1412058468800E316AC /* Main.swift in Sources */,
 				1895DF8D2043699500C85493 /* KauaiViewController.swift in Sources */,
 				1895DF8F204369B700C85493 /* MolokaiViewController.swift in Sources */,
 				1837082D2041FC8A00C6C833 /* MainViewController.swift in Sources */,

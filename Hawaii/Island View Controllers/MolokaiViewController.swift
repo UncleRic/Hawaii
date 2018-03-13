@@ -23,6 +23,9 @@ class MolokaiViewController: UIViewController, BackgroundDisplay, NavigationRepo
         setupToolBar()
     }
     
+    // -----------------------------------------------------------------------------------------------------
+    // MARK: - BackgroundDisplay Protocol functions
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         if UIDevice.current.orientation.isLandscape {
@@ -37,7 +40,6 @@ class MolokaiViewController: UIViewController, BackgroundDisplay, NavigationRepo
     }
     
     // -----------------------------------------------------------------------------------------------------
-    // MARK: - Layout
     
     func setupPortraitBackground() {
         view.backgroundColor = UIColor.white
@@ -73,6 +75,20 @@ class MolokaiViewController: UIViewController, BackgroundDisplay, NavigationRepo
                                     paddingLeft: 0,
                                     paddingBottom: 10,
                                     paddingRight: 0, width: 0, height: 0)
+    }
+    
+    // -----------------------------------------------------------------------------------------------------
+    // MARK: Gesture Handler
+    
+    @objc func handleTapGesture(recognizer: UITapGestureRecognizer) {
+        if let containerView = self.view.viewWithTag(IslandAssets.assetsContainerViewTag.rawValue) {
+            containerView.removeFromSuperview()
+            let toolBarContainerView = view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)
+            toolBarContainerView?.removeFromSuperview()
+        } else if UIDevice.current.orientation.isPortrait {
+            // Display Navigator:
+            Navigator().setupOverlay(sender: self)
+        }
     }
     
     // -----------------------------------------------------------------------------------------------------
@@ -126,19 +142,6 @@ class MolokaiViewController: UIViewController, BackgroundDisplay, NavigationRepo
             xPosition += photo.frame.size.width
             scrollViewContentWidth += photo.frame.size.width
             backgroundScrollView.contentSize = CGSize(width: scrollViewContentWidth, height: photo.frame.size.height)
-        }
-    }
-    // -----------------------------------------------------------------------------------------------------
-    // MARK: - Gesture Handler
-    
-    @objc func handleTapGesture(recognizer: UITapGestureRecognizer) {
-        if let containerView = self.view.viewWithTag(IslandAssets.assetsContainerViewTag.rawValue) {
-            containerView.removeFromSuperview()
-            let toolBarContainerView = view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)
-            toolBarContainerView?.removeFromSuperview()
-        } else if UIDevice.current.orientation.isPortrait {
-            // Display Navigator:
-            Navigator().setupOverlay(sender: self)
         }
     }
     

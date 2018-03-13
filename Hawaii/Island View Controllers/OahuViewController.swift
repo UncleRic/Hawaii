@@ -24,6 +24,9 @@ class OahuViewController: UIViewController, BackgroundDisplay, NavigationReport 
         setupToolBar()
     }
     
+    // -----------------------------------------------------------------------------------------------------
+    // MARK: - BackgroundDisplay Protocol functions
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         if UIDevice.current.orientation.isLandscape {
@@ -40,7 +43,6 @@ class OahuViewController: UIViewController, BackgroundDisplay, NavigationReport 
     }
     
     // -----------------------------------------------------------------------------------------------------
-    // MARK: -
     
     func setupPortraitBackground() {
         view.backgroundColor = UIColor.white
@@ -77,6 +79,17 @@ class OahuViewController: UIViewController, BackgroundDisplay, NavigationReport 
                                     paddingLeft: 0,
                                     paddingBottom: 10,
                                     paddingRight: 0, width: 0, height: 0)
+    }
+    
+    // -----------------------------------------------------------------------------------------------------
+    // MARK: Gesture Handler
+    
+    @objc func handleTapGesture(recognizer: UITapGestureRecognizer) {
+        if let containerView = self.view.viewWithTag(IslandAssets.overlayViewTag.rawValue) {
+            containerView.removeFromSuperview()
+        } else if UIDevice.current.orientation.isPortrait {
+            Navigator().setupOverlay(sender: self)
+        }
     }
     
     // -----------------------------------------------------------------------------------------------------
@@ -134,18 +147,6 @@ class OahuViewController: UIViewController, BackgroundDisplay, NavigationReport 
             scrollViewContentWidth += photo.frame.size.width
             backgroundScrollView.contentSize = CGSize(width: scrollViewContentWidth, height: photo.frame.size.height)
         }
-    }
-    
-    // -----------------------------------------------------------------------------------------------------
-    // MARK: - Gesture Handler
-    
-    @objc func handleTapGesture(recognizer: UITapGestureRecognizer) {
-        if let containerView = self.view.viewWithTag(IslandAssets.overlayViewTag.rawValue) {
-            containerView.removeFromSuperview()
-        } else if UIDevice.current.orientation.isPortrait {
-            Navigator().setupOverlay(sender: self)
-        }
-        
     }
     
     // -----------------------------------------------------------------------------------------------------

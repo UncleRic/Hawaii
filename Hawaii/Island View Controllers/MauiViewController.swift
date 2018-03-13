@@ -24,6 +24,9 @@ class MauiViewController: UIViewController, BackgroundDisplay, NavigationReport 
         setupToolBar()
     }
     
+    // -----------------------------------------------------------------------------------------------------
+    // MARK: - BackgroundDisplay Protocol functions
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         if UIDevice.current.orientation.isLandscape {
@@ -41,7 +44,7 @@ class MauiViewController: UIViewController, BackgroundDisplay, NavigationReport 
     
     // -----------------------------------------------------------------------------------------------------
     
-    fileprivate func setupPortraitBackground() {
+    func setupPortraitBackground() {
         view.backgroundColor = UIColor.white
         if nil == backgroundImageView {
             backgroundImageView = UIImageView(image:UIImage(named:"MauiMain"))
@@ -78,6 +81,18 @@ class MauiViewController: UIViewController, BackgroundDisplay, NavigationReport 
     }
     
     // -----------------------------------------------------------------------------------------------------
+    // MARK: Gesture Handler
+    
+    @objc func handleTapGesture(recognizer: UITapGestureRecognizer) {
+        if let containerView = self.view.viewWithTag(IslandAssets.assetsContainerViewTag.rawValue) {
+            containerView.removeFromSuperview()
+        } else if UIDevice.current.orientation.isPortrait {
+            Navigator().setupOverlay(sender: self)
+        }
+    }
+    
+    // -----------------------------------------------------------------------------------------------------
+    // MARK: -
     
     fileprivate func loadImages() {
         let imageView1 = UIImageView(image: UIImage(named: "MauiMain"))
@@ -128,17 +143,6 @@ class MauiViewController: UIViewController, BackgroundDisplay, NavigationReport 
         }
     }
     
-    // -----------------------------------------------------------------------------------------------------
-    // MARK: - Gesture Handler
-    
-    @objc func handleTapGesture(recognizer: UITapGestureRecognizer) {
-        if let containerView = self.view.viewWithTag(IslandAssets.assetsContainerViewTag.rawValue) {
-            containerView.removeFromSuperview()
-        } else if UIDevice.current.orientation.isPortrait {
-            Navigator().setupOverlay(sender: self)
-        }
-        
-    }
     // -----------------------------------------------------------------------------------------------------
     // MARK: - Navigation
     
