@@ -185,6 +185,7 @@ class MolokaiViewController: UIViewController, BackgroundDisplay, NavigationRepo
             mapView.removeFromSuperview()
         } else {
             let mapView = Map.setupMapView(sender: Islands.Molokai)
+            mapView.delegate = self
             view.insertSubview(mapView, belowSubview: view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)!)
             mapView.overlay(containerView: view)
         }

@@ -23,3 +23,38 @@ class Map {
         return mapView
     }
 }
+
+// ===================================================================================================
+
+extension KauaiViewController: MKMapViewDelegate {
+    func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
+        return
+    }
+}
+
+extension OahuViewController: MKMapViewDelegate {
+    func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
+        return
+    }
+}
+
+extension MolokaiViewController: MKMapViewDelegate {
+    func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
+        return
+    }
+}
+
+extension MauiViewController: MKMapViewDelegate {
+    func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
+        return
+    }
+}
+
+
+extension HawaiiViewController: MKMapViewDelegate {
+    func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
+        return
+    }
+}
+
+

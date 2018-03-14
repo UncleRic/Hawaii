@@ -219,6 +219,7 @@ class MainViewController: UIViewController {
         return (isReachable && !needsConnection)
         
     }
+    
     // -----------------------------------------------------------------------------------------------------
     
     func removeIslands() {

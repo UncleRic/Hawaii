@@ -188,6 +188,7 @@ class OahuViewController: UIViewController, BackgroundDisplay, NavigationReport 
             restorePortraitBackground()
         } else {
             let mapView = Map.setupMapView(sender: Islands.Oahu)
+            mapView.delegate = self
             view.insertSubview(mapView, belowSubview: view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)!)
             mapView.overlay(containerView: view)
         }

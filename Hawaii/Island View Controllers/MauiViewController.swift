@@ -46,7 +46,7 @@ class MauiViewController: UIViewController, BackgroundDisplay, NavigationReport 
                 backgroundScrollView.removeFromSuperview()
                 restorePortraitBackground()
             }
-             setupToolBar()
+            setupToolBar()
         }
     }
     
@@ -182,6 +182,7 @@ class MauiViewController: UIViewController, BackgroundDisplay, NavigationReport 
             restorePortraitBackground()
         } else {
             let mapView = Map.setupMapView(sender: Islands.Maui)
+            mapView.delegate = self
             view.insertSubview(mapView, belowSubview: view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)!)
             mapView.overlay(containerView: view)
         }

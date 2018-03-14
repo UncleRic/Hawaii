@@ -186,6 +186,7 @@ class KauaiViewController: UIViewController, BackgroundDisplay, NavigationReport
             restorePortraitBackground()
         } else {
             let mapView = Map.setupMapView(sender: Islands.Kauai)
+            mapView.delegate = self
             view.insertSubview(mapView, belowSubview: view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)!)
             mapView.overlay(containerView: view)
         }
