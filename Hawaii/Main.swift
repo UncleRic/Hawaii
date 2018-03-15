@@ -8,6 +8,8 @@
 
 import MapKit
 
+typealias SenderTuple = (vc: UIViewController, island: Islands)
+
 protocol BackgroundDisplay: class {
     func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator)
     func setupPortraitBackground()

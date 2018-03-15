@@ -14,6 +14,7 @@ class MauiViewController: UIViewController, BackgroundDisplay, NavigationReport 
     var landscapeBackgroundImage: UIImage?
     var backgroundImageView:UIImageView?
     var backgroundScrollView = UIScrollView(frame: CGRect.zero)
+    let map = Map()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -181,10 +182,11 @@ class MauiViewController: UIViewController, BackgroundDisplay, NavigationReport 
         if let _ = view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
             restorePortraitBackground()
         } else {
-            let mapView = Map.setupMapView(sender: Islands.Maui)
-            mapView.delegate = self
-            view.insertSubview(mapView, belowSubview: view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)!)
-            mapView.overlay(containerView: view)
+            if let mapView = map.setupMapView(sender: (vc: self, island:Islands.Maui)) {
+                mapView.delegate = self
+                view.insertSubview(mapView, belowSubview: view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)!)
+                mapView.overlay(containerView: view)
+            }
         }
         view.setNeedsLayout()
     }

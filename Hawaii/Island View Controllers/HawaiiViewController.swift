@@ -13,6 +13,7 @@ class HawaiiViewController: UIViewController, BackgroundDisplay, NavigationRepor
     var landscapeBackgroundImage: UIImage?
     var backgroundImageView:UIImageView?
     var backgroundScrollView = UIScrollView(frame: CGRect.zero)
+    let map = Map()
     
     // ===================================================================================================
     
@@ -180,10 +181,11 @@ class HawaiiViewController: UIViewController, BackgroundDisplay, NavigationRepor
         if let _ = view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
             restorePortraitBackground()
         } else {
-            let mapView = Map.setupMapView(sender: Islands.Hawaii)
-            mapView.delegate = self
-            view.insertSubview(mapView, belowSubview: view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)!)
-            mapView.overlay(containerView: view)
+            if let mapView = map.setupMapView(sender: (vc: self, island:Islands.Hawaii)) {
+                mapView.delegate = self
+                view.insertSubview(mapView, belowSubview: view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)!)
+                mapView.overlay(containerView: view)
+            }
         }
         view.setNeedsLayout()
     }

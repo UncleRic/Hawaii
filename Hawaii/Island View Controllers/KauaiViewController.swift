@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import MapKit
 
 class KauaiViewController: UIViewController, BackgroundDisplay, NavigationReport {
     var portraitBackgroundImage:UIImage?
     var landscapeBackgroundImage: UIImage?
     var backgroundImageView:UIImageView?
     var backgroundScrollView = UIScrollView(frame: CGRect.zero)
+    var mapView:MKMapView?
+    let map = Map()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -181,14 +184,15 @@ class KauaiViewController: UIViewController, BackgroundDisplay, NavigationReport
     }
     
     @objc func mapDisplay() {
-       // removeVestigialViews()
+        // removeVestigialViews()
         if let _ = view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
-            restorePortraitBackground()
+            map.addAnnotations()
+        //    restorePortraitBackground()
         } else {
-            let mapView = Map.setupMapView(sender: Islands.Kauai)
-            mapView.delegate = self
-            view.insertSubview(mapView, belowSubview: view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)!)
-            mapView.overlay(containerView: view)
+            if let mapView = map.setupMapView(sender: (vc: self, island:Islands.Kauai)) {
+                view.insertSubview(mapView, belowSubview: view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)!)
+                mapView.overlay(containerView: view)
+            }
         }
         view.setNeedsLayout()
     }

@@ -9,11 +9,11 @@
 import UIKit
 
 class OahuViewController: UIViewController, BackgroundDisplay, NavigationReport {
-    
     var portraitBackgroundImage:UIImage?
     var landscapeBackgroundImage: UIImage?
     var backgroundImageView:UIImageView?
     var backgroundScrollView = HawaiianScrollView(frame: CGRect.zero)
+    let map = Map()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -145,7 +145,7 @@ class OahuViewController: UIViewController, BackgroundDisplay, NavigationReport 
         let imageView17 = UIImageView(image: UIImage(named: "Oahu17"))
         
         let photos = [imageView9, imageView11, imageView2, imageView4, imageView6, imageView7, imageView10,  imageView13, imageView17, imageView1, imageView3, imageView5, imageView8, imageView12, imageView16, imageView14, imageView15]
-    
+        
         var xPosition:CGFloat = 0.0
         backgroundScrollView.isPagingEnabled = true
         var scrollViewContentWidth:CGFloat = 0
@@ -187,10 +187,11 @@ class OahuViewController: UIViewController, BackgroundDisplay, NavigationReport 
         if let _ = view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
             restorePortraitBackground()
         } else {
-            let mapView = Map.setupMapView(sender: Islands.Oahu)
-            mapView.delegate = self
-            view.insertSubview(mapView, belowSubview: view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)!)
-            mapView.overlay(containerView: view)
+            if let mapView = map.setupMapView(sender: (vc: self, island:Islands.Oahu)) {
+                mapView.delegate = self
+                view.insertSubview(mapView, belowSubview: view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)!)
+                mapView.overlay(containerView: view)
+            }
         }
         view.setNeedsLayout()
     }

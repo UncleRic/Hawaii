@@ -13,6 +13,7 @@ class MolokaiViewController: UIViewController, BackgroundDisplay, NavigationRepo
     var landscapeBackgroundImage: UIImage?
     var backgroundImageView: UIImageView?
     var backgroundScrollView = UIScrollView(frame: CGRect.zero)
+    let map = Map()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,7 +83,7 @@ class MolokaiViewController: UIViewController, BackgroundDisplay, NavigationRepo
                                     paddingBottom: 10,
                                     paddingRight: 0, width: 0, height: 0)
     }
-
+    
     
     // -----------------------------------------------------------------------------------------------------
     
@@ -184,10 +185,11 @@ class MolokaiViewController: UIViewController, BackgroundDisplay, NavigationRepo
         if let mapView = view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
             mapView.removeFromSuperview()
         } else {
-            let mapView = Map.setupMapView(sender: Islands.Molokai)
-            mapView.delegate = self
-            view.insertSubview(mapView, belowSubview: view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)!)
-            mapView.overlay(containerView: view)
+            if let mapView = map.setupMapView(sender: (vc: self, island:Islands.Molokai)) {
+                mapView.delegate = self
+                view.insertSubview(mapView, belowSubview: view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)!)
+                mapView.overlay(containerView: view)
+            }
         }
     }
     

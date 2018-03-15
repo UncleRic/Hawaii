@@ -84,7 +84,10 @@ class MainViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if !isConnectedToNetwork() {
+        
+        isWifiConnected = isConnectedToNetwork()
+        
+        if !isWifiConnected {
             let title = "Missing WiFi"
             let msg = "The internet is required."
             let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
