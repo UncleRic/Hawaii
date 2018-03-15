@@ -31,7 +31,14 @@ class Map {
         
         mapView?.tag = IslandAssets.mapViewTag.rawValue
         
-        let span = MKCoordinateSpan(latitudeDelta: 1.30, longitudeDelta: 1.34)
+        let span:MKCoordinateSpan
+        
+        if sender.island == .Kauai {
+            span = MKCoordinateSpan(latitudeDelta: 0.56, longitudeDelta: 0.56)
+        } else {
+            span = MKCoordinateSpan(latitudeDelta: 1.30, longitudeDelta: 1.34)
+        }
+        
         let region = MKCoordinateRegion(center:coord, span: span)
         
         mapView?.region = region
@@ -39,7 +46,7 @@ class Map {
     }
     
     // -----------------------------------------------------------------------------------------------------
-    
+    // http://www.surfing-waves.com/atlas/north_america/hawaii/kauai/spot/horners.html
     func addAnnotations() {
         let one = MKPointAnnotation()
         
@@ -63,10 +70,20 @@ class Map {
         four.title = "Hanalei (Impossibles and the Bowl)"
         four.subtitle = "Beginners, Packed"
         
-        let annotations:[MKAnnotation] = [one, two, three, four]
+        let five = MKPointAnnotation()
+        five.coordinate = CLLocationCoordinate2DMake(22.049938, -159.332446)
+        five.title = "Horners"
+        five.subtitle = "Rocky Reef; Can get busy."
+        
+        let six = MKPointAnnotation()
+        six.coordinate = CLLocationCoordinate2DMake(22.220000, -159.3)
+        six.title = "Kalapaki"
+        six.subtitle = "Rocky Reef; for Beginners"
+        
+        let annotations:[MKAnnotation] = [one, two, three, four, five, six]
         
         mapView?.addAnnotations(annotations)
-        mapView?.setNeedsDisplay()
+    
     }
 }
 
@@ -74,6 +91,12 @@ class Map {
 
 extension KauaiViewController: MKMapViewDelegate {
     
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        return
+    }
+    
+    // -----------------------------------------------------------------------------------------------------
     
     func mapViewDidFailLoadingMap(_: MKMapView, withError: Error) {
         let title = "Unable to Load Map"
