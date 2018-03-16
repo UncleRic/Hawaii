@@ -47,7 +47,7 @@ class Map {
     
     // -----------------------------------------------------------------------------------------------------
     // http://www.surfing-waves.com/atlas/north_america/hawaii/kauai/spot/horners.html
-    func addAnnotations() {
+    func addSurfAnnotations(sender: UIViewController) {
         let one = MKPointAnnotation()
         
         one.coordinate = CLLocationCoordinate2DMake(22.228949, -159.487187)
@@ -83,6 +83,8 @@ class Map {
         let annotations:[MKAnnotation] = [one, two, three, four, five, six]
         
         mapView?.addAnnotations(annotations)
+        
+        
     
     }
 }

@@ -8,11 +8,42 @@
 
 import Foundation
 import UIKit
+import MapKit
 
 let palatinoFont = "Palatino"
 let papyrusFont = "Papyrus"
 
 let toolbarWidth:CGFloat = UIScreen.main.bounds.size.width/2
+
+extension MKMapView {
+    func displayTitleLabel(containerView: UIView) {
+        let titleLabel: UILabel = {
+            let label = UILabel(frame: CGRect.zero)
+            label.tag = IslandAssets.surfingTitle.rawValue
+            label.text = "Surf Areas"
+            label.textColor = UIColor.blue
+            label.font = UIFont(name: papyrusFont, size: 34.0)
+            label.textAlignment = .center
+            return label
+        }()
+        
+        containerView.addSubview(titleLabel)
+        
+        titleLabel.anchor(top: self.safeAreaLayoutGuide.topAnchor,
+                          bottom: nil,
+                          left: nil,
+                          right: nil,
+                          centerYAnchor: nil,
+                          centerXAnchor: self.centerXAnchor,
+                          paddingTop: 60,
+                          paddingLeft: 0,
+                          paddingBottom: 0,
+                          paddingRight: 0, width: toolbarWidth, height: 44)
+        
+    }
+}
+
+// ===================================================================================================
 
 extension MainViewController {
     func setupToolBar() {
