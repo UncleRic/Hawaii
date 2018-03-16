@@ -120,9 +120,9 @@ public enum IslandAssets:Int {
     case food
     case mainToolbarTag = 10
     case islandToolbarTag = 11
-    case surfingTitle = 12
+    case mapTitleTag = 12
     case overlayViewTag = 22
-    case assetsContainerViewTag = 23
+    case navigatorContainerViewTag = 23
     case mainInfoTag = 50
     case islandMenuTag = 51
     case islandMapTag = 52

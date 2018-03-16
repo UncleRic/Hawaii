@@ -11,6 +11,36 @@ import MapKit
 
 var isWifiConnected = false
 
+extension MKMapView {
+    func displayTitleLabel(title: String) {
+        let titleLabel: UILabel = {
+            let label = UILabel(frame: CGRect.zero)
+            label.tag = IslandAssets.mapTitleTag.rawValue
+            label.text = title
+            label.textColor = UIColor.blue
+            label.font = UIFont(name: noteworthyFont, size: 34.0)
+            label.textAlignment = .center
+            return label
+        }()
+        
+        self.addSubview(titleLabel)
+        
+        titleLabel.anchor(top: self.safeAreaLayoutGuide.topAnchor,
+                          bottom: nil,
+                          left: nil,
+                          right: nil,
+                          centerYAnchor: nil,
+                          centerXAnchor: self.centerXAnchor,
+                          paddingTop: 60,
+                          paddingLeft: 0,
+                          paddingBottom: 0,
+                          paddingRight: 0, width: toolbarWidth, height: 44)
+        
+    }
+}
+
+// ===================================================================================================
+
 class Map {
     
      var mapView: MKMapView?
@@ -83,16 +113,13 @@ class Map {
         let annotations:[MKAnnotation] = [one, two, three, four, five, six]
         
         mapView?.addAnnotations(annotations)
-        
-        
-    
+        mapView?.displayTitleLabel(title: "Surf Sites")
     }
 }
 
 // ===================================================================================================
 
 extension KauaiViewController: MKMapViewDelegate {
-    
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         return

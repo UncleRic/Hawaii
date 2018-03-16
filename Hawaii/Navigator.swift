@@ -78,7 +78,10 @@ class Navigator {
     // -----------------------------------------------------------------------------------------------------
     
     func removeNavigatorOverlay(sender: UIViewController) {
-        if let assetContainer = sender.view.viewWithTag(IslandAssets.assetsContainerViewTag.rawValue) {
+        if let surfTitle = sender.view.viewWithTag(IslandAssets.mapTitleTag.rawValue) {
+            surfTitle.removeFromSuperview()
+        }
+        if let assetContainer = sender.view.viewWithTag(IslandAssets.navigatorContainerViewTag.rawValue) {
             assetContainer.removeFromSuperview()
         }
     }
@@ -92,7 +95,7 @@ class Navigator {
         }
         
         let containerView = UIView(frame:CGRect.zero)
-        containerView.tag = IslandAssets.assetsContainerViewTag.rawValue
+        containerView.tag = IslandAssets.navigatorContainerViewTag.rawValue
         
         if let hostController = host as? KauaiViewController {
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hostController.handleTapGesture))

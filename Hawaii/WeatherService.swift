@@ -265,7 +265,7 @@ class WeatherService {
         }
         
         let containerView = UIView(frame:CGRect.zero)
-        containerView.tag = IslandAssets.assetsContainerViewTag.rawValue
+        containerView.tag = IslandAssets.navigatorContainerViewTag.rawValue
         hostView.addSubview(containerView)
         
         containerView.anchor(top: hostView.safeAreaLayoutGuide.topAnchor,

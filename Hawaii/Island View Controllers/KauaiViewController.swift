@@ -116,7 +116,12 @@ class KauaiViewController: UIViewController, BackgroundDisplay, NavigationReport
     // MARK: - Private Functions
     
     fileprivate func removeVestigialViews() {
-        if let containerView = self.view.viewWithTag(IslandAssets.assetsContainerViewTag.rawValue) {
+        
+        if let mapTitleLabel = self.view.viewWithTag(IslandAssets.mapTitleTag.rawValue) {
+            mapTitleLabel.removeFromSuperview()
+        }
+        
+        if let containerView = self.view.viewWithTag(IslandAssets.navigatorContainerViewTag.rawValue) {
             containerView.removeFromSuperview()
         }
         if let webView = self.view.viewWithTag(IslandAssets.webViewTag.rawValue) {
@@ -180,7 +185,7 @@ class KauaiViewController: UIViewController, BackgroundDisplay, NavigationReport
     }
     
     @objc func reportMenu() {
-        if let _ = view.viewWithTag(IslandAssets.assetsContainerViewTag.rawValue) {
+        if let _ = view.viewWithTag(IslandAssets.navigatorContainerViewTag.rawValue) {
             removeVestigialViews()
         } else {
             Navigator().setupOverlay(sender: self)
@@ -188,14 +193,12 @@ class KauaiViewController: UIViewController, BackgroundDisplay, NavigationReport
     }
     
     @objc func mapDisplay() {
-        // removeVestigialViews()
         if let _ = view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
             restorePortraitBackground()
         } else {
             if let mapView = map.setupMapView(sender: (vc: self, island:Islands.Kauai)) {
                 view.insertSubview(mapView, belowSubview: view.viewWithTag(IslandAssets.islandToolbarTag.rawValue)!)
                 mapView.overlay(containerView: view)
-                mapView.displayTitleLabel(containerView: self.view)
             }
         }
         view.setNeedsLayout()
