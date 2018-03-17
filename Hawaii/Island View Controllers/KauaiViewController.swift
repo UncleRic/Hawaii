@@ -184,6 +184,14 @@ class KauaiViewController: UIViewController, BackgroundDisplay, NavigationReport
         }
     }
     
+    @objc func lodgingReport() {
+        // ....
+    }
+    
+    @objc func touristReport() {
+        // ....
+    }
+    
     @objc func reportMenu() {
         if let _ = view.viewWithTag(IslandAssets.navigatorContainerViewTag.rawValue) {
             removeVestigialViews()

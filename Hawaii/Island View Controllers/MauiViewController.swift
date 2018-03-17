@@ -172,6 +172,14 @@ class MauiViewController: UIViewController, BackgroundDisplay, NavigationReport 
         WebKit.setupWebView(sender: self, forBeach: Islands.Maui)
     }
     
+    @objc func lodgingReport() {
+        // ....
+    }
+    
+    @objc func touristReport() {
+        // ....
+    }
+    
     @objc func reportMenu() {
         if let _ = view.viewWithTag(IslandAssets.navigatorContainerViewTag.rawValue) {
             removeVestigialViews()

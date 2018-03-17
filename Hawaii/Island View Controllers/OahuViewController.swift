@@ -177,6 +177,14 @@ class OahuViewController: UIViewController, BackgroundDisplay, NavigationReport 
         WebKit.setupWebView(sender: self, forBeach: Islands.Oahu)
     }
     
+    @objc func lodgingReport() {
+        // ....
+    }
+    
+    @objc func touristReport() {
+        // ....
+    }
+    
     @objc func reportMenu() {
         if let _ = view.viewWithTag(IslandAssets.navigatorContainerViewTag.rawValue) {
             removeVestigialViews()

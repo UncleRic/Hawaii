@@ -22,8 +22,8 @@ protocol BackgroundDisplay: class {
     @objc func surfReport()
     @objc func reportMenu()
     @objc func mapDisplay()
-    //    func lodgingReport()
-    //    func touristReport()
+    @objc func lodgingReport()
+    @objc func touristReport()
 }
 
 // -----------------------------------------------------------------------------------------------------

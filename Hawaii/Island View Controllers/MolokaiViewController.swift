@@ -183,6 +183,14 @@ class MolokaiViewController: UIViewController, BackgroundDisplay, NavigationRepo
         }
     }
     
+    @objc func lodgingReport() {
+        // ....
+    }
+    
+    @objc func touristReport() {
+        // ....
+    }
+    
     @objc func mapDisplay() {
         removeVestigialViews()
         if let mapView = view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
