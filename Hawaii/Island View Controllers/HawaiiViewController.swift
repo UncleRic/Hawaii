@@ -120,8 +120,9 @@ class HawaiiViewController: UIViewController, BackgroundDisplay, NavigationRepor
         let imageView5 = UIImageView(image: UIImage(named: "BigIsland4"))
         let imageView6 = UIImageView(image: UIImage(named: "BigIsland5"))
         let imageView7 = UIImageView(image: UIImage(named: "BigIsland6"))
+        let imageView8 = UIImageView(image: UIImage(named: "BigIsland7"))
         
-        let photos = [imageView1, imageView2, imageView3, imageView4, imageView5, imageView6, imageView7]
+        let photos = [imageView1, imageView6, imageView8, imageView7, imageView2, imageView3, imageView4, imageView5]
         var xPosition:CGFloat = 0.0
         
         backgroundScrollView.isPagingEnabled = true
