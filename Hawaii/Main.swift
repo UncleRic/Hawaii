@@ -24,6 +24,7 @@ protocol BackgroundDisplay: class {
     @objc func mapDisplay()
     @objc func lodgingReport()
     @objc func touristReport()
+    @objc func foodReport()
 }
 
 // -----------------------------------------------------------------------------------------------------

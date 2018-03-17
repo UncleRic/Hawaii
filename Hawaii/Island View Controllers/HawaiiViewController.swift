@@ -179,6 +179,11 @@ class HawaiiViewController: UIViewController, BackgroundDisplay, NavigationRepor
         // ....
     }
     
+    @objc func foodReport() {
+        Navigator().removeNavigatorOverlay(sender: self)
+        // ....
+    }
+    
     @objc func reportMenu() {
         if let _ = view.viewWithTag(IslandAssets.navigatorContainerViewTag.rawValue) {
             removeVestigialViews()

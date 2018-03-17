@@ -185,10 +185,17 @@ class KauaiViewController: UIViewController, BackgroundDisplay, NavigationReport
     }
     
     @objc func lodgingReport() {
-        // ....
+        Navigator().removeNavigatorOverlay(sender: self)
+        
     }
     
     @objc func touristReport() {
+        Navigator().removeNavigatorOverlay(sender: self)
+        // ....
+    }
+    
+    @objc func foodReport() {
+        Navigator().removeNavigatorOverlay(sender: self)
         // ....
     }
     

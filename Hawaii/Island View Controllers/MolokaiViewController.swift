@@ -191,6 +191,11 @@ class MolokaiViewController: UIViewController, BackgroundDisplay, NavigationRepo
         // ....
     }
     
+    @objc func foodReport() {
+        Navigator().removeNavigatorOverlay(sender: self)
+        // ....
+    }
+    
     @objc func mapDisplay() {
         removeVestigialViews()
         if let mapView = view.viewWithTag(IslandAssets.mapViewTag.rawValue) {

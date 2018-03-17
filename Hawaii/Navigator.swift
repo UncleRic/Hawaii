@@ -241,6 +241,9 @@ class Navigator {
             setupNavigatorOverlay(host: hostController)
             weatherButton.addTarget(self, action: #selector(hostController.weatherReport), for: .touchUpInside)
             surfButton.addTarget(self, action: #selector(hostController.surfReport), for: .touchUpInside)
+            touristButton.addTarget(self, action: #selector(hostController.touristReport), for: .touchUpInside)
+            lodgingButton.addTarget(self, action: #selector(hostController.lodgingReport), for: .touchUpInside)
+            foodButton.addTarget(self, action: #selector(hostController.foodReport), for: .touchUpInside)
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hostController.handleTapGesture))
             overlayView.gestureRecognizers = [tapGesture]
             hostController.backgroundImageView?.addSubview(overlayView)
@@ -249,6 +252,9 @@ class Navigator {
             setupNavigatorOverlay(host: hostController)
             weatherButton.addTarget(self, action: #selector(hostController.weatherReport), for: .touchUpInside)
             surfButton.addTarget(self, action: #selector(hostController.surfReport), for: .touchUpInside)
+            touristButton.addTarget(self, action: #selector(hostController.touristReport), for: .touchUpInside)
+            lodgingButton.addTarget(self, action: #selector(hostController.lodgingReport), for: .touchUpInside)
+            foodButton.addTarget(self, action: #selector(hostController.foodReport), for: .touchUpInside)
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hostController.handleTapGesture))
             overlayView.gestureRecognizers = [tapGesture]
             hostController.backgroundImageView?.addSubview(overlayView)
@@ -257,6 +263,9 @@ class Navigator {
             setupNavigatorOverlay(host: hostController)
             weatherButton.addTarget(self, action: #selector(hostController.weatherReport), for: .touchUpInside)
             surfButton.addTarget(self, action: #selector(hostController.surfReport), for: .touchUpInside)
+            touristButton.addTarget(self, action: #selector(hostController.touristReport), for: .touchUpInside)
+            lodgingButton.addTarget(self, action: #selector(hostController.lodgingReport), for: .touchUpInside)
+            foodButton.addTarget(self, action: #selector(hostController.foodReport), for: .touchUpInside)
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hostController.handleTapGesture))
             overlayView.gestureRecognizers = [tapGesture]
             hostController.backgroundImageView?.addSubview(overlayView)
@@ -265,6 +274,9 @@ class Navigator {
             setupNavigatorOverlay(host: hostController)
             weatherButton.addTarget(self, action: #selector(hostController.weatherReport), for: .touchUpInside)
             surfButton.addTarget(self, action: #selector(hostController.surfReport), for: .touchUpInside)
+            touristButton.addTarget(self, action: #selector(hostController.touristReport), for: .touchUpInside)
+            lodgingButton.addTarget(self, action: #selector(hostController.lodgingReport), for: .touchUpInside)
+            foodButton.addTarget(self, action: #selector(hostController.foodReport), for: .touchUpInside)
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hostController.handleTapGesture))
             overlayView.gestureRecognizers = [tapGesture]
             hostController.backgroundImageView?.addSubview(overlayView)
@@ -273,6 +285,9 @@ class Navigator {
             setupNavigatorOverlay(host: hostController)
             weatherButton.addTarget(self, action: #selector(hostController.weatherReport), for: .touchUpInside)
             surfButton.addTarget(self, action: #selector(hostController.surfReport), for: .touchUpInside)
+            touristButton.addTarget(self, action: #selector(hostController.touristReport), for: .touchUpInside)
+            lodgingButton.addTarget(self, action: #selector(hostController.lodgingReport), for: .touchUpInside)
+            foodButton.addTarget(self, action: #selector(hostController.foodReport), for: .touchUpInside)
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hostController.handleTapGesture))
             overlayView.gestureRecognizers = [tapGesture]
             hostController.backgroundImageView?.addSubview(overlayView)
