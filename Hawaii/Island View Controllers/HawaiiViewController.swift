@@ -169,8 +169,14 @@ class HawaiiViewController: UIViewController, BackgroundDisplay, NavigationRepor
     }
     
     @objc func surfReport() {
-        WebKit.setupWebView(sender: self, forBeach: Islands.Hawaii)
+        Navigator().removeNavigatorOverlay(sender: self)
+        if let _ = view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
+            map.addHawaiiSurfAnnotations(sender: self)
+        } else {
+            WebKit.setupWebView(sender: self, forBeach: Islands.Kauai)
+        }
     }
+    
     
     @objc func lodgingReport() {
         // ....

@@ -178,7 +178,7 @@ class KauaiViewController: UIViewController, BackgroundDisplay, NavigationReport
     @objc func surfReport() {
         Navigator().removeNavigatorOverlay(sender: self)
         if let _ = view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
-            map.addSurfAnnotations(sender: self)
+            map.addKauaiSurfAnnotations(sender: self)
         } else {
             WebKit.setupWebView(sender: self, forBeach: Islands.Kauai)
         }

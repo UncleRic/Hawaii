@@ -43,9 +43,9 @@ extension MKMapView {
 
 class Map {
     
-     var mapView: MKMapView?
+    var mapView: MKMapView?
     
-     func setupMapView(sender: SenderTuple) -> MKMapView? {
+    func setupMapView(sender: SenderTuple) -> MKMapView? {
         if !isWifiConnected {
             let title = "Missing WiFi"
             let msg = "The internet is required."
@@ -76,8 +76,11 @@ class Map {
     }
     
     // -----------------------------------------------------------------------------------------------------
+    // MARK: - Surfing Annotations
     // http://www.surfing-waves.com/atlas/north_america/hawaii/kauai/spot/horners.html
-    func addSurfAnnotations(sender: UIViewController) {
+    // https://www.latlong.net/lat-long-utm.html
+    
+    func addKauaiSurfAnnotations(sender: UIViewController) {
         let one = MKPointAnnotation()
         
         one.coordinate = CLLocationCoordinate2DMake(22.228949, -159.487187)
@@ -114,6 +117,27 @@ class Map {
         
         mapView?.addAnnotations(annotations)
         mapView?.displayTitleLabel(title: "Surf Sites")
+    }
+    
+    // -----------------------------------------------------------------------------------------------------
+    
+    func addHawaiiSurfAnnotations(sender: UIViewController) {
+        let one = MKPointAnnotation()
+        
+        one.coordinate = CLLocationCoordinate2DMake(19.633333, -155.983333)
+        one.title = "Hapuna Beach";
+        one.subtitle = "Beach Break";
+        
+        let two = MKPointAnnotation()
+        two.coordinate = CLLocationCoordinate2DMake(19.751980, -155.085830)
+        two.title = "Hanoli'i";
+        two.subtitle = "River mouth, busy.";
+        
+        let annotations:[MKAnnotation] = [one, two]
+        
+        mapView?.addAnnotations(annotations)
+        mapView?.displayTitleLabel(title: "Surf Sites")
+        
     }
 }
 
