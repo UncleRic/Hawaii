@@ -206,7 +206,30 @@ class Map {
         let annotations:[MKAnnotation] = [one]
         mapView?.addAnnotations(annotations)
         mapView?.displayTitleLabel(title: "Surf Sites")
+    }
+    
+    // -----------------------------------------------------------------------------------------------------
+    // Maui
+    
+    func addMauiSurfAnnotations(sender: UIViewController) {
+        let one = MKPointAnnotation()
+        one.coordinate = CLLocationCoordinate2DMake(20.870029, -156.678914)
+        one.title = "Breakwall"
+        one.subtitle = "Intermediate Surfer"
         
+        let two = MKPointAnnotation()
+        two.coordinate = CLLocationCoordinate2DMake(21.024955, -156.610611)
+        two.title = "Honolua Bay"
+        two.subtitle = "Advanced Surfer"
+        
+        let three = MKPointAnnotation()
+        three.coordinate = CLLocationCoordinate2DMake(20.943647, -156.298062)
+        three.title = "Jaws"
+        three.subtitle = "Advanced Surfer"
+        
+        let annotations:[MKAnnotation] = [one, two, three]
+        mapView?.addAnnotations(annotations)
+        mapView?.displayTitleLabel(title: "Surf Sites")
     }
     
     // -----------------------------------------------------------------------------------------------------
