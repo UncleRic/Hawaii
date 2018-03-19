@@ -65,13 +65,13 @@ class Map {
         
         switch sender.island {
         case .Kauai:
-             span = MKCoordinateSpan(latitudeDelta: 0.56, longitudeDelta: 0.56)
+            span = MKCoordinateSpan(latitudeDelta: 0.56, longitudeDelta: 0.56)
         case .Oahu:
             span = MKCoordinateSpan(latitudeDelta: 0.54, longitudeDelta: 0.54)
         default:
-             span = MKCoordinateSpan(latitudeDelta: 1.30, longitudeDelta: 1.34)
+            span = MKCoordinateSpan(latitudeDelta: 1.30, longitudeDelta: 1.34)
         }
-    
+        
         
         let region = MKCoordinateRegion(center:coord, span: span)
         
@@ -165,13 +165,28 @@ class Map {
         seven.title = "Bowls";
         seven.subtitle = "Advanced Surfer";
         
-        
         let eight = MKPointAnnotation()
         eight.coordinate = CLLocationCoordinate2DMake(21.275277, -157.8262)
         eight.title = "Canoes";
         eight.subtitle = "Beginners";
         
-        let annotations:[MKAnnotation] = [one, two, three, four, five, six, seven, eight]
+        let nine = MKPointAnnotation()
+        nine.coordinate = CLLocationCoordinate2DMake(21.295237, -158.106582)
+        nine.title = "Barbers Point";
+        nine.subtitle = "Intermediate Surfer";
+        
+        let ten = MKPointAnnotation()
+        ten.coordinate = CLLocationCoordinate2DMake(21.295237, -158.106582)
+        ten.title = "Bath Tubs";
+        ten.subtitle = "Intermediate Surfer";
+        
+        let eleven = MKPointAnnotation()
+        eleven.coordinate = CLLocationCoordinate2DMake(21.346563, -158.131017)
+        eleven.title = "Makaha";
+        eleven.subtitle = "Intermediate Surfer";
+        
+        
+        let annotations:[MKAnnotation] = [one, two, three, four, five, six, seven, eight, nine, ten, eleven]
         
         mapView?.addAnnotations(annotations)
         mapView?.displayTitleLabel(title: "Surf Sites")
@@ -202,7 +217,7 @@ class Map {
 }
 
 // ===================================================================================================
- // MARK: -
+// MARK: -
 
 extension KauaiViewController: MKMapViewDelegate {
     
