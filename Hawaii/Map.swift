@@ -155,7 +155,23 @@ class Map {
         five.title = "Sunset Beach";
         five.subtitle = "Intermediate";
         
-        let annotations:[MKAnnotation] = [one, two, three, four, five]
+        let six = MKPointAnnotation()
+        six.coordinate = CLLocationCoordinate2DMake(21.639877, -158.063393)
+        six.title = "Waimea Beach";
+        six.subtitle = "Advanced Surfer";
+        
+        let seven = MKPointAnnotation()
+        seven.coordinate = CLLocationCoordinate2DMake(21.280494, -157.84367)
+        seven.title = "Bowls";
+        seven.subtitle = "Advanced Surfer";
+        
+        
+        let eight = MKPointAnnotation()
+        eight.coordinate = CLLocationCoordinate2DMake(21.275277, -157.8262)
+        eight.title = "Canoes";
+        eight.subtitle = "Beginners";
+        
+        let annotations:[MKAnnotation] = [one, two, three, four, five, six, seven, eight]
         
         mapView?.addAnnotations(annotations)
         mapView?.displayTitleLabel(title: "Surf Sites")
@@ -209,26 +225,26 @@ extension KauaiViewController: MKMapViewDelegate {
 // ===================================================================================================
 
 extension OahuViewController: MKMapViewDelegate {
-    func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
+    func mapView(_: MKMapView, didSelect: MKAnnotationView) {
         return
     }
 }
 
 extension MolokaiViewController: MKMapViewDelegate {
-    func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
+    func mapView(_: MKMapView, didSelect: MKAnnotationView) {
         return
     }
 }
 
 extension MauiViewController: MKMapViewDelegate {
-    func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
+    func mapView(_: MKMapView, didSelect: MKAnnotationView) {
         return
     }
 }
 
 
 extension HawaiiViewController: MKMapViewDelegate {
-    func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
+    func mapView(_: MKMapView, didSelect: MKAnnotationView) {
         return
     }
 }
