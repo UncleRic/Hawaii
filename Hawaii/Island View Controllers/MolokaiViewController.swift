@@ -172,7 +172,11 @@ class MolokaiViewController: UIViewController, BackgroundDisplay, NavigationRepo
     
     @objc func surfReport() {
         Navigator().removeNavigatorOverlay(sender: self)
-        WebKit.setupWebView(sender: self, forBeach: Islands.Molokai)
+        if let _ = view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
+            map.addMolokaiSurfAnnotations(sender: self)
+        } else {
+            WebKit.setupWebView(sender: self, forBeach: Islands.Molokai)
+        }
     }
     
     @objc func reportMenu() {

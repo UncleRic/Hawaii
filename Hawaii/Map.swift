@@ -68,6 +68,8 @@ class Map {
             span = MKCoordinateSpan(latitudeDelta: 0.56, longitudeDelta: 0.56)
         case .Oahu:
             span = MKCoordinateSpan(latitudeDelta: 0.54, longitudeDelta: 0.54)
+        case .Molokai:
+            span = MKCoordinateSpan(latitudeDelta: 0.61, longitudeDelta: 0.61)
         default:
             span = MKCoordinateSpan(latitudeDelta: 1.30, longitudeDelta: 1.34)
         }
@@ -185,9 +187,23 @@ class Map {
         eleven.title = "Makaha";
         eleven.subtitle = "Intermediate Surfer";
         
-        
         let annotations:[MKAnnotation] = [one, two, three, four, five, six, seven, eight, nine, ten, eleven]
         
+        mapView?.addAnnotations(annotations)
+        mapView?.displayTitleLabel(title: "Surf Sites")
+        
+    }
+    
+    // -----------------------------------------------------------------------------------------------------
+    // Molokai
+    
+    func addMolokaiSurfAnnotations(sender: UIViewController) {
+        let one = MKPointAnnotation()
+        one.coordinate = CLLocationCoordinate2DMake(21.169805, -156.788701)
+        one.title = "Polzath";
+        one.subtitle = "Sand & Rock";
+        
+        let annotations:[MKAnnotation] = [one]
         mapView?.addAnnotations(annotations)
         mapView?.displayTitleLabel(title: "Surf Sites")
         
