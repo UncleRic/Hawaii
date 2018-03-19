@@ -63,11 +63,15 @@ class Map {
         
         let span:MKCoordinateSpan
         
-        if sender.island == .Kauai {
-            span = MKCoordinateSpan(latitudeDelta: 0.56, longitudeDelta: 0.56)
-        } else {
-            span = MKCoordinateSpan(latitudeDelta: 1.30, longitudeDelta: 1.34)
+        switch sender.island {
+        case .Kauai:
+             span = MKCoordinateSpan(latitudeDelta: 0.56, longitudeDelta: 0.56)
+        case .Oahu:
+            span = MKCoordinateSpan(latitudeDelta: 0.54, longitudeDelta: 0.54)
+        default:
+             span = MKCoordinateSpan(latitudeDelta: 1.30, longitudeDelta: 1.34)
         }
+    
         
         let region = MKCoordinateRegion(center:coord, span: span)
         
@@ -79,6 +83,8 @@ class Map {
     // MARK: - Surfing Annotations
     // http://www.surfing-waves.com/atlas/north_america/hawaii/kauai/spot/horners.html
     // https://www.latlong.net/lat-long-utm.html
+    
+    // KAUAI
     
     func addKauaiSurfAnnotations(sender: UIViewController) {
         let one = MKPointAnnotation()
@@ -120,6 +126,44 @@ class Map {
     }
     
     // -----------------------------------------------------------------------------------------------------
+    // Oahu
+    
+    func addOahuSurfAnnotations(sender: UIViewController) {
+        let one = MKPointAnnotation()
+        
+        one.coordinate = CLLocationCoordinate2DMake(21.461312, -157.760969)
+        one.title = "Pyramid Rock";
+        one.subtitle = "Point Break, East";
+        
+        let two = MKPointAnnotation()
+        two.coordinate = CLLocationCoordinate2DMake(21.662337, -158.060577)
+        two.title = "Off-The-Wall";
+        two.subtitle = "Advanced Surfer";
+        
+        let three = MKPointAnnotation()
+        three.coordinate = CLLocationCoordinate2DMake(21.668696, -158.048920)
+        three.title = "Pipeline";
+        three.subtitle = "Advanced Surfer";
+        
+        let four = MKPointAnnotation()
+        four.coordinate = CLLocationCoordinate2DMake(21.601072, -158.106303)
+        four.title = "Puena Point";
+        four.subtitle = "Beginners";
+        
+        let five = MKPointAnnotation()
+        five.coordinate = CLLocationCoordinate2DMake(21.675200, -158.041196)
+        five.title = "Sunset Beach";
+        five.subtitle = "Intermediate";
+        
+        let annotations:[MKAnnotation] = [one, two, three, four, five]
+        
+        mapView?.addAnnotations(annotations)
+        mapView?.displayTitleLabel(title: "Surf Sites")
+        
+    }
+    
+    // -----------------------------------------------------------------------------------------------------
+    // Hawaii
     
     func addHawaiiSurfAnnotations(sender: UIViewController) {
         let one = MKPointAnnotation()
@@ -142,6 +186,7 @@ class Map {
 }
 
 // ===================================================================================================
+ // MARK: -
 
 extension KauaiViewController: MKMapViewDelegate {
     

@@ -174,7 +174,11 @@ class OahuViewController: UIViewController, BackgroundDisplay, NavigationReport 
     
     @objc func surfReport() {
         Navigator().removeNavigatorOverlay(sender: self)
-        WebKit.setupWebView(sender: self, forBeach: Islands.Oahu)
+        if let _ = view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
+            map.addOahuSurfAnnotations(sender: self)
+        } else {
+            WebKit.setupWebView(sender: self, forBeach: Islands.Oahu)
+        }
     }
     
     @objc func lodgingReport() {

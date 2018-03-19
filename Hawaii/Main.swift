@@ -61,7 +61,7 @@ public enum Islands:Int {
         case .Kauai:
             return CLLocationCoordinate2DMake(22.118543, -159.549)
         case .Oahu:
-            return CLLocationCoordinate2DMake(21.315603, -157.858093)
+            return CLLocationCoordinate2DMake(21.315603, -157.920)
         case .Molokai:
             return CLLocationCoordinate2DMake(21.144393, -157.022630)
         case .Maui:

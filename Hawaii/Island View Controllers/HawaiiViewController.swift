@@ -173,7 +173,7 @@ class HawaiiViewController: UIViewController, BackgroundDisplay, NavigationRepor
         if let _ = view.viewWithTag(IslandAssets.mapViewTag.rawValue) {
             map.addHawaiiSurfAnnotations(sender: self)
         } else {
-            WebKit.setupWebView(sender: self, forBeach: Islands.Kauai)
+            WebKit.setupWebView(sender: self, forBeach: Islands.Hawaii)
         }
     }
     
