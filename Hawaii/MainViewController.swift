@@ -299,14 +299,14 @@ class MainViewController: UIViewController {
             // Adding child Island ViewController into Main Container ViewController (self):
             
             if let targetView = view.viewWithTag(IslandAssets.mainToolbarTag.rawValue) {
-                self.addChildViewController(childController)
+                self.addChild(childController)
                 view.insertSubview(childController.view, belowSubview: targetView)
                 childController.view.overlay(containerView: view)
                 
                 UIView.animate(withDuration: 0.5, animations: {
                     childController.view.alpha = 1.0
                 }, completion: { (completed) in
-                    childController.didMove(toParentViewController: self)
+                    childController.didMove(toParent: self)
                 })
             }
             
@@ -328,7 +328,7 @@ class MainViewController: UIViewController {
             currentIsland = .Main
             // Remove child Island ViewController from Main Container ViewController (self):
             if let childController = childController {
-                childController.willMove(toParentViewController: nil)
+                childController.willMove(toParent: nil)
                 UIView.animate(withDuration: 0.5, animations: {
                     childController.view.alpha = 0.0
                 }, completion: { (completed) in

@@ -415,7 +415,7 @@ class HawaiianScrollView: UIScrollView {
         
         // Where we are now: currentOffset.x vs
         // Where we want to be: centerOffsetX
-        let distanceFromCenter: CGFloat = fabs(currentOffset.x - centerOffsetX)
+        let distanceFromCenter: CGFloat = abs(currentOffset.x - centerOffsetX)
         
         if (distanceFromCenter > (contentWidth / 4.0)) {
             self.contentOffset = CGPoint(x: centerOffsetX, y: currentOffset.y)
